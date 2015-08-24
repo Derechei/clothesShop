@@ -140,34 +140,36 @@ main {
   height: 600px; }
 
 footer {
-  display: flex;
-  justify-content: center;
+  padding: 5% 15%;
   border-top: 3px solid rgba(17, 33, 61, 0.25);
   font-size: 14px;
   font-weight: 300;
   font-family: "Oswald", sans-serif; }
   footer > ul {
     display: flex;
-    width: 90%;
-    max-width: 1000px;
-    flex-flow: row;
+    flex-flow: row wrap;
     justify-content: space-between;
-    margin: 4em 5% 4em 5%;
     padding-bottom: 1.5em; }
+    footer > ul li {
+      padding: 0 5%; }
     footer > ul ul {
-      margin-top: 1.5em; }
+      margin-top: 1.5em;
+      margin-bottom: 1em; }
       footer > ul ul li {
         line-height: 1.7em; }
-    footer > ul .intouch {
-      margin-top: 1.7em;
-      width: 210px;
-      height: 150px;
-      display: flex;
-      flex-flow: row wrap;
-      justify-content: space-between;
-      margin-left: -15px; }
-      footer > ul .intouch a {
-        margin: 0 20px; }
+    footer > ul div {
+      width: 150px;
+      height: 150px; }
+      footer > ul div .intouch {
+        margin-top: 1.2em;
+        display: flex;
+        justify-content: space-between;
+        flex-flow: row wrap;
+        align-content: flex-start; }
+        footer > ul div .intouch a {
+          margin-top: 0.5em; }
+        footer > ul div .intouch a:nth-child(2n + 1) {
+          flex-grow: 2; }
 
 @media all and (max-width: 1450px) {
   .dropmenu .toggle-long {
@@ -234,12 +236,7 @@ footer {
 
   .dropmenu {
     margin: 0 5%;
-    width: 90%; }
-
-  footer ul {
-    flex-flow: row wrap;
-    width: auto;
-    margin: 2em; } }
+    width: 90%; } }
 @media all and (max-width: 550px) {
   header nav:first-child ul {
     display: flex;
@@ -317,11 +314,9 @@ footer {
     margin: 0 2%;
     width: 96%; }
 
-  footer ul ul {
-    flex-flow: column;
-    justify-content: center;
-    width: auto;
-    margin: 2em; } }
+  footer ul {
+    flex-flow: row wrap;
+    justify-content: center; } }
 
 
 
