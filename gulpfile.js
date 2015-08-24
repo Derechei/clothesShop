@@ -15,8 +15,14 @@ gulp.task('default', ['imagemin', 'scss', 'prefixer', 'watch']);
 // Gulp watcher.
 gulp.task('watch', function () {
     livereload.listen();
+    gulp.watch('html/*.html',['html']);
     gulp.watch('scss_styles/*.scss', ['scss']);
-    gulp.watch('css/all.css', ['prefixer']);
+    gulp.watch('css/styles/*.css', ['prefixer']);
+});
+
+// HTML Tasl live reload.
+gulp.task('html',function(){
+    return gulp.src('html/*.html').pipe(livereload());
 });
 
 // SCSS Task compiler.
@@ -30,24 +36,19 @@ gulp.task('scss', function () {
             includeContent: false,
             sourceRoot: 'scss_styles/'
         }))
-        .pipe(gulp.dest('css/styles'))
-        .pipe(livereload());
+        .pipe(gulp.dest('css/styles'));
 });
 
 // Autoprefixer task.
 gulp.task('prefixer', function () {
-    return gulp.src('css/*/*.css')
-        .pipe(sourcemaps.init({loadMaps: true}))
+    return gulp.src('css/styles/*.css')
         .pipe(prefixer({
             cascade: true,
-            remove: true,
-            browsers: [
-                'last 3 versions'
-            ]
+            remove: true
         }))
         .pipe(concat('all.css'))
-        .pipe(sourcemaps.write('/', {sourceRoot: true}))
-        .pipe(gulp.dest('css'));
+        .pipe(gulp.dest('css'))
+        .pipe(livereload());
 });
 
 // ImageMin task.
