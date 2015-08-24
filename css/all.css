@@ -1,3 +1,12 @@
+@-webkit-keyframes dropdown {
+  0% {
+    opacity: 0;
+    top: 60px; }
+  80% {
+    opacity: 1;
+    top: 103px; }
+  100% {
+    top: 83px; } }
 @keyframes dropdown {
   0% {
     opacity: 0;
@@ -32,15 +41,29 @@ header {
     display: none;
     margin: 0; }
   header nav:first-child {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
     display: flex;
-    flex-flow: row;
-    justify-content: flex-end;
-    align-items: center;
+    -webkit-flex-flow: row;
+        -ms-flex-flow: row;
+            flex-flow: row;
+    -webkit-box-pack: end;
+    -webkit-justify-content: flex-end;
+        -ms-flex-pack: end;
+            justify-content: flex-end;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+        -ms-flex-align: center;
+            align-items: center;
     background-color: #eaebeb; }
     header nav:first-child a {
       padding: 0 20px;
       border-left: 1px solid rgba(17, 33, 61, 0.25); }
     header nav:first-child ul {
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: -ms-flexbox;
       display: flex;
       padding: 0 10% 0 0;
       list-style: none;
@@ -50,34 +73,68 @@ header {
       header nav:first-child ul li:nth-child(2) a {
         padding-left: 40px; }
   header nav:last-child {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
     display: flex;
-    flex-flow: row;
-    justify-content: flex-start;
-    transition: margin 0.5s ease; }
+    -webkit-flex-flow: row;
+        -ms-flex-flow: row;
+            flex-flow: row;
+    -webkit-box-pack: start;
+    -webkit-justify-content: flex-start;
+        -ms-flex-pack: start;
+            justify-content: flex-start;
+    -webkit-transition: margin 0.5s ease;
+            transition: margin 0.5s ease; }
     header nav:last-child > a {
       height: 80px; }
       header nav:last-child > a img {
         height: 80px;
         width: 75px; }
     header nav:last-child dl {
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: -ms-flexbox;
       display: flex;
-      flex-grow: 2;
+      -webkit-box-flex: 2;
+      -webkit-flex-grow: 2;
+          -ms-flex-positive: 2;
+              flex-grow: 2;
       padding: 0;
       list-style: none;
-      transition: margin 0.5s ease;
-      align-items: stretch; }
+      -webkit-transition: margin 0.5s ease;
+              transition: margin 0.5s ease;
+      -webkit-box-align: stretch;
+      -webkit-align-items: stretch;
+          -ms-flex-align: stretch;
+              align-items: stretch; }
       header nav:last-child dl dt {
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -ms-flexbox;
         display: flex;
-        align-items: center;
-        transition: margin 0.5s ease; }
+        -webkit-box-align: center;
+        -webkit-align-items: center;
+            -ms-flex-align: center;
+                align-items: center;
+        -webkit-transition: margin 0.5s ease;
+                transition: margin 0.5s ease; }
         header nav:last-child dl dt:last-child {
-          transition: margin 0.5s ease; }
+          -webkit-transition: margin 0.5s ease;
+                  transition: margin 0.5s ease; }
           header nav:last-child dl dt:last-child a {
             border-left: 3px solid rgba(17, 33, 61, 0.25);
-            transition: padding 0.5s ease; }
+            -webkit-transition: padding 0.5s ease;
+                    transition: padding 0.5s ease; }
     header nav:last-child .search {
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: -ms-flexbox;
       display: flex;
-      align-items: center; }
+      -webkit-box-align: center;
+      -webkit-align-items: center;
+          -ms-flex-align: center;
+              align-items: center; }
       header nav:last-child .search [type='search'] {
         color: #7d7d7d;
         padding: 0 1.3em 0 1em;
@@ -104,16 +161,27 @@ header {
   font-size: 0.7em;
   border: 1px solid rgba(17, 33, 61, 0.25);
   opacity: 1;
-  transition: width 0.5s ease;
-  animation: dropdown 0.5s ease; }
+  -webkit-transition: width 0.5s ease;
+          transition: width 0.5s ease;
+  -webkit-animation: dropdown 0.5s ease;
+          animation: dropdown 0.5s ease; }
   .dropmenu > ul {
     margin: 2em 0;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
     display: flex;
-    justify-content: flex-start; }
+    -webkit-box-pack: start;
+    -webkit-justify-content: flex-start;
+        -ms-flex-pack: start;
+            justify-content: flex-start; }
     .dropmenu > ul > li {
       margin-left: 2em; }
       .dropmenu > ul > li:nth-last-child(2) {
-        flex-grow: 2; }
+        -webkit-box-flex: 2;
+        -webkit-flex-grow: 2;
+            -ms-flex-positive: 2;
+                flex-grow: 2; }
       .dropmenu > ul > li:last-child {
         margin: 0 5% 0 0; }
       .dropmenu > ul > li strong {
@@ -148,8 +216,14 @@ footer {
           header nav:last-child dl dt:last-child a {
             padding: 0 0 0 30px; }
       header nav:last-child dl .toggle-long {
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -ms-flexbox;
         display: flex;
-        align-items: center; }
+        -webkit-box-align: center;
+        -webkit-align-items: center;
+            -ms-flex-align: center;
+                align-items: center; }
       header nav:last-child dl .toggle-short {
         display: none; }
 
@@ -174,8 +248,14 @@ footer {
     header nav:last-child .toggle-long {
       display: none; }
     header nav:last-child .toggle-short {
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: -ms-flexbox;
       display: flex;
-      align-items: center; }
+      -webkit-box-align: center;
+      -webkit-align-items: center;
+          -ms-flex-align: center;
+              align-items: center; }
 
   .dropmenu {
     margin: 0 10%;
@@ -218,7 +298,3 @@ footer {
   .dropmenu {
     margin: 0 2%;
     width: 96%; } }
-
-
-
-/*# sourceMappingURL=/catalogue.css.map */
