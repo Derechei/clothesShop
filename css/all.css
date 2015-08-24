@@ -199,7 +199,46 @@ main {
   height: 600px; }
 
 footer {
-  border-top: 3px solid rgba(17, 33, 61, 0.25); }
+  border-top: 3px solid rgba(17, 33, 61, 0.25);
+  font-size: 14px;
+  font-weight: 300;
+  font-family: "Oswald", sans-serif; }
+  footer > ul {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-flex-flow: row;
+        -ms-flex-flow: row;
+            flex-flow: row;
+    -webkit-box-pack: justify;
+    -webkit-justify-content: space-between;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    margin: 4em 5% 4em 6%;
+    padding-bottom: 1.5em; }
+    footer > ul ul {
+      margin-top: 1.5em; }
+      footer > ul ul li {
+        line-height: 1.7em; }
+    footer > ul .intouch {
+      margin-top: 1.7em;
+      width: 210px;
+      height: 150px;
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-flex-flow: row wrap;
+          -ms-flex-flow: row wrap;
+              flex-flow: row wrap;
+      -webkit-box-pack: justify;
+      -webkit-justify-content: space-between;
+          -ms-flex-pack: justify;
+              justify-content: space-between;
+      margin-left: -15px; }
+      footer > ul .intouch a {
+        margin: 0 20px; }
 
 @media all and (max-width: 1450px) {
   .dropmenu .toggle-long {
