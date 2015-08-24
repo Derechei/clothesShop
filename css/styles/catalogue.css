@@ -7,11 +7,22 @@
     top: 103px; }
   100% {
     top: 83px; } }
+@keyframes button_animate_white {
+  from {
+    background-color: #fff; }
+  to {
+    background-color: #d20023; } }
+@keyframes button_animate_grey {
+  from {
+    background-color: #eaebeb; }
+  to {
+    background-color: #d20023; } }
 body {
   font-family: "Roboto", sans-serif;
   font-size: 20px;
   margin: 0;
-  color: #1d389b; }
+  color: #1d389b;
+  overflow: auto; }
   body a {
     text-decoration: none;
     color: #1d389b; }
@@ -23,6 +34,7 @@ ul {
   list-style: none; }
 
 header {
+  top: 0;
   position: fixed;
   z-index: 100;
   border-bottom: 3px solid rgba(17, 33, 61, 0.25);
@@ -35,7 +47,6 @@ header {
     display: flex;
     flex-flow: row;
     justify-content: flex-end;
-    align-items: center;
     background-color: #eaebeb; }
     header nav:first-child a {
       padding: 0 20px;
@@ -47,8 +58,6 @@ header {
       font-size: 0.7em; }
       header nav:first-child ul li:first-child {
         margin-right: 40px; }
-      header nav:first-child ul li:nth-child(2) a {
-        padding-left: 40px; }
   header nav:last-child {
     display: flex;
     flex-flow: row;
@@ -131,15 +140,19 @@ main {
   height: 600px; }
 
 footer {
+  display: flex;
+  justify-content: center;
   border-top: 3px solid rgba(17, 33, 61, 0.25);
   font-size: 14px;
   font-weight: 300;
   font-family: "Oswald", sans-serif; }
   footer > ul {
     display: flex;
+    width: 90%;
+    max-width: 1000px;
     flex-flow: row;
     justify-content: space-between;
-    margin: 4em 5% 4em 6%;
+    margin: 4em 5% 4em 5%;
     padding-bottom: 1.5em; }
     footer > ul ul {
       margin-top: 1.5em; }
@@ -221,26 +234,94 @@ footer {
 
   .dropmenu {
     margin: 0 5%;
-    width: 90%; } }
-@media all and (max-width: 500px) {
+    width: 90%; }
+
+  footer ul {
+    flex-flow: row wrap;
+    width: auto;
+    margin: 2em; } }
+@media all and (max-width: 550px) {
+  header nav:first-child ul {
+    display: flex;
+    flex-flow: column;
+    width: 100%;
+    margin: 0 5%;
+    padding: 0; }
+    header nav:first-child ul li {
+      display: flex;
+      justify-content: center;
+      border-bottom: 1px solid rgba(17, 33, 61, 0.25); }
+      header nav:first-child ul li:last-child {
+        border-bottom: none; }
+      header nav:first-child ul li a {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        border: none;
+        padding: 0.7em 0;
+        margin: 0.3em 0; }
+        header nav:first-child ul li a:hover {
+          animation: button_animate_grey 2s ease 0s;
+          color: white; }
   header nav:first-child .toggle-long {
     display: none; }
   header nav:first-child li:nth-child(2) > a {
     border-left: none; }
   header nav:last-child {
-    margin: 0 2%; }
+    margin: 0;
+    flex-flow: column; }
+    header nav:last-child > a {
+      display: flex;
+      justify-content: center;
+      width: 90%;
+      margin: 0.5em 5%; }
+      header nav:last-child > a:hover {
+        animation: button_animate_white 2s ease 0s;
+        color: white; }
+    header nav:last-child .search {
+      justify-content: center;
+      padding-bottom: 0.5em; }
     header nav:last-child dl {
-      margin: 0 0 0 10px; }
-      header nav:last-child dl dt {
-        margin: 0 5px; }
-        header nav:last-child dl dt:last-child {
-          margin-left: 5px; }
-          header nav:last-child dl dt:last-child a {
-            padding: 0 0 0 10px; }
+      margin: 0 5%;
+      flex-flow: column; }
+      header nav:last-child dl dt:first-child {
+        justify-content: center;
+        margin: 0;
+        border-top: 3px solid; }
+        header nav:last-child dl dt:first-child a {
+          display: flex;
+          justify-content: center;
+          width: 100%;
+          padding: 0.35em 0;
+          margin: 0.15em 0; }
+          header nav:last-child dl dt:first-child a:hover {
+            animation: button_animate_white 2s ease 0s;
+            color: white; }
+      header nav:last-child dl dt:last-child {
+        justify-content: center;
+        border-top: 3px solid;
+        padding: 0;
+        margin: 0; }
+        header nav:last-child dl dt:last-child a {
+          display: flex;
+          justify-content: center;
+          width: 100%;
+          padding: 0.35em 0;
+          margin: 0.15em 0;
+          border-left: none; }
+          header nav:last-child dl dt:last-child a:hover {
+            animation: button_animate_white 2s ease 0s;
+            color: white; }
 
   .dropmenu {
     margin: 0 2%;
-    width: 96%; } }
+    width: 96%; }
+
+  footer ul ul {
+    flex-flow: column;
+    justify-content: center;
+    width: auto;
+    margin: 2em; } }
 
 
 
