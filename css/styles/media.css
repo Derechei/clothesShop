@@ -1,0 +1,146 @@
+@media all and (max-width: 1450px) {
+  .dropmenu .toggle-long {
+    display: none; } }
+@media all and (min-width: 1000px) {
+  header nav:last-child {
+    margin: 0 15%; }
+    header nav:last-child dl {
+      margin: 0 0 0 30px; }
+      header nav:last-child dl dt {
+        margin: 0 10px; }
+      header nav:last-child dl dt:last-child {
+        margin-left: 20px; }
+      header nav:last-child dl dt:last-child a {
+        padding: 0 0 0 30px; }
+      header nav:last-child dl .toggle-long {
+        display: flex;
+        align-items: center; }
+      header nav:last-child dl .toggle-short {
+        display: none; }
+
+  .dropmenu {
+    margin: 0 15%;
+    width: 70%; } }
+@media all and (max-width: 1000px) {
+  header nav:first-child .toggle-long {
+    display: none; }
+  header nav:first-child li:nth-child(2) > a {
+    border-left: none; }
+  header nav:last-child {
+    margin: 0 10%; }
+    header nav:last-child dl {
+      margin: 0 0 0 30px; }
+      header nav:last-child dl dt {
+        margin: 0 10px; }
+        header nav:last-child dl dt:last-child {
+          margin-left: 20px; }
+        header nav:last-child dl dt:last-child a {
+          padding: 0 0 0 30px; }
+    header nav:last-child .toggle-long {
+      display: none; }
+    header nav:last-child .toggle-short {
+      display: flex;
+      align-items: center; }
+
+  .dropmenu {
+    margin: 0 10%;
+    width: 80%; } }
+@media all and (max-width: 900px) {
+  header nav:first-child .toggle-long {
+    display: none; }
+  header nav:first-child li:nth-child(2) > a {
+    border-left: none; }
+  header nav:last-child {
+    margin: 0 5%; }
+    header nav:last-child dl {
+      margin: 0 0 0 20px; }
+      header nav:last-child dl dt {
+        margin: 0 10px; }
+      header nav:last-child dl dt:last-child {
+        margin-left: 10px; }
+      header nav:last-child dl dt:last-child a {
+        padding: 0 0 0 20px; } }
+@media all and (max-width: 550px) {
+  header nav:first-child .toggle-long {
+    display: none; }
+  header nav:first-child ul {
+    display: flex;
+    flex-flow: column;
+    width: 100%;
+    margin: 0 5%;
+    padding: 0; }
+    header nav:first-child ul li {
+      display: flex;
+      justify-content: center;
+      border-bottom: 1px solid rgba(17, 33, 61, 0.25); }
+      header nav:first-child ul li a {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        border: none;
+        padding: 0.7em 0;
+        margin: 0.3em 0; }
+      header nav:first-child ul li a:hover {
+        animation: button_animate_grey 2s ease 0s;
+        color: white; }
+    header nav:first-child ul li:last-child {
+      border-bottom: none; }
+    header nav:first-child ul li:nth-child(2) > a {
+      border-left: none; }
+  header nav:last-child {
+    margin: 0;
+    flex-flow: column; }
+    header nav:last-child > a {
+      display: flex;
+      justify-content: center;
+      width: 90%;
+      margin: 0.5em 5%; }
+    header nav:last-child > a:hover {
+      animation: button_animate_white 2s ease 0s;
+      color: white; }
+    header nav:last-child .search {
+      justify-content: center;
+      padding-bottom: 0.5em; }
+    header nav:last-child dl {
+      margin: 0 5%;
+      flex-flow: column; }
+      header nav:last-child dl dt:first-child {
+        justify-content: center;
+        margin: 0;
+        border-top: 3px solid; }
+        header nav:last-child dl dt:first-child a {
+          display: flex;
+          justify-content: center;
+          width: 100%;
+          padding: 0.35em 0;
+          margin: 0.15em 0; }
+        header nav:last-child dl dt:first-child a:hover {
+          animation: button_animate_white 2s ease 0s;
+          color: white; }
+      header nav:last-child dl dt:last-child {
+        justify-content: center;
+        border-top: 3px solid;
+        padding: 0;
+        margin: 0; }
+        header nav:last-child dl dt:last-child a {
+          display: flex;
+          justify-content: center;
+          width: 100%;
+          padding: 0.35em 0;
+          margin: 0.15em 0;
+          border-left: none; }
+        header nav:last-child dl dt:last-child a:hover {
+          animation: button_animate_white 2s ease 0s;
+          color: white; }
+
+  .dropmenu {
+    margin: 0 2%;
+    width: 96%; }
+
+  footer ul {
+    flex-flow: row wrap;
+    justify-content: center; } }
+
+
+
+/*# sourceMappingURL=/media.css.map */

@@ -1,0 +1,78 @@
+.my_cart {
+  display: flex;
+  flex-flow: row;
+  margin: 0 15% 0 15%;
+  justify-content: space-between; }
+  .my_cart section {
+    margin: 1em 2% 0 0;
+    width: 98%; }
+    .my_cart section .container {
+      padding: 0.5em;
+      background-color: white;
+      font-size: 1.5em; }
+      .my_cart section .container p {
+        margin: 0; }
+  .my_cart aside {
+    font-size: 0.8em; }
+    .my_cart aside > ul {
+      width: 240px; }
+      .my_cart aside > ul > li {
+        margin-bottom: 0.5em;
+        background-color: white;
+        padding: 20px; }
+      .my_cart aside > ul .OUR_COMMITMENTS .ico {
+        display: inline-block;
+        float: left;
+        clear: left;
+        width: 40px; }
+        .my_cart aside > ul .OUR_COMMITMENTS .ico.satisfaction {
+          background: url("../content/img/cart_commitments/ico_satisfaction.gif") no-repeat scroll 0 0 transparent;
+          height: 24px; }
+        .my_cart aside > ul .OUR_COMMITMENTS .ico.time_to_return {
+          background: url("../content/img/cart_commitments/ico_livraison.gif") no-repeat scroll 0 0 transparent;
+          height: 18px; }
+        .my_cart aside > ul .OUR_COMMITMENTS .ico.delay {
+          background: url("../content/img/cart_commitments/ico_delai.gif") no-repeat scroll 0 0 transparent;
+          height: 23px; }
+        .my_cart aside > ul .OUR_COMMITMENTS .ico.security {
+          background: url("../content/img/cart_commitments/ico_securite.gif") no-repeat scroll 0 0 transparent;
+          height: 21px; }
+      .my_cart aside > ul .OUR_COMMITMENTS li {
+        padding: 1em 0;
+        align-content: center; }
+        .my_cart aside > ul .OUR_COMMITMENTS li span {
+          text-align: center; }
+      .my_cart aside > ul .NEED_HELP li {
+        padding: 0 0 1em 1em; }
+      .my_cart aside > ul .PAYMENTS {
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: space-between; }
+        .my_cart aside > ul .PAYMENTS .payment {
+          margin: 0.5em;
+          height: 25px; }
+          .my_cart aside > ul .PAYMENTS .payment.cb {
+            background: url("../content/img/payment/ico_cb.gif") no-repeat scroll 0 0 transparent;
+            width: 38px; }
+          .my_cart aside > ul .PAYMENTS .payment.mastercard {
+            background: url("../content/img/payment/ico_mastercard.gif") no-repeat scroll 0 0 transparent;
+            width: 38px; }
+          .my_cart aside > ul .PAYMENTS .payment.paypal {
+            background: url("../content/img/payment/ico_paypal.gif") no-repeat scroll 0 0 transparent;
+            width: 40px; }
+          .my_cart aside > ul .PAYMENTS .payment.visa {
+            background: url("../content/img/payment/ico_visa.gif") no-repeat scroll 0 0 transparent;
+            width: 38px; }
+          .my_cart aside > ul .PAYMENTS .payment.ogone {
+            background: url("../content/img/payment/ico_ogone.gif") no-repeat scroll 0 0 transparent;
+            width: 59px; }
+          .my_cart aside > ul .PAYMENTS .payment.secure_mastercard {
+            background: url("../content/img/payment/ico_secure_mastercard.gif") no-repeat scroll 0 0 transparent;
+            width: 61px; }
+          .my_cart aside > ul .PAYMENTS .payment.verified_visa {
+            background: url("../content/img/payment/ico_verified_visa.gif") no-repeat scroll 0 0 transparent;
+            width: 49px; }
+
+
+
+/*# sourceMappingURL=/my_cart.css.map */

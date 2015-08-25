@@ -1,0 +1,38 @@
+@media all and (max-width: 1000px) {
+  .my_cart {
+    flex-flow: column; }
+    .my_cart section {
+      width: 100%; }
+    .my_cart aside > ul {
+      display: flex;
+      flex-flow: column;
+      justify-content: space-between;
+      width: auto; }
+      .my_cart aside > ul > li {
+        margin-bottom: 1em; }
+      .my_cart aside > ul .OUR_COMMITMENTS ul {
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: space-between; }
+        .my_cart aside > ul .OUR_COMMITMENTS ul li {
+          display: inline-block; }
+      .my_cart aside > ul .NEED_HELP {
+        justify-content: flex-start; }
+        .my_cart aside > ul .NEED_HELP p {
+          display: inline-block; }
+        .my_cart aside > ul .NEED_HELP li {
+          margin: 0;
+          padding: 0 0 0.5em 0; }
+      .my_cart aside > ul .PAYMENTS {
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: space-between; } }
+@media all and (max-width: 650px) {
+  .my_cart aside > ul .OUR_COMMITMENTS > ul {
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: flex-start; } }
+
+
+
+/*# sourceMappingURL=/my_cart_media.css.map */

@@ -1,0 +1,23 @@
+@keyframes dropdown {
+  0% {
+    opacity: 0;
+    top: 60px; }
+  80% {
+    opacity: 1;
+    top: 103px; }
+  100% {
+    top: 83px; } }
+@keyframes button_animate_white {
+  from {
+    background-color: #fff; }
+  to {
+    background-color: #d20023; } }
+@keyframes button_animate_grey {
+  from {
+    background-color: #eaebeb; }
+  to {
+    background-color: #d20023; } }
+
+
+
+/*# sourceMappingURL=/keyframes.css.map */
