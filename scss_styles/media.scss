@@ -1,0 +1,237 @@
+@media all and (max-width: 1450px) {
+  .dropmenu .toggle-long {
+    display: none;
+  }
+}
+
+@media all and (min-width: 1000px) {
+  header {
+    nav:last-child {
+      margin: 0 15%;
+
+      dl {
+        margin: 0 0 0 30px;
+
+        dt {
+          margin: 0 10px;
+        }
+
+        dt:last-child {
+          margin-left: 20px;
+        }
+
+        dt:last-child a {
+          padding: 0 0 0 30px;
+        }
+
+        .toggle-long {
+
+          display: flex;
+          align-items: center;
+        }
+
+        .toggle-short {
+          display: none;
+        }
+      }
+    }
+  }
+  .dropmenu {
+    margin: 0 15%;
+    width: 70%;
+  }
+}
+
+@media all and (max-width: 1000px) {
+  header {
+    nav:first-child {
+      .toggle-long {
+        display: none;
+      }
+
+      li:nth-child(2) > a {
+        border-left: none;
+      }
+    }
+    nav:last-child {
+      margin: 0 10%;
+
+      dl {
+        margin: 0 0 0 30px;
+
+        dt {
+          margin: 0 10px;
+
+          &:last-child {
+            margin-left: 20px;
+          }
+          &:last-child a {
+            padding: 0 0 0 30px;
+          }
+        }
+      }
+
+      .toggle-long {
+        display: none;
+      }
+      .toggle-short {
+
+        display: flex;
+        align-items: center;
+      }
+    }
+  }
+  .dropmenu {
+    margin: 0 10%;
+    width: 80%;
+  }
+}
+
+@media all and (max-width: 900px) {
+  header {
+    nav:first-child {
+      .toggle-long {
+        display: none; }
+
+      li:nth-child(2) > a {
+        border-left: none; }
+    }
+    nav:last-child {
+      margin: 0 5%;
+
+      dl {
+        margin: 0 0 0 20px;
+
+        dt {
+          margin: 0 10px; }
+
+        dt:last-child {
+          margin-left: 10px; }
+
+        dt:last-child a {
+          padding: 0 0 0 20px;
+        }
+      }
+    }
+  }
+}
+
+@media all and (max-width: 550px) {
+  header {
+    nav:first-child {
+      .toggle-long {
+        display: none;
+      }
+
+      ul {
+        display: flex;
+        flex-flow: column;
+        width: 100%;
+        margin: 0 5%;
+        padding: 0;
+
+        li {
+          display: flex;
+          justify-content: center;
+          border-bottom: 1px solid rgba(17, 33, 61, 0.25);
+
+          a {
+            display: flex;
+            justify-content: center;
+            width: 100%;
+            border: none;
+            padding: 0.7em 0;
+            margin: 0.3em 0;
+          }
+
+          a:hover {
+            animation: button_animate_grey 2s ease 0s;
+            color: white;
+          }
+        }
+
+        li:last-child {
+          border-bottom: none;
+        }
+
+        li:nth-child(2) > a {
+          border-left: none;
+        }
+      }
+    }
+    nav:last-child {
+      margin: 0;
+      flex-flow: column;
+
+      &> a {
+        display: flex;
+        justify-content: center;
+        width: 90%;
+        margin: 0.5em 5%;
+      }
+
+      &> a:hover {
+        animation: button_animate_white 2s ease 0s;
+        color: white;
+      }
+
+      .search {
+        justify-content: center;
+        padding-bottom: 0.5em;
+      }
+
+      dl {
+        margin: 0 5%;
+        flex-flow: column;
+
+        dt:first-child {
+          justify-content: center;
+          margin: 0;
+          border-top: 3px solid;
+
+          a {
+            display: flex;
+            justify-content: center;
+            width: 100%;
+            padding: 0.35em 0;
+            margin: 0.15em 0;
+          }
+
+          a:hover {
+            animation: button_animate_white 2s ease 0s;
+            color: white;
+          }
+        }
+
+        dt:last-child {
+          justify-content: center;
+          border-top: 3px solid;
+          padding: 0;
+          margin: 0;
+
+          a {
+            display: flex;
+            justify-content: center;
+            width: 100%;
+            padding: 0.35em 0;
+            margin: 0.15em 0;
+            border-left: none;
+          }
+
+          a:hover {
+            animation: button_animate_white 2s ease 0s;
+            color: white;
+          }
+        }
+      }
+    }
+  }
+  .dropmenu {
+    margin: 0 2%;
+    width: 96%;
+  }
+  footer ul {
+    flex-flow: row wrap;
+    justify-content: center;
+  }
+}

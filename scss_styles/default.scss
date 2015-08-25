@@ -1,0 +1,20 @@
+body {
+  font-family: "Roboto", sans-serif;
+  font-size: 20px;
+  margin: 0;
+  color: #1d389b;
+  overflow: auto;
+
+  a {
+    text-decoration: none;
+    color: #1d389b;
+  }
+  a:hover {
+    color: #d20023;
+  }
+}
+
+ul {
+  padding: 0;
+  list-style: none;
+}
