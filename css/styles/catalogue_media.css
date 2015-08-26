@@ -2,136 +2,135 @@
   .dropmenu .toggle-long {
     display: none; } }
 @media all and (min-width: 1000px) {
-  header nav:last-child {
+  header .BELOW_HEADER {
     margin: 0 15%; }
-    header nav:last-child dl {
+    header .BELOW_HEADER .MENU {
       margin: 0 0 0 30px; }
-      header nav:last-child dl dt {
+      header .BELOW_HEADER .MENU dt {
         margin: 0 10px; }
-      header nav:last-child dl dt:last-child {
+      header .BELOW_HEADER .MENU .BLOG {
         margin-left: 20px; }
-      header nav:last-child dl dt:last-child a {
-        padding: 0 0 0 30px; }
-      header nav:last-child dl .toggle-long {
+        header .BELOW_HEADER .MENU .BLOG a {
+          padding: 0 0 0 30px; }
+      header .BELOW_HEADER .MENU .toggle-long {
         display: flex;
         align-items: center; }
-      header nav:last-child dl .toggle-short {
+      header .BELOW_HEADER .MENU .toggle-short {
         display: none; }
 
   .dropmenu {
     margin: 0 15%;
     width: 70%; } }
 @media all and (max-width: 1000px) {
-  header nav:first-child .toggle-long {
+  header .ABOVE_HEADER .toggle-long {
     display: none; }
-  header nav:first-child li:nth-child(2) > a {
+  header .ABOVE_HEADER .ORDER_TRACKING > a {
     border-left: none; }
-  header nav:last-child {
+  header .BELOW_HEADER {
     margin: 0 10%; }
-    header nav:last-child dl {
+    header .BELOW_HEADER .MENU {
       margin: 0 0 0 30px; }
-      header nav:last-child dl dt {
+      header .BELOW_HEADER .MENU dt {
         margin: 0 10px; }
-        header nav:last-child dl dt:last-child {
+        header .BELOW_HEADER .MENU dt .BLOG {
           margin-left: 20px; }
-        header nav:last-child dl dt:last-child a {
-          padding: 0 0 0 30px; }
-    header nav:last-child .toggle-long {
-      display: none; }
-    header nav:last-child .toggle-short {
-      display: flex;
-      align-items: center; }
+          header .BELOW_HEADER .MENU dt .BLOG a {
+            padding: 0 0 0 30px; }
+      header .BELOW_HEADER .MENU .toggle-long {
+        display: none; }
+      header .BELOW_HEADER .MENU .toggle-short {
+        display: flex;
+        align-items: center; }
 
   .dropmenu {
     margin: 0 10%;
     width: 80%; } }
 @media all and (max-width: 900px) {
-  header nav:first-child .toggle-long {
+  header .ABOVE_HEADER .toggle-long {
     display: none; }
-  header nav:first-child li:nth-child(2) > a {
+  header .ABOVE_HEADER .ORDER_TRACKING > a {
     border-left: none; }
-  header nav:last-child {
+  header .BELOW_HEADER {
     margin: 0 5%; }
-    header nav:last-child dl {
+    header .BELOW_HEADER .MENU {
       margin: 0 0 0 20px; }
-      header nav:last-child dl dt {
+      header .BELOW_HEADER .MENU dt {
         margin: 0 10px; }
-      header nav:last-child dl dt:last-child {
+      header .BELOW_HEADER .MENU .BLOG {
         margin-left: 10px; }
-      header nav:last-child dl dt:last-child a {
-        padding: 0 0 0 20px; } }
+        header .BELOW_HEADER .MENU .BLOG a {
+          padding: 0 0 0 20px; } }
 @media all and (max-width: 550px) {
-  header nav:first-child .toggle-long {
+  header .ABOVE_HEADER .toggle-long {
     display: none; }
-  header nav:first-child ul {
+  header .ABOVE_HEADER ul {
     display: flex;
     flex-flow: column;
     width: 100%;
     margin: 0 5%;
     padding: 0; }
-    header nav:first-child ul li {
+    header .ABOVE_HEADER ul li {
       display: flex;
       justify-content: center;
       border-bottom: 1px solid rgba(17, 33, 61, 0.25); }
-      header nav:first-child ul li a {
+      header .ABOVE_HEADER ul li a {
         display: flex;
         justify-content: center;
         width: 100%;
         border: none;
         padding: 0.7em 0;
         margin: 0.3em 0; }
-      header nav:first-child ul li a:hover {
-        animation: button_animate_grey 2s ease 0s;
+      header .ABOVE_HEADER ul li a:hover {
+        animation: button_animate_grey 10s ease 0s;
         color: white; }
-    header nav:first-child ul li:last-child {
+    header .ABOVE_HEADER ul .SHOPING_CART {
       border-bottom: none; }
-    header nav:first-child ul li:nth-child(2) > a {
+    header .ABOVE_HEADER ul .ORDER_TRACKING > a {
       border-left: none; }
-  header nav:last-child {
+  header .BELOW_HEADER {
     margin: 0;
     flex-flow: column; }
-    header nav:last-child > a {
+    header .BELOW_HEADER .LOGO {
       display: flex;
       justify-content: center;
       width: 90%;
       margin: 0.5em 5%; }
-    header nav:last-child > a:hover {
-      animation: button_animate_white 2s ease 0s;
-      color: white; }
-    header nav:last-child .search {
+      header .BELOW_HEADER .LOGO:hover {
+        animation: button_animate_white 10s ease 0s;
+        color: white; }
+    header .BELOW_HEADER .search {
       justify-content: center;
       padding-bottom: 0.5em; }
-    header nav:last-child dl {
+    header .BELOW_HEADER .MENU {
       margin: 0 5%;
       flex-flow: column; }
-      header nav:last-child dl dt:first-child {
+      header .BELOW_HEADER .MENU .CATALOG {
         justify-content: center;
         margin: 0;
         border-top: 3px solid; }
-        header nav:last-child dl dt:first-child a {
+        header .BELOW_HEADER .MENU .CATALOG a {
           display: flex;
           justify-content: center;
           width: 100%;
           padding: 0.35em 0;
           margin: 0.15em 0; }
-        header nav:last-child dl dt:first-child a:hover {
-          animation: button_animate_white 2s ease 0s;
+        header .BELOW_HEADER .MENU .CATALOG a:hover {
+          animation: button_animate_white 10s ease 0s;
           color: white; }
-      header nav:last-child dl dt:last-child {
+      header .BELOW_HEADER .MENU .BLOG {
         justify-content: center;
         border-top: 3px solid;
         padding: 0;
         margin: 0; }
-        header nav:last-child dl dt:last-child a {
+        header .BELOW_HEADER .MENU .BLOG a {
           display: flex;
           justify-content: center;
           width: 100%;
           padding: 0.35em 0;
           margin: 0.15em 0;
           border-left: none; }
-        header nav:last-child dl dt:last-child a:hover {
-          animation: button_animate_white 2s ease 0s;
-          color: white; }
+        header .BELOW_HEADER .MENU .BLOG a:hover {
+          animation: button_animate_white 10s ease 0s; }
 
   .dropmenu {
     margin: 0 2%;
@@ -139,7 +138,10 @@
 
   footer ul {
     flex-flow: row wrap;
-    justify-content: center; } }
+    justify-content: center; }
+
+  main {
+    margin-top: 326px; } }
 
 
 

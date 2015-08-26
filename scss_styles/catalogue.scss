@@ -1,3 +1,5 @@
+@import 'default';
+
 header {
   top: 0;
   position: fixed;
@@ -11,8 +13,7 @@ header {
     margin: 0;
   }
 
-  nav {
-    &:first-child {
+  .ABOVE_HEADER {
       display: flex;
       flex-flow: row;
       justify-content: flex-end;
@@ -29,18 +30,19 @@ header {
         list-style: none;
         font-size: 0.7em;
 
-        li:first-child {
+        .DESCRIPTION {
           margin-right: 40px;
         }
       }
     }
-    &:last-child {
+
+  .BELOW_HEADER {
       display: flex;
       flex-flow: row;
       justify-content: flex-start;
       transition: margin 0.5s ease;
 
-      & > a {
+      .LOGO {
         height: 80px;
 
         img {
@@ -49,7 +51,7 @@ header {
         }
       }
 
-      dl {
+      .MENU {
 
         display: flex;
         flex-grow: 2;
@@ -64,7 +66,7 @@ header {
           align-items: center;
           transition: margin 0.5s ease;
 
-          &:last-child {
+          .BLOG {
 
             transition: margin 0.5s ease;
 
@@ -82,10 +84,10 @@ header {
         align-items: center;
 
         [type='search'] {
-          color: #7d7d7d;
+          color: $default_grey;
           padding: 0 26px 0 20px;
-          font-size: 0.8em;
-          font-family: "Oswald", sans-serif;
+          font-size: 20px;
+          font-family: "Roboto", sans-serif;
           font-weight: 300;
           background-color: #eceded;
           border-radius: 0.25em;
@@ -96,12 +98,11 @@ header {
 
         .fa-search {
           font-size: 0.8em;
-          color: #7d7d7d;
+          color: $default_grey;
           margin-left: -1.25em;
         }
       }
     }
-  }
 
 }
 
@@ -111,51 +112,58 @@ main {
 }
 
 footer {
-  padding: 5% 15%;
+  padding: 1% 15% 0 15%;
   border-top: 3px solid rgba(17, 33, 61, 0.25);
   font-size: 14px;
   font-weight: 300;
   font-family: "Oswald", sans-serif;
 
   &> ul {
-
+    margin: 0;
     display: flex;
     flex-flow: row wrap;
     justify-content: space-between;
-    padding-bottom: 1.5em;
 
     li {
       padding: 0 5%;
 
-      &:last-child p {
+      &:first-child,
+      &:last-child {
+        padding: 0;
+      }
+
+      ul {
+        margin-top: 1.5em;
+        margin-bottom: 1em;
+
+        li {
+          line-height: 1.7em;
+        }
+      }
+    }
+
+    .CONTACT {
+
+      p {
+        margin: 0;
         text-align: center;
       }
-    }
 
-    ul {
-      margin-top: 1.5em;
-      margin-bottom: 1em;
-    }
+      div {
+        width: 150px;
+        height: 150px;
 
-    ul li {
-      line-height: 1.7em;
-    }
+        .intouch {
+          margin-top: 1.2em;
+          display: flex;
+          justify-content: space-between;
+          flex-flow: row wrap;
+          align-content: flex-start;
+        }
 
-    div {
-      width: 150px;
-      height: 150px;
-
-      .intouch {
-        margin-top: 1.2em;
-        display: flex;
-        justify-content: space-between;
-        flex-flow: row wrap;
-        align-content: flex-start;
-      }
-
-      .intouch a:nth-child(2n + 1) {
-
-        flex-grow: 2;
+        .intouch a:nth-child(2n + 1) {
+          flex-grow: 2;
+        }
       }
     }
   }

@@ -1,3 +1,18 @@
+body {
+  font-family: "Roboto", sans-serif;
+  margin: 0;
+  color: #003E71;
+  overflow: auto; }
+  body a {
+    text-decoration: none;
+    color: #003E71; }
+  body a:hover {
+    color: #d20023; }
+
+ul {
+  padding: 0;
+  list-style: none; }
+
 header {
   top: 0;
   position: fixed;
@@ -8,62 +23,62 @@ header {
   header h1 {
     display: none;
     margin: 0; }
-  header nav:first-child {
+  header .ABOVE_HEADER {
     display: flex;
     flex-flow: row;
     justify-content: flex-end;
     background-color: #eaebeb; }
-    header nav:first-child a {
+    header .ABOVE_HEADER a {
       padding: 0 20px;
       border-left: 1px solid rgba(17, 33, 61, 0.25); }
-    header nav:first-child ul {
+    header .ABOVE_HEADER ul {
       display: flex;
       padding: 0 10% 0 0;
       list-style: none;
       font-size: 0.7em; }
-      header nav:first-child ul li:first-child {
+      header .ABOVE_HEADER ul .DESCRIPTION {
         margin-right: 40px; }
-  header nav:last-child {
+  header .BELOW_HEADER {
     display: flex;
     flex-flow: row;
     justify-content: flex-start;
     transition: margin 0.5s ease; }
-    header nav:last-child > a {
+    header .BELOW_HEADER .LOGO {
       height: 80px; }
-      header nav:last-child > a img {
+      header .BELOW_HEADER .LOGO img {
         height: 80px;
         width: 75px; }
-    header nav:last-child dl {
+    header .BELOW_HEADER .MENU {
       display: flex;
       flex-grow: 2;
       padding: 0;
       list-style: none;
       transition: margin 0.5s ease;
       align-items: stretch; }
-      header nav:last-child dl dt {
+      header .BELOW_HEADER .MENU dt {
         display: flex;
         align-items: center;
         transition: margin 0.5s ease; }
-        header nav:last-child dl dt:last-child {
+        header .BELOW_HEADER .MENU dt .BLOG {
           transition: margin 0.5s ease; }
-          header nav:last-child dl dt:last-child a {
+          header .BELOW_HEADER .MENU dt .BLOG a {
             border-left: 3px solid rgba(17, 33, 61, 0.25);
             transition: padding 0.5s ease; }
-    header nav:last-child .search {
+    header .BELOW_HEADER .search {
       display: flex;
       align-items: center; }
-      header nav:last-child .search [type='search'] {
+      header .BELOW_HEADER .search [type='search'] {
         color: #7d7d7d;
         padding: 0 26px 0 20px;
-        font-size: 0.8em;
-        font-family: "Oswald", sans-serif;
+        font-size: 20px;
+        font-family: "Roboto", sans-serif;
         font-weight: 300;
         background-color: #eceded;
         border-radius: 0.25em;
         border: 2px solid #e2e2e2;
         width: 270px;
         height: 40px; }
-      header nav:last-child .search .fa-search {
+      header .BELOW_HEADER .search .fa-search {
         font-size: 0.8em;
         color: #7d7d7d;
         margin-left: -1.25em; }
@@ -73,35 +88,38 @@ main {
   margin-top: 118px; }
 
 footer {
-  padding: 5% 15%;
+  padding: 1% 15% 0 15%;
   border-top: 3px solid rgba(17, 33, 61, 0.25);
   font-size: 14px;
   font-weight: 300;
   font-family: "Oswald", sans-serif; }
   footer > ul {
+    margin: 0;
     display: flex;
     flex-flow: row wrap;
-    justify-content: space-between;
-    padding-bottom: 1.5em; }
+    justify-content: space-between; }
     footer > ul li {
       padding: 0 5%; }
-      footer > ul li:last-child p {
-        text-align: center; }
-    footer > ul ul {
-      margin-top: 1.5em;
-      margin-bottom: 1em; }
-    footer > ul ul li {
-      line-height: 1.7em; }
-    footer > ul div {
+      footer > ul li:first-child, footer > ul li:last-child {
+        padding: 0; }
+      footer > ul li ul {
+        margin-top: 1.5em;
+        margin-bottom: 1em; }
+        footer > ul li ul li {
+          line-height: 1.7em; }
+    footer > ul .CONTACT p {
+      margin: 0;
+      text-align: center; }
+    footer > ul .CONTACT div {
       width: 150px;
       height: 150px; }
-      footer > ul div .intouch {
+      footer > ul .CONTACT div .intouch {
         margin-top: 1.2em;
         display: flex;
         justify-content: space-between;
         flex-flow: row wrap;
         align-content: flex-start; }
-      footer > ul div .intouch a:nth-child(2n + 1) {
+      footer > ul .CONTACT div .intouch a:nth-child(2n + 1) {
         flex-grow: 2; }
 
 .dropmenu {

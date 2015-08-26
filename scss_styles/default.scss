@@ -1,15 +1,20 @@
+$def_font_color: #003E71;
+$active_link: #d20023;
+$active_btn: #0D5B9D;
+$default_grey: #7d7d7d;
+
 body {
   font-family: "Roboto", sans-serif;
   margin: 0;
-  color: #1d389b;
+  color: $def_font_color;
   overflow: auto;
 
   a {
     text-decoration: none;
-    color: #1d389b;
+    color: $def_font_color;
   }
   a:hover {
-    color: #d20023;
+    color: $active_link;
   }
 }
 

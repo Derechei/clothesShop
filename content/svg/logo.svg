@@ -1,25 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- Generator: Adobe Illustrator 19.1.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
 <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-	 viewBox="-392 206.5 173.2 185" style="enable-background:new -392 206.5 173.2 185;" xml:space="preserve">
+	 viewBox="67 -87 173.2 185" style="enable-background:new 67 -87 173.2 185;" xml:space="preserve">
 <style type="text/css">
-	.st0{fill:#727DB2;stroke:#727DB2;stroke-miterlimit:10;}
-	.st1{fill:none;}
-	.st2{fill:#120040;}
-	.st3{font-family:'ArialMT';}
-	.st4{font-size:28px;}
-	.st5{fill:#120040;stroke:#120040;stroke-miterlimit:10;}
-	.st6{display:none;fill:#4242AD;stroke:#000000;stroke-miterlimit:10;}
-	.st7{display:none;fill:none;}
+	.st0{display:none;}
+	.st1{display:inline;}
+	.st2{fill:#727DB2;stroke:#727DB2;stroke-miterlimit:10;}
+	.st3{fill:none;}
+	.st4{fill:#120040;}
+	.st5{font-family:'ArialMT';}
+	.st6{font-size:28px;}
+	.st7{fill:#120040;stroke:#120040;stroke-miterlimit:10;}
+	.st8{display:none;fill:#4242AD;stroke:#000000;stroke-miterlimit:10;}
+	.st9{display:none;fill:none;}
+	.st10{fill:#4D8299;stroke:#003E71;stroke-miterlimit:10;}
+	.st11{fill:#003E71;}
+	.st12{fill:#003E71;stroke:#003E71;stroke-miterlimit:10;}
 </style>
-<g id="Layer_3">
-	<path class="st0" d="M-305.4,222.2l-65.4,128.1H-240L-305.4,222.2z M-305.4,236.6l49.4,108.9h-98.8L-305.4,236.6z"/>
-	<rect x="-392" y="360" class="st1" width="173.2" height="26.5"/>
-	<text transform="matrix(1 0 0 1 -370.7734 380.0479)" class="st2 st3 st4">sport shop</text>
+<g id="Layer_1" class="st0">
+	<g id="Layer_3" class="st1">
+		<path class="st2" d="M153.6-66.3L88.2,61.8H219L153.6-66.3z M153.6-51.9L203,57h-98.8L153.6-51.9z"/>
+		<rect x="67" y="71.5" class="st3" width="173.2" height="26.5"/>
+		<text transform="matrix(1 0 0 1 88.2266 91.5479)" class="st4 st5 st6">sport shop</text>
+	</g>
+	<g id="Layer_2" class="st1">
+		<path class="st7" d="M153.6-82.5L67,67.5h173.2L153.6-82.5z M153.6-65.7L219,61.8H88.2L153.6-65.7z"/>
+		<polygon class="st8" points="88.2,61.8 153.6,-63.4 219,61.8 		"/>
+		<polygon class="st9" points="104.4,61.8 153.6,-56.3 202.8,61.8 		"/>
+	</g>
 </g>
-<g id="Layer_2">
-	<path class="st5" d="M-305.4,206L-392,356h173.2L-305.4,206z M-305.4,222.8l65.4,127.5h-130.8L-305.4,222.8z"/>
-	<polygon class="st6" points="-370.8,350.3 -305.4,225.1 -240,350.3 	"/>
-	<polygon class="st7" points="-354.6,350.3 -305.4,232.2 -256.2,350.3 	"/>
+<g id="Layer_1_copy">
+	<g id="Layer_3_1_">
+		<path class="st10" d="M153.6-66.3L88.2,61.8H219L153.6-66.3z M153.6-51.9L203,57h-98.8L153.6-51.9z"/>
+		<rect x="67" y="71.5" class="st9" width="173.2" height="26.5"/>
+		<text transform="matrix(1 0 0 1 88.2266 91.5479)" class="st11 st5 st6">sport shop</text>
+	</g>
+	<g id="Layer_2_1_">
+		<path class="st12" d="M153.6-82.5L67,67.5h173.2L153.6-82.5z M153.6-65.7L219,61.8H88.2L153.6-65.7z"/>
+	</g>
 </g>
 </svg>

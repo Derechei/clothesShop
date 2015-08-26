@@ -1,0 +1,60 @@
+@media all and (max-width: 1300px) {
+  .ORDER_TRACKING {
+    display: flex;
+    flex-flow: column;
+
+    .order_container {
+      width: 100%;
+
+      .TITLE {
+        padding: 0.35em 0;
+        width: 100%;
+      }
+
+      & > div {
+        width: 100%;
+      }
+    }
+
+    aside ul {
+      width: 100%;
+
+      .NEED_HELP {
+        width: 100%;
+        padding: 20px 0;
+
+        div {
+          margin-left: 20px;
+
+          p:first-child {
+            margin-top: 0;
+          }
+
+          li:last-child {
+            padding-bottom: 0;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media all and (max-width: 900px) {
+  .ORDER_TRACKING {
+    display: flex;
+    flex-flow: column;
+
+    .order_container {
+      width: 100%;
+
+      .TITLE {
+        padding: 0.35em 0;
+        width: 100%;
+      }
+
+      & > div {
+        width: 100%;
+      }
+    }
+  }
+}

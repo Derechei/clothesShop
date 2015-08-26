@@ -1,3 +1,5 @@
+@import 'default';
+
 @keyframes dropdown {
   0% {
     opacity: 0;
@@ -13,19 +15,29 @@
 }
 
 @keyframes button_animate_white {
-  from {
+  0% {
     background-color: #fff;
+    color:#fff;
   }
-  to {
-    background-color: #d20023;
+  20% {
+    background-color: $active_link;
+  }
+  100% {
+    background-color: #fff;
+    color: #1d389b;
   }
 }
 
 @keyframes button_animate_grey {
-  from {
+  0% {
     background-color: #eaebeb;
+    color:#fff;
   }
-  to {
-    background-color: #d20023;
+  20% {
+    background-color: $active_link;
+  }
+  100% {
+    background-color: #eaebeb;
+    color: #1d389b;
   }
 }

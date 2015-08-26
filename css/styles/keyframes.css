@@ -1,3 +1,18 @@
+body {
+  font-family: "Roboto", sans-serif;
+  margin: 0;
+  color: #003E71;
+  overflow: auto; }
+  body a {
+    text-decoration: none;
+    color: #003E71; }
+  body a:hover {
+    color: #d20023; }
+
+ul {
+  padding: 0;
+  list-style: none; }
+
 @keyframes dropdown {
   0% {
     opacity: 0;
@@ -8,15 +23,23 @@
   100% {
     top: 83px; } }
 @keyframes button_animate_white {
-  from {
-    background-color: #fff; }
-  to {
-    background-color: #d20023; } }
+  0% {
+    background-color: #fff;
+    color: #fff; }
+  20% {
+    background-color: #d20023; }
+  100% {
+    background-color: #fff;
+    color: #1d389b; } }
 @keyframes button_animate_grey {
-  from {
-    background-color: #eaebeb; }
-  to {
-    background-color: #d20023; } }
+  0% {
+    background-color: #eaebeb;
+    color: #fff; }
+  20% {
+    background-color: #d20023; }
+  100% {
+    background-color: #eaebeb;
+    color: #1d389b; } }
 
 
 

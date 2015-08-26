@@ -1,0 +1,37 @@
+@media all and (max-width: 1300px) {
+  .ORDER_TRACKING {
+    display: flex;
+    flex-flow: column; }
+    .ORDER_TRACKING .order_container {
+      width: 100%; }
+      .ORDER_TRACKING .order_container .TITLE {
+        padding: 0.35em 0;
+        width: 100%; }
+      .ORDER_TRACKING .order_container > div {
+        width: 100%; }
+    .ORDER_TRACKING aside ul {
+      width: 100%; }
+      .ORDER_TRACKING aside ul .NEED_HELP {
+        width: 100%;
+        padding: 20px 0; }
+        .ORDER_TRACKING aside ul .NEED_HELP div {
+          margin-left: 20px; }
+          .ORDER_TRACKING aside ul .NEED_HELP div p:first-child {
+            margin-top: 0; }
+          .ORDER_TRACKING aside ul .NEED_HELP div li:last-child {
+            padding-bottom: 0; } }
+@media all and (max-width: 900px) {
+  .ORDER_TRACKING {
+    display: flex;
+    flex-flow: column; }
+    .ORDER_TRACKING .order_container {
+      width: 100%; }
+      .ORDER_TRACKING .order_container .TITLE {
+        padding: 0.35em 0;
+        width: 100%; }
+      .ORDER_TRACKING .order_container > div {
+        width: 100%; } }
+
+
+
+/*# sourceMappingURL=/order_tracking_media.css.map */
