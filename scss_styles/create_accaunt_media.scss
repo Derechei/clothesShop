@@ -1,0 +1,21 @@
+@import 'default';
+
+@media all and (max-width: 850px) {
+  html {
+    overflow: hidden;
+  }
+  .CREATE_ACCAUNT {
+    form {
+      overflow: scroll;
+      width: 310px;
+      height: 910px;
+      background-color: #fff;
+      padding: 20px;
+
+      > div {
+        display: flex;
+        flex-flow: column;
+      }
+    }
+  }
+}
