@@ -100,8 +100,6 @@ footer {
     justify-content: space-between; }
     footer > ul li {
       padding: 0 5%; }
-      footer > ul li:first-child, footer > ul li:last-child {
-        padding: 0; }
       footer > ul li ul {
         margin-top: 1.5em;
         margin-bottom: 1em; }

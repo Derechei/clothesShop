@@ -153,8 +153,6 @@ footer {
             justify-content: space-between; }
     footer > ul li {
       padding: 0 5%; }
-      footer > ul li:first-child, footer > ul li:last-child {
-        padding: 0; }
       footer > ul li ul {
         margin-top: 1.5em;
         margin-bottom: 1em; }
@@ -529,6 +527,150 @@ ul {
   100% {
     background-color: #eaebeb;
     color: #1d389b; } }
+body {
+  font-family: "Roboto", sans-serif;
+  margin: 0;
+  color: #003E71;
+  overflow: auto; }
+  body a {
+    text-decoration: none;
+    color: #003E71; }
+  body a:hover {
+    color: #d20023; }
+
+ul {
+  padding: 0;
+  list-style: none; }
+
+.POPIN_LOGIN {
+  position: fixed;
+  z-index: 2000;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.25);
+  font-size: 0.9em; }
+  .POPIN_LOGIN p {
+    margin: 0.5em 0; }
+  .POPIN_LOGIN > div {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-flex-flow: row wrap;
+        -ms-flex-flow: row wrap;
+            flex-flow: row wrap;
+    width: 700px;
+    padding: 40px;
+    background-color: #fff; }
+    .POPIN_LOGIN > div .HAVE_ACCOUNT {
+      width: 330px;
+      border-right: 1px solid #E0E0E0;
+      padding-right: 30px; }
+      .POPIN_LOGIN > div .HAVE_ACCOUNT .login_btn_container {
+        margin-top: 67px; }
+    .POPIN_LOGIN > div .DONT_HAVE_ACCOUNT {
+      width: 280px;
+      padding-left: 40px; }
+      .POPIN_LOGIN > div .DONT_HAVE_ACCOUNT .login_btn_container {
+        margin-top: 134px; }
+    .POPIN_LOGIN > div form .amphasize {
+      font-size: 20px; }
+      .POPIN_LOGIN > div form .amphasize p:last-child {
+        margin: 0 0 1em 0; }
+    .POPIN_LOGIN > div form .form_helper {
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-pack: justify;
+      -webkit-justify-content: space-between;
+          -ms-flex-pack: justify;
+              justify-content: space-between; }
+      .POPIN_LOGIN > div form .form_helper .error_msg {
+        margin: 5px 0 0 0;
+        color: red; }
+      .POPIN_LOGIN > div form .form_helper .forgot_pass {
+        margin: 5px 0 0 0;
+        font-size: 10px; }
+    .POPIN_LOGIN > div form .login_btn_container {
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: -ms-flexbox;
+      display: flex; }
+      .POPIN_LOGIN > div form .login_btn_container.have {
+        -webkit-box-pack: start;
+        -webkit-justify-content: flex-start;
+            -ms-flex-pack: start;
+                justify-content: flex-start; }
+        .POPIN_LOGIN > div form .login_btn_container.have .mandatory {
+          width: 100px;
+          height: 40px;
+          color: #7d7d7d;
+          margin-right: 50px; }
+      .POPIN_LOGIN > div form .login_btn_container.dont_have {
+        -webkit-box-pack: end;
+        -webkit-justify-content: flex-end;
+            -ms-flex-pack: end;
+                justify-content: flex-end; }
+      .POPIN_LOGIN > div form .login_btn_container [value='LOG IN'] {
+        width: 120px; }
+      .POPIN_LOGIN > div form .login_btn_container [value='CREATE AN ACCOUNT'] {
+        width: 200px; }
+      .POPIN_LOGIN > div form .login_btn_container [type='submit'] {
+        font-family: 'Oswald', sans-serif;
+        background-color: #003E71;
+        border: none;
+        color: #fff;
+        height: 40px;
+        border-radius: 5px; }
+        .POPIN_LOGIN > div form .login_btn_container [type='submit']:hover {
+          background-color: #0D5B9D; }
+    .POPIN_LOGIN > div form label {
+      display: block;
+      margin: 10px 0 5px 0; }
+    .POPIN_LOGIN > div form input {
+      width: 98%;
+      height: 30px;
+      font-size: 16px;
+      font-family: "Roboto", sans-serif;
+      font-weight: 300;
+      color: #1d389b; }
+@media all and (max-width: 800px) {
+  .POPIN_LOGIN > div {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    width: 300px;
+    height: auto;
+    background-color: transparent;
+    padding: 0; }
+    .POPIN_LOGIN > div section {
+      background-color: #fff;
+      border-right: none;
+      margin: 0 0 1em 0; }
+      .POPIN_LOGIN > div section.HAVE_ACCOUNT {
+        padding: 1em; }
+        .POPIN_LOGIN > div section.HAVE_ACCOUNT .login_btn_container {
+          margin-top: 2em; }
+      .POPIN_LOGIN > div section.DONT_HAVE_ACCOUNT {
+        padding: 1em; }
+        .POPIN_LOGIN > div section.DONT_HAVE_ACCOUNT .login_btn_container {
+          margin-top: 2em; } }
 @media all and (max-width: 1450px) {
   .dropmenu .toggle-long {
     display: none; } }

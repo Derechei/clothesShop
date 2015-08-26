@@ -1,0 +1,23 @@
+@media all and (max-width: 800px) {
+  .POPIN_LOGIN > div {
+    display: flex;
+    width: 300px;
+    height: auto;
+    background-color: transparent;
+    padding: 0; }
+    .POPIN_LOGIN > div section {
+      background-color: #fff;
+      border-right: none;
+      margin: 0 0 1em 0; }
+      .POPIN_LOGIN > div section.HAVE_ACCOUNT {
+        padding: 1em; }
+        .POPIN_LOGIN > div section.HAVE_ACCOUNT .login_btn_container {
+          margin-top: 2em; }
+      .POPIN_LOGIN > div section.DONT_HAVE_ACCOUNT {
+        padding: 1em; }
+        .POPIN_LOGIN > div section.DONT_HAVE_ACCOUNT .login_btn_container {
+          margin-top: 2em; } }
+
+
+
+/*# sourceMappingURL=/login_media.css.map */
