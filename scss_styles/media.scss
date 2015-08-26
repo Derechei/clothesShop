@@ -1,6 +1,100 @@
+@import 'default';
+
 @media all and (max-width: 1450px) {
   .dropmenu .toggle-long {
     display: none;
+  }
+}
+
+@media all and (max-width: 1300px){
+  main {
+    .ORDER_TRACKING {
+      display: flex;
+      flex-flow: column wrap;
+
+      .order_container {
+        width: 100%;
+        margin:0;
+
+        .TITLE {
+          padding: 0.35em 0;
+          width: 100%;
+        }
+      }
+
+      aside ul {
+        width: 100%;
+
+        .NEED_HELP {
+          width: 100%;
+          padding: 20px 0;
+
+          div {
+            margin-left: 20px;
+
+            p:first-child {
+              margin-top: 0;
+            }
+
+            li:last-child {
+              padding-bottom: 0;
+            }
+          }
+        }
+      }
+    }
+
+    .MY_CART {
+      display: flex;
+      flex-flow: column;
+      section {
+        width: 100%;
+      }
+
+      aside {
+        & > ul {
+          display: flex;
+          flex-flow: column;
+          justify-content: space-between;
+          width: auto;
+
+          &>li{
+            margin-bottom: 1em;
+          }
+
+          .OUR_COMMITMENTS {
+            ul {
+              display: flex;
+              flex-flow: colu wrap;
+              justify-content: space-between;
+
+              li {
+                display: inline-block;
+              }
+            }
+          }
+
+          .NEED_HELP {
+            p {
+              display: inline-block;
+            }
+            justify-content: flex-start;
+
+            li {
+              margin: 0;
+              padding: 0 0 0.5em 0;
+            }
+          }
+
+          .PAYMENTS {
+            display: flex;
+            flex-flow: row wrap;
+            justify-content: space-between;
+          }
+
+        }
+      }
+    }
   }
 }
 
@@ -49,7 +143,7 @@
         display: none;
       }
 
-      .ORDER_TRACKING > a {
+      .TO_TRACK > a {
         border-left: none;
       }
     }
@@ -95,7 +189,7 @@
         display: none;
       }
 
-      .ORDER_TRACKING > a {
+      .TO_TRACK > a {
         border-left: none;
       }
     }
@@ -115,6 +209,84 @@
           a {
             padding: 0 0 0 20px;
           }
+        }
+      }
+    }
+  }
+
+  main {
+    .ORDER_TRACKING {
+      display: flex;
+      flex-flow: column;
+
+      .order_container {
+        justify-content: center;
+
+        .TITLE {
+          padding: 0.35em 0;
+        }
+
+      }
+    }
+  }
+}
+/*create account*/
+@media all and (max-width: 850px) {
+  html {
+    overflow: hidden;
+  }
+  .CREATE_ACCAUNT {
+    form {
+      overflow: scroll;
+      width: 310px;
+      height: 910px;
+      background-color: #fff;
+      padding: 20px;
+
+      > div {
+        display: flex;
+        flex-flow: column;
+      }
+    }
+  }
+}
+/*in mycart*/
+@media all and (max-width: 650px) {
+  .my_cart aside > ul {
+    .OUR_COMMITMENTS > ul {
+      display: flex;
+      flex-flow: column wrap;
+      justify-content: flex-start;
+    }
+  }
+}
+/*login*/
+@media all and (max-width: 800px) {
+  .POPIN_LOGIN > div {
+    display: flex;
+    width: 300px;
+    height: auto;
+    background-color: transparent;
+    padding: 0;
+
+    section  {
+      background-color: #fff;
+      border-right: none;
+      margin: 0 0 1em 0;
+
+      &.HAVE_ACCOUNT {
+        padding: 1em;
+
+        .login_btn_container {
+          margin-top: 2em;
+        }
+      }
+
+      &.DONT_HAVE_ACCOUNT {
+        padding: 1em;
+
+        .login_btn_container {
+          margin-top: 2em;
         }
       }
     }

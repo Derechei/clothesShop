@@ -8,6 +8,8 @@ body {
     color: #003E71; }
   body a:hover {
     color: #d20023; }
+  body p {
+    margin: 0; }
 
 ul {
   padding: 0;
