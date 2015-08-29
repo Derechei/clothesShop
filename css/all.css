@@ -26,10 +26,7 @@ header {
     display: none;
     margin: 0; }
   header .ABOVE_HEADER {
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -ms-flexbox;
-    display: flex;
+    display: none;
     -webkit-flex-flow: row;
         -ms-flex-flow: row;
             flex-flow: row;
@@ -40,6 +37,11 @@ header {
     background-color: #eaebeb;
     -webkit-transition: height 1s ease;
             transition: height 1s ease; }
+    header .ABOVE_HEADER.show {
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: -ms-flexbox;
+      display: flex; }
     header .ABOVE_HEADER a {
       padding: 0 20px;
       border-left: 1px solid rgba(17, 33, 61, 0.25); }
@@ -774,6 +776,11 @@ ul {
             -ms-flex-pack: justify;
                 justify-content: space-between; } }
 @media all and (min-width: 1000px) {
+  header .ABOVE_HEADER.show {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex; }
   header .BELOW_HEADER {
     margin: 0 15%; }
     header .BELOW_HEADER .MENU {
@@ -800,6 +807,11 @@ ul {
     margin: 0 15%;
     width: 70%; } }
 @media all and (max-width: 1000px) {
+  header .ABOVE_HEADER.show {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex; }
   header .ABOVE_HEADER .toggle-long {
     display: none; }
   header .ABOVE_HEADER .TO_TRACK > a {
@@ -830,6 +842,11 @@ ul {
     margin: 0 10%;
     width: 80%; } }
 @media all and (max-width: 900px) {
+  header .ABOVE_HEADER.show {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex; }
   header .ABOVE_HEADER .toggle-long {
     display: none; }
   header .ABOVE_HEADER .TO_TRACK > a {

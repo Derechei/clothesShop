@@ -68,7 +68,14 @@ var EPAM =
         };
         // Resize header to show scroll onload and each time after resizing window.
         window.addEventListener('resize', scrollShow, false);
-        window.addEventListener('load', scrollShow, false);
+        window.addEventListener('load', initDoc, false);
+        function initDoc(){
+            if (window.innerWidth > 550) {
+                header.aboveNavigation.self.className = 'ABOVE_HEADER collapse show';
+            }
+            scrollShow();
+        }
+
         function scrollShow() {
             document.querySelector('header').style.width = document.querySelector('#scroll').scrollWidth + 'px';
             document.querySelector('#scroll').style.marginTop = document.querySelector('header').offsetHeight + 'px';
@@ -164,6 +171,17 @@ var EPAM =
                     onMouseMoveHelper(helperParam);
                     break;
                 }
+                case header.belowNavigation.menu.catalog:
+                {
+                    helperParam = {
+                        target: header.belowNavigation.menu.catalog,
+                        targetImg: document.querySelectorAll('.menu_choose')[0],
+                        img: document.querySelectorAll('.menu_choose')[1],
+                        a: document.querySelector('.CATALOG>a')
+                    };
+                    onMouseMoveHelper(helperParam);
+                    break;
+                }
                 // For a elements.
                 case document.querySelector('.MEN>a'):
                 {
@@ -220,21 +238,34 @@ var EPAM =
                     onMouseMoveHelper(helperParam);
                     break;
                 }
+                case document.querySelector('.CATALOG>a'):
+                {
+                    helperParam = {
+                        target: header.belowNavigation.menu.catalog,
+                        targetImg: document.querySelectorAll('.menu_choose')[0],
+                        img: document.querySelectorAll('.menu_choose')[1],
+                        a: document.querySelector('.CATALOG>a')
+                    };
+                    onMouseMoveHelper(helperParam);
+                    break;
+                }
             }
         }
+
         function onMouseMoveHelper(o) {
             o['targetImg'].style.top = o['target'].offsetTop + o['target'].offsetHeight - 6 + 'px';
             o['targetImg'].style.left = o['target'].offsetLeft + 'px';
             o['targetImg'].style.width = o['target'].offsetWidth + 'px';
             o['targetImg'].style.margin = '0';
             if (o['target'] === header.belowNavigation.menu.blog) {
-                o['targetImg'].style.marginLeft = parseInt(window.getComputedStyle(header.belowNavigation.menu.blog).marginLeft) - 5 + 'px';
+                o['targetImg'].style.marginLeft = parseInt(window.getComputedStyle(header.belowNavigation.menu.blog).marginLeft) - 2.5 + 'px';
             }
             o['targetImg'].style.display = 'block';
             o['targetImg'].style.height = '8px';
             o['img'].style.display = 'none';
             o['a'].className = 'hover';
         }
+
         // Mouseout.
         header.belowNavigation.menu.self.addEventListener('mouseout', menuOnMouseOut, false);
         function menuOnMouseOut(e) {
@@ -301,6 +332,17 @@ var EPAM =
                     onMouseOutHelper(helperParam);
                     break;
                 }
+                case header.belowNavigation.menu.catalog:
+                {
+                    helperParam = {
+                        target: header.belowNavigation.menu.catalog,
+                        targetImg: document.querySelectorAll('.menu_choose')[0],
+                        img: document.querySelectorAll('.menu_choose')[1],
+                        a: document.querySelector('.CATALOG>a')
+                    };
+                    onMouseOutHelper(helperParam);
+                    break;
+                }
                 // For a elements.
                 case document.querySelector('.MEN>a'):
                 {
@@ -357,16 +399,47 @@ var EPAM =
                     onMouseOutHelper(helperParam);
                     break;
                 }
+                case document.querySelector('.CATALOG>a'):
+                {
+                    helperParam = {
+                        target: header.belowNavigation.menu.catalog,
+                        targetImg: document.querySelectorAll('.menu_choose')[0],
+                        img: document.querySelectorAll('.menu_choose')[1],
+                        a: document.querySelector('.CATALOG>a')
+                    };
+                    onMouseOutHelper(helperParam);
+                    break;
+                }
             }
             document.querySelectorAll('.menu_choose')[0].style.display = 'none';
             document.querySelectorAll('.menu_choose')[1].style.display = 'none';
             document.querySelectorAll('.menu_choose')[0].style.margin = '0';
         }
+
         function onMouseOutHelper(o) {
             o['a'].className = '';
         }
 
-
+        document.body.addEventListener('mousemove', showLoginMenu, false);
+        function showLoginMenu(e) {
+            if (window.scrollY === 0 && window.innerWidth > 550) {
+                header.aboveNavigation.self.className = 'ABOVE_HEADER collapse show';
+            }
+            if (window.scrollY >= 50){
+                if (e.screenY <= 200 && window.innerWidth > 550) {
+                    header.aboveNavigation.self.className = 'ABOVE_HEADER collapse show';
+                } else {
+                    if (e.screenY >= 300 && window.innerWidth > 550) {
+                        header.aboveNavigation.self.className = 'ABOVE_HEADER collapse';
+                        scrollShow();
+                    }
+                }
+            } else {
+                if (e.screenY <= 200 && window.innerWidth > 550) {
+                    header.aboveNavigation.self.className = 'ABOVE_HEADER collapse show';
+                }
+            }
+        }
 
         return header;
     }());
