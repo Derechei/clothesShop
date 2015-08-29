@@ -6,7 +6,7 @@
   }
 }
 
-@media all and (max-width: 1300px){
+@media all and (max-width: 1300px) {
   main {
     .ORDER_TRACKING {
       display: flex;
@@ -14,7 +14,7 @@
 
       .order_container {
         width: 100%;
-        margin:0;
+        margin: 0;
 
         .TITLE {
           padding: 0.35em 0;
@@ -58,14 +58,14 @@
           justify-content: space-between;
           width: auto;
 
-          &>li{
+          & > li {
             margin-bottom: 1em;
           }
 
           .OUR_COMMITMENTS {
             ul {
               display: flex;
-              flex-flow: colu wrap;
+              flex-flow: column wrap;
               justify-content: space-between;
 
               li {
@@ -230,11 +230,9 @@
     }
   }
 }
+
 /*create account*/
 @media all and (max-width: 850px) {
-  html {
-    overflow: hidden;
-  }
   .CREATE_ACCAUNT {
     form {
       overflow: scroll;
@@ -250,6 +248,7 @@
     }
   }
 }
+
 /*in mycart*/
 @media all and (max-width: 650px) {
   .my_cart aside > ul {
@@ -260,6 +259,7 @@
     }
   }
 }
+
 /*login*/
 @media all and (max-width: 800px) {
   .POPIN_LOGIN > div {
@@ -269,7 +269,7 @@
     background-color: transparent;
     padding: 0;
 
-    section  {
+    section {
       background-color: #fff;
       border-right: none;
       margin: 0 0 1em 0;
@@ -295,17 +295,41 @@
 
 @media all and (max-width: 550px) {
   header {
+
     .ABOVE_HEADER {
+      display: flex;
+      flex-flow: column;
+
       .toggle-long {
         display: none;
+      }
+
+      &.collapse {
+        li {
+          border: none;
+        }
+
+        a {
+          display: none;
+        }
+
+        .header.animation {
+        }
+      }
+
+      .header.animation {
+        display: flex;
+        flex-flow: column;
+        width: 100%;
       }
 
       ul {
         display: flex;
         flex-flow: column;
         width: 100%;
-        margin: 0 5%;
         padding: 0;
+        transition: height 0.5s ease;
+        margin: 0;
 
         li {
           display: flex;
@@ -339,6 +363,32 @@
     .BELOW_HEADER {
       margin: 0;
       flex-flow: column;
+
+      &.collapse {
+        dt {
+          border-top: none;
+        }
+        .search {
+          display: none;
+        }
+
+        .MENU .CATALOG {
+          border: none;
+        }
+        .MENU .CATALOG a {
+          display: none;
+        }
+        .MENU .BLOG {
+          border: none;
+        }
+        .MENU .BLOG a {
+          display: none;
+        }
+      }
+
+      a {
+        transition: height 0.5s ease;
+      }
 
       .LOGO {
         display: flex;
@@ -397,6 +447,7 @@
 
           a:hover {
             animation: button_animate_white 10s ease 0s;
+            color: white;
           }
         }
       }
@@ -411,6 +462,6 @@
     justify-content: center;
   }
   main {
-    margin-top: 326px;
+
   }
 }

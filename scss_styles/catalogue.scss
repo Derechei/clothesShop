@@ -14,101 +14,109 @@ header {
   }
 
   .ABOVE_HEADER {
+    display: flex;
+    flex-flow: row;
+    justify-content: flex-end;
+    background-color: #eaebeb;
+    transition: height 1s ease;
+
+    a {
+      padding: 0 20px;
+      border-left: 1px solid rgba(17, 33, 61, 0.25);
+    }
+
+    ul {
       display: flex;
-      flex-flow: row;
-      justify-content: flex-end;
-      background-color: #eaebeb;
+      padding: 0 10% 0 0;
+      list-style: none;
+      font-size: 0.7em;
 
-      a {
-        padding: 0 20px;
-        border-left: 1px solid rgba(17, 33, 61, 0.25);
+      .DESCRIPTION {
+        margin-right: 40px;
       }
+    }
+  }
 
-      ul {
-        display: flex;
-        padding: 0 10% 0 0;
-        list-style: none;
-        font-size: 0.7em;
+  .BELOW_HEADER {
+    display: flex;
+    flex-flow: row;
+    justify-content: flex-start;
+    transition: margin 0.5s ease;
 
-        .DESCRIPTION {
-          margin-right: 40px;
-        }
+    .LOGO {
+      height: 80px;
+
+      img {
+        height: 80px;
+        width: 75px;
       }
     }
 
-  .BELOW_HEADER {
+    .MENU {
+
       display: flex;
-      flex-flow: row;
-      justify-content: flex-start;
+      flex-grow: 2;
+      padding: 0;
+      list-style: none;
       transition: margin 0.5s ease;
+      align-items: stretch;
 
-      .LOGO {
-        height: 80px;
-
-        img {
-          height: 80px;
-          width: 75px;
-        }
+      a {
+        text-decoration: none;
+        color: $def_font_color;
+      }
+      a.hover {
+        color: $active_link;
       }
 
-      .MENU {
-
-        display: flex;
-        flex-grow: 2;
-        padding: 0;
-        list-style: none;
-        transition: margin 0.5s ease;
-        align-items: stretch;
-
-        dt {
-
-          display: flex;
-          align-items: center;
-          transition: margin 0.5s ease;
-
-          .BLOG {
-
-            transition: margin 0.5s ease;
-
-            a {
-              border-left: 3px solid rgba(17, 33, 61, 0.25);
-              transition: padding 0.5s ease;
-            }
-          }
-        }
-      }
-
-      .search {
+      dt {
 
         display: flex;
         align-items: center;
+        transition: margin 0.5s ease;
 
-        [type='search'] {
-          color: $default_grey;
-          padding: 0 26px 0 20px;
-          font-size: 20px;
-          font-family: "Roboto", sans-serif;
-          font-weight: 300;
-          background-color: #eceded;
-          border-radius: 0.25em;
-          border: 2px solid #e2e2e2;
-          width: 270px;
-          height: 40px;
-        }
+        .BLOG {
 
-        .fa-search {
-          font-size: 0.8em;
-          color: $default_grey;
-          margin-left: -1.25em;
+          transition: margin 0.5s ease;
+
+          a {
+            border-left: 3px solid rgba(17, 33, 61, 0.25);
+            transition: padding 0.5s ease;
+          }
         }
       }
     }
+
+    .search {
+
+      display: flex;
+      align-items: center;
+
+      [type='search'] {
+        color: $default_grey;
+        padding: 0 26px 0 20px;
+        font-size: 20px;
+        font-family: "Roboto", sans-serif;
+        font-weight: 300;
+        background-color: #eceded;
+        border-radius: 0.25em;
+        border: 2px solid #e2e2e2;
+        width: 240px;
+        height: 40px;
+      }
+
+      .fa-search {
+        font-size: 0.8em;
+        color: $default_grey;
+        margin-left: -1.25em;
+      }
+    }
+  }
 
 }
 
 main {
   background-color: #f0eff6;
-  margin-top: 118px;
 }
 
 footer {
@@ -118,7 +126,7 @@ footer {
   font-weight: 300;
   font-family: "Oswald", sans-serif;
 
-  &> ul {
+  & > ul {
     margin: 0;
     display: flex;
     flex-flow: row wrap;
@@ -146,9 +154,9 @@ footer {
 
       div {
         width: 150px;
-        height: 150px;
 
         .intouch {
+          height: 100px;
           margin-top: 1.2em;
           display: flex;
           justify-content: space-between;
@@ -167,7 +175,6 @@ footer {
 .dropmenu {
   position: fixed;
   z-index: 10;
-  height: 255px;
   width: 70%;
   top: 83px;
   margin: 0 15%;
@@ -180,12 +187,15 @@ footer {
   animation: dropdown 0.5s ease;
 
   & > ul {
-    margin: 2em 0;
-    
     display: flex;
-    justify-content: flex-start;
+    flex-flow: row wrap;
+    justify-content: space-between;
     & > li {
       margin-left: 2em;
+
+      &:not(:last-child) {
+        margin-bottom: 2em;
+      }
 
       &:nth-last-child(2) {
         flex-grow: 2;
@@ -203,11 +213,11 @@ footer {
       ul {
         margin-top: 0.5em;
         list-style-image: url("../content/svg/red-triangle-list-style.svg");
-      }
 
-      ul li {
-        margin-left: 1.5em;
-        line-height: 1.5em;
+        li {
+          margin-left: 1.5em;
+          line-height: 1.5em;
+        }
       }
     }
   }
