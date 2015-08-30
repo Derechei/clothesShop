@@ -320,7 +320,7 @@ var EPAM =
                 header.aboveNavigation.self.className = 'ABOVE_HEADER collapse show';
                 scrollShow();
             } else {
-                if (e.screenY <= 140 && window.innerWidth > 550) {
+                if (e.screenY <= 180 && window.innerWidth > 550) {
                     header.aboveNavigation.self.className = 'ABOVE_HEADER collapse show';
                     scrollShow();
                 } else {
