@@ -56,17 +56,24 @@ header {
     }
 
     .MENU {
-
       display: flex;
       flex-grow: 2;
       padding: 0;
       list-style: none;
       transition: margin 0.5s ease;
-      align-items: stretch;
 
       a {
+        display: flex;
+        align-content: center;
         text-decoration: none;
         color: $def_font_color;
+        align-self: stretch;
+        span {
+          align-self: center;
+          &:hover {
+            color: $active_link;
+          }
+        }
       }
       a.hover {
         color: $active_link;
@@ -79,13 +86,8 @@ header {
         transition: margin 0.5s ease;
 
         .BLOG {
-
           transition: margin 0.5s ease;
-
-          a {
-            border-left: 3px solid rgba(17, 33, 61, 0.25);
-            transition: padding 0.5s ease;
-          }
+          a { transition: padding 0.5s ease; }
         }
       }
     }
@@ -176,6 +178,7 @@ footer {
 }
 
 .dropmenu {
+  display: none;
   position: fixed;
   z-index: 10;
   width: 70%;
@@ -188,6 +191,10 @@ footer {
   opacity: 1;
   transition: width 0.5s ease;
   animation: dropdown 0.5s ease;
+
+  &.show {
+    display:block;
+  }
 
   & > ul {
     display: flex;
