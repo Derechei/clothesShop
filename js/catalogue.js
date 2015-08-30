@@ -1,6 +1,7 @@
 var EPAM =
     (function () {
         var header = {
+                self: document.querySelector('header'),
                 aNav: {
                     self: document.querySelector('.ABOVE_HEADER'),
                     description: document.querySelector('.DESCRIPTION'),
@@ -166,47 +167,44 @@ var EPAM =
         })();
 
         // When screenTop U see abovemenu. When scrollOver abovemenu disapear's.
-        document.body.onscroll = function (e) {
-            console.log(window.scrollY);
-            if (window.scrollY === 0 && window.innerWidth > 550) {
-                header.aNav.self.className = 'ABOVE_HEADER collapse show';
-                scrollShow();
-            }
-            if (window.scrollY >= 50) {
-
-                if (e.screenY <= 200 && window.innerWidth > 550) {
-                    header.aNav.self.className = 'ABOVE_HEADER collapse show';
-                    scrollShow();
-                }
-            }
-        };
+        utils.addListener( window, 'scroll', windowOnScroll, false);
         // Menu adding events for animation.
         utils.addListener( header.bNav.menu.self, 'mousemove', menuOnMouseMove, false);
         utils.addListener( header.bNav.menu.self, 'mouseout', menuOnMouseOut, false);
         // Dropmenu fadeIn fadeOut
-        utils.addListener( dropMenu, 'mouseout',dropMenuMouseOut,false);
+        utils.addListener( document.querySelector('main'), 'mousemove',mainMouseMove,false);
         utils.addListener( dropMenu, 'mousemove',dropMenuMouseMove,false);
         // When U move pointer to top show's abovemenu. When U move's poiner down it dissapear's.
         utils.addListener( document.body, 'mousemove', showLoginMenu, false);
+        // Resize header to show scroll onload and each time after resizing window.
+        utils.addListener( window, 'resize', scrollShow, false);
+        utils.addListener( window, 'load', initDoc, false);
+        utils.addListener( header.bNav.logo, 'click', header.toggle, false);
 
-        function showLoginMenu(e) {
-            // Helper.
-            document.querySelector("[type='search']").placeholder = e.screenX + " " + e.screenY;
-            // Window top and not mobile version.
+        function windowOnScroll() {
+            console.log(window.scrollY);
             if (window.scrollY === 0 && window.innerWidth > 550) {
                 header.aNav.self.className = 'ABOVE_HEADER collapse show';
                 scrollShow();
             } else {
-                if (e.screenY <= 150 && window.innerWidth > 550) {
+                header.aNav.self.className = 'ABOVE_HEADER collapse';
+                scrollShow();
+            }
+        }
+        function initDoc() {
+            if (window.innerWidth > 550) {
+                header.aNav.self.className = 'ABOVE_HEADER collapse show';
+            }
+            scrollShow();
+        }
+        function showLoginMenu(e) {
+            // Helper.
+            document.querySelector("[type='search']").placeholder = e.screenX + " " + e.screenY + " " + window.scrollY;
+            // Window top and not mobile version.
+             if (e.screenY <= 160 && window.innerWidth > 550) {
                     header.aNav.self.className = 'ABOVE_HEADER collapse show';
                     scrollShow();
-                } else {
-                    if (window.innerWidth > 550) {
-                        header.aNav.self.className = 'ABOVE_HEADER collapse';
-                        scrollShow();
-                    }
-                }
-            }
+             }
         }
         function menuOnMouseMove(e) {
             var helperParam = {
@@ -357,8 +355,16 @@ var EPAM =
                     dropMenu.className = 'dropmenu';
                     break;
                 }
+                case header.self:
+                {
+                    if (header.aNav.self.className === 'ABOVE_HEADER collapse') {
+                        dropMenu.className = 'dropmenu show upper';
+                    } else {
+                        dropMenu.className = 'dropmenu show';
+                    }
+                    break;
+                }
             }
-            utils.prevent(e);
         }
         function menuOnMouseOut(e) {
             switch (e.target) {
@@ -367,8 +373,16 @@ var EPAM =
                     dropMenu.className = 'dropmenu';
                     break;
                 }
+                case header.self:
+                {
+                    if (header.aNav.self.className === 'ABOVE_HEADER collapse') {
+                        dropMenu.className = 'dropmenu show upper';
+                    } else {
+                        dropMenu.className = 'dropmenu show';
+                    }
+                    break;
+                }
             }
-            utils.prevent(e);
             document.querySelectorAll('.menu_choose')[0].style.display = 'none';
             document.querySelectorAll('.menu_choose')[1].style.display = 'none';
             document.querySelectorAll('.menu_choose')[0].style.margin = '0';
@@ -384,7 +398,11 @@ var EPAM =
             o.a.className = 'hover';
             // For All exept BLOG
             if (o.target !== header.bNav.menu.blog) {
-                dropMenu.className = 'dropmenu show';
+                if (header.aNav.self.className === 'ABOVE_HEADER collapse') {
+                    dropMenu.className = 'dropmenu show upper';
+                } else {
+                    dropMenu.className = 'dropmenu show';
+                }
             }
             // Highlights only one category and else not.
             for (var i = 0; i < header.bNav.menu.links.length; i += 1) {
@@ -393,12 +411,26 @@ var EPAM =
                 }
             }
         }
-        function dropMenuMouseOut(){
-            dropMenu.className = 'dropmenu';
-        }
         function dropMenuMouseMove(){
-            dropMenu.className = 'dropmenu show';
+            if (header.aNav.self.className === 'ABOVE_HEADER collapse') {
+                dropMenu.className = 'dropmenu show upper';
+            } else {
+                dropMenu.className = 'dropmenu show';
+            }
+        }
+        function mainMouseMove(){
+            dropMenu.className = 'dropmenu';
+            for (var i = 0; i < header.bNav.menu.links.length; i += 1) {
+                    header.bNav.menu.links[i].className = '';
+            }
+        }
+        function scrollShow() {
+            document.querySelector('header').style.width = document.querySelector('#scroll').scrollWidth + 'px';
+            document.querySelector('#scroll').style.marginTop = document.querySelector('header').offsetHeight + 'px';
         }
 
+        Array.prototype.forEach.call(document.querySelectorAll('a'),function(el){
+           utils.addListener(el,'click',function(e){utils.prevent(e)},false);
+        });
         return header;
     }());

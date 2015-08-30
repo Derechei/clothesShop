@@ -262,6 +262,7 @@
 }
 
 /*in mycart*/
+/*in mycart*/
 @media all and (max-width: 650px) {
   .my_cart aside > ul {
     .OUR_COMMITMENTS > ul {
@@ -358,8 +359,7 @@
           }
 
           a:hover {
-            animation: button_animate_grey 10s ease 0s;
-            color: white;
+            animation: button_animate_grey 2s ease 0s;
           }
         }
 
@@ -409,8 +409,7 @@
         margin: 0.5em 5%;
 
         &:hover {
-          animation: button_animate_white 10s ease 0s;
-          color: white;
+          animation: button_animate_white 2s ease 0s;
         }
       }
 
@@ -434,11 +433,12 @@
             width: 100%;
             padding: 0.35em 0;
             margin: 0.15em 0;
+            color: $def_font_color !important;
           }
 
           a:hover {
-            animation: button_animate_white 10s ease 0s;
-            color: white;
+            animation: button_animate_white 2s ease 0s;
+            color: $def_font_color !important;
           }
         }
 
@@ -455,11 +455,12 @@
             padding: 0.35em 0;
             margin: 0.15em 0;
             border-left: none;
+            color: $def_font_color !important;
           }
 
           a:hover {
-            animation: button_animate_white 10s ease 0s;
-            color: white;
+            animation: button_animate_white 2s ease 0s;
+            color: $def_font_color !important;
           }
         }
       }
@@ -473,7 +474,10 @@
     flex-flow: row wrap;
     justify-content: center;
   }
-  main {
-
+  .dropmenu {
+    display:none !important;
+  }
+  body > img {
+    display: none !important;
   }
 }

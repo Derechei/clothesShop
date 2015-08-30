@@ -3,41 +3,30 @@
 @keyframes dropdown {
   0% {
     opacity: 0;
-    top: 60px;
-  }
-  80% {
-    opacity: 1;
-    top: 103px;
   }
   100% {
-    top: 83px;
+    opacity: 1;
   }
 }
 
 @keyframes button_animate_white {
   0% {
-    background-color: #fff;
-    color:#fff;
-  }
-  20% {
-    background-color: $active_link;
+    background-color: $def_font_color;
+    color: #fff;
   }
   100% {
     background-color: #fff;
-    color: #1d389b;
+    color: $def_font_color;
   }
 }
 
 @keyframes button_animate_grey {
   0% {
-    background-color: #eaebeb;
-    color:#fff;
-  }
-  20% {
-    background-color: $active_link;
+    background-color: $def_font_color;
+    color: #fff;
   }
   100% {
     background-color: #eaebeb;
-    color: #1d389b;
+    color: $def_font_color;
   }
 }
