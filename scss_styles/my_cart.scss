@@ -1,8 +1,11 @@
 .MY_CART {
-  display: flex;
+  display: none;
   flex-flow: row;
   margin: 0 15% 0 15%;
   justify-content: space-between;
+  &.show {
+    display: flex;
+  }
 
   section {
     margin: 1em 2% 0 0;

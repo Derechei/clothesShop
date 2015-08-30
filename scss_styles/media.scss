@@ -9,8 +9,11 @@
 @media all and (max-width: 1300px) {
   main {
     .ORDER_TRACKING {
-      display: flex;
+      display: none;
       flex-flow: column wrap;
+      &.show {
+        display: flex;
+      }
 
       .order_container {
         width: 100%;
@@ -45,8 +48,13 @@
     }
 
     .MY_CART {
-      display: flex;
+      display: none;
       flex-flow: column;
+      
+      &.show {
+        display: flex;
+      }
+      
       section {
         width: 100%;
       }
@@ -228,8 +236,11 @@
 
   main {
     .ORDER_TRACKING {
-      display: flex;
+      display: none;
       flex-flow: column;
+      &.show {
+        display: flex;
+      }
 
       .order_container {
         justify-content: center;
@@ -246,10 +257,13 @@
 /*create account*/
 @media all and (max-width: 850px) {
   .CREATE_ACCAUNT {
+    display: none;
+    &.show {
+      display: flex;
+    }
     form {
-      overflow: scroll;
       width: 310px;
-      height: 910px;
+      height: 1000px;
       background-color: #fff;
       padding: 20px;
 
@@ -262,9 +276,8 @@
 }
 
 /*in mycart*/
-/*in mycart*/
 @media all and (max-width: 650px) {
-  .my_cart aside > ul {
+  .MY_CART aside > ul {
     .OUR_COMMITMENTS > ul {
       display: flex;
       flex-flow: column wrap;

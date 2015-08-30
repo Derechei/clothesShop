@@ -277,22 +277,23 @@ ul {
   padding: 0;
   list-style: none; }
 
-/*main {
-  filter: blur(15px);
-}
-footer {
-  filter: blur(15px);
-}
-header {
-  filter: blur(15px);
-}*/
+main.modal {
+  -webkit-filter: blur(15px);
+          filter: blur(15px); }
+
+footer.modal {
+  -webkit-filter: blur(15px);
+          filter: blur(15px); }
+
+header.modal {
+  -webkit-filter: blur(15px);
+          filter: blur(15px); }
+
 .CREATE_ACCAUNT {
+  overflow: auto;
   position: fixed;
   z-index: 2000;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
+  display: none;
   -webkit-box-pack: center;
   -webkit-justify-content: center;
       -ms-flex-pack: center;
@@ -305,8 +306,13 @@ header {
   right: 0;
   bottom: 0;
   left: 0;
-  background: rgba(0, 0, 0, 0.25);
+  background: rgba(0, 0, 0, 0.1);
   font-size: 0.9em; }
+  .CREATE_ACCAUNT.show {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex; }
   .CREATE_ACCAUNT select {
     color: #7d7d7d;
     font-size: 20px;
@@ -334,7 +340,7 @@ header {
         -ms-flex-flow: column;
             flex-flow: column;
     width: 700px;
-    height: 510px;
+    height: 550px;
     background-color: #fff;
     padding: 40px; }
     .CREATE_ACCAUNT form > div {
@@ -553,22 +559,22 @@ ul {
   padding: 0;
   list-style: none; }
 
-/*main {
-  filter: blur(15px);
-}
-footer {
-  filter: blur(15px);
-}
-header {
-  filter: blur(15px);
-}*/
+main.modal {
+  -webkit-filter: blur(15px);
+          filter: blur(15px); }
+
+footer.modal {
+  -webkit-filter: blur(15px);
+          filter: blur(15px); }
+
+header.modal {
+  -webkit-filter: blur(15px);
+          filter: blur(15px); }
+
 .POPIN_LOGIN {
   position: fixed;
   z-index: 2000;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
+  display: none;
   -webkit-box-pack: center;
   -webkit-justify-content: center;
       -ms-flex-pack: center;
@@ -581,8 +587,13 @@ header {
   right: 0;
   bottom: 0;
   left: 0;
-  background: rgba(0, 0, 0, 0.25);
+  background: rgba(0, 0, 0, 0.1);
   font-size: 0.9em; }
+  .POPIN_LOGIN.show {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex; }
   .POPIN_LOGIN p {
     margin: 0.5em 0; }
   .POPIN_LOGIN > div {
@@ -691,13 +702,15 @@ ul {
     display: none; } }
 @media all and (max-width: 1300px) {
   main .ORDER_TRACKING {
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -ms-flexbox;
-    display: flex;
+    display: none;
     -webkit-flex-flow: column wrap;
         -ms-flex-flow: column wrap;
             flex-flow: column wrap; }
+    main .ORDER_TRACKING.show {
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: -ms-flexbox;
+      display: flex; }
     main .ORDER_TRACKING .order_container {
       width: 100%;
       margin: 0; }
@@ -716,13 +729,15 @@ ul {
           main .ORDER_TRACKING aside ul .NEED_HELP div li:last-child {
             padding-bottom: 0; }
   main .MY_CART {
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -ms-flexbox;
-    display: flex;
+    display: none;
     -webkit-flex-flow: column;
         -ms-flex-flow: column;
             flex-flow: column; }
+    main .MY_CART.show {
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: -ms-flexbox;
+      display: flex; }
     main .MY_CART section {
       width: 100%; }
     main .MY_CART aside > ul {
@@ -864,13 +879,15 @@ ul {
           padding: 0 0 0 20px; }
 
   main .ORDER_TRACKING {
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -ms-flexbox;
-    display: flex;
+    display: none;
     -webkit-flex-flow: column;
         -ms-flex-flow: column;
             flex-flow: column; }
+    main .ORDER_TRACKING.show {
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: -ms-flexbox;
+      display: flex; }
     main .ORDER_TRACKING .order_container {
       -webkit-box-pack: center;
       -webkit-justify-content: center;
@@ -880,24 +897,29 @@ ul {
         padding: 0.35em 0; } }
 /*create account*/
 @media all and (max-width: 850px) {
-  .CREATE_ACCAUNT form {
-    overflow: scroll;
-    width: 310px;
-    height: 910px;
-    background-color: #fff;
-    padding: 20px; }
-    .CREATE_ACCAUNT form > div {
+  .CREATE_ACCAUNT {
+    display: none; }
+    .CREATE_ACCAUNT.show {
       display: -webkit-box;
       display: -webkit-flex;
       display: -ms-flexbox;
-      display: flex;
-      -webkit-flex-flow: column;
-          -ms-flex-flow: column;
-              flex-flow: column; } }
-/*in mycart*/
+      display: flex; }
+    .CREATE_ACCAUNT form {
+      width: 310px;
+      height: 1000px;
+      background-color: #fff;
+      padding: 20px; }
+      .CREATE_ACCAUNT form > div {
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-flex-flow: column;
+            -ms-flex-flow: column;
+                flex-flow: column; } }
 /*in mycart*/
 @media all and (max-width: 650px) {
-  .my_cart aside > ul .OUR_COMMITMENTS > ul {
+  .MY_CART aside > ul .OUR_COMMITMENTS > ul {
     display: -webkit-box;
     display: -webkit-flex;
     display: -ms-flexbox;
@@ -1114,10 +1136,7 @@ ul {
   body > img {
     display: none !important; } }
 .MY_CART {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
+  display: none;
   -webkit-flex-flow: row;
       -ms-flex-flow: row;
           flex-flow: row;
@@ -1126,6 +1145,11 @@ ul {
   -webkit-justify-content: space-between;
       -ms-flex-pack: justify;
           justify-content: space-between; }
+  .MY_CART.show {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex; }
   .MY_CART section {
     margin: 1em 2% 0 0;
     width: 98%; }
@@ -1223,10 +1247,7 @@ ul {
   list-style: none; }
 
 .ORDER_TRACKING {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
+  display: none;
   -webkit-flex-flow: row;
       -ms-flex-flow: row;
           flex-flow: row;
@@ -1237,6 +1258,11 @@ ul {
           justify-content: space-between;
   font-size: 0.8em;
   color: #003E71; }
+  .ORDER_TRACKING.show {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex; }
   .ORDER_TRACKING .order_container {
     display: -webkit-box;
     display: -webkit-flex;
