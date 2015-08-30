@@ -79,30 +79,76 @@ var EPAM =
                     }
                 }
             },
-            dropMenu = document.querySelector('.dropmenu');
+            dropMenu = document.querySelector('.dropmenu'),
+            utils = {
+                addListener: null,
+                removeListener: null,
+                preventStop: null,
+                prevent: null,
+                stop: null
+            };
 
-        // Resize header to show scroll onload and each time after resizing window.
-        window.addEventListener('resize', scrollShow, false);
-        window.addEventListener('load', initDoc, false);
-        function initDoc() {
-            if (window.innerWidth > 550) {
-                header.aNav.self.className = 'ABOVE_HEADER collapse show';
+        // Initialise util properties.
+        (function () {
+            // utils.addLitener, utils.removeListener.
+            if (typeof window.addEventListener === 'function') {
+                utils.addListener = function (el, type, fn) {
+                    el.addEventListener(type, fn, false);
+                };
+                utils.removeListener = function (el, type, fn) {
+                    el.removeEventListener(type, fn, false);
+                };
+            } else if (typeof document.attachEvent === 'function') {
+                // IE
+                utils.addListener = function (el, type, fn) {
+                    el.attachEvent('on' + type, fn);
+                };
+                utils.removeListener = function (el, type, fn) {
+                    el.detachEvent('on' + type, fn);
+                };
+            } else { // Old Browsers
+                utils.addListener = function (el, type, fn) {
+                    el['on' + type] = fn;
+                };
+                utils.removeListener = function (el, type) {
+                    el['on' + type] = null;
+                };
             }
-            scrollShow();
-        }
 
-        function scrollShow() {
-            document.querySelector('header').style.width = document.querySelector('#scroll').scrollWidth + 'px';
-            document.querySelector('#scroll').style.marginTop = document.querySelector('header').offsetHeight + 'px';
-        }
+            // Normal browsers: utils.stop, utils.prevent, utils.preventStop.
+            if (typeof Event.prototype.preventDefault === 'function') {
+                utils.prevent = function (e) {
+                    e.preventDefault();
+                };
+                if (typeof Event.prototype.stopPropagation === 'function') {
+                    utils.stop = function (e) {
+                        e.stopPropagation();
+                    };
+                    utils.preventStop = function (e) {
+                        e.preventDefault();
+                        e.stopPropagation();
+                    }
+                }
+            } else {
 
-        // Toggle logo in site.
-        document.addEventListener('click', LOGO_Click, false);
-        function LOGO_Click() {
-            header.toggle();
-            scrollShow();
-        }
+                // IE: utils.stop, utils.prevent, utils.preventStop.
+                if (typeof Event.prototype.returnValue === 'boolean') {
+                    utils.prevent = function (e) {
+                        e.preventDefault();
+                    };
+                    if (typeof Event.prototype.cancelBubble === 'boolean') {
+                        utils.stop = function (e) {
+                            e.stopPropagation();
+                        };
+                        utils.preventStop = function (e) {
+                            e.preventDefault();
+                            e.stopPropagation();
+                        }
+                    }
+                }
+            }
 
+        }());
         // Create in body to <img> for menu animation.
         (function longMenuAnimation() {
             var imgLong = document.createElement('img'),
@@ -119,9 +165,49 @@ var EPAM =
             }
         })();
 
+        // When screenTop U see abovemenu. When scrollOver abovemenu disapear's.
+        document.body.onscroll = function (e) {
+            console.log(window.scrollY);
+            if (window.scrollY === 0 && window.innerWidth > 550) {
+                header.aNav.self.className = 'ABOVE_HEADER collapse show';
+                scrollShow();
+            }
+            if (window.scrollY >= 50) {
+
+                if (e.screenY <= 200 && window.innerWidth > 550) {
+                    header.aNav.self.className = 'ABOVE_HEADER collapse show';
+                    scrollShow();
+                }
+            }
+        };
         // Menu adding events for animation.
-        // Moousemove.
-        header.bNav.menu.self.addEventListener('mousemove', menuOnMouseMove, false);
+        utils.addListener( header.bNav.menu.self, 'mousemove', menuOnMouseMove, false);
+        utils.addListener( header.bNav.menu.self, 'mouseout', menuOnMouseOut, false);
+        // Dropmenu fadeIn fadeOut
+        utils.addListener( dropMenu, 'mouseout',dropMenuMouseOut,false);
+        utils.addListener( dropMenu, 'mousemove',dropMenuMouseMove,false);
+        // When U move pointer to top show's abovemenu. When U move's poiner down it dissapear's.
+        utils.addListener( document.body, 'mousemove', showLoginMenu, false);
+
+        function showLoginMenu(e) {
+            // Helper.
+            document.querySelector("[type='search']").placeholder = e.screenX + " " + e.screenY;
+            // Window top and not mobile version.
+            if (window.scrollY === 0 && window.innerWidth > 550) {
+                header.aNav.self.className = 'ABOVE_HEADER collapse show';
+                scrollShow();
+            } else {
+                if (e.screenY <= 150 && window.innerWidth > 550) {
+                    header.aNav.self.className = 'ABOVE_HEADER collapse show';
+                    scrollShow();
+                } else {
+                    if (window.innerWidth > 550) {
+                        header.aNav.self.className = 'ABOVE_HEADER collapse';
+                        scrollShow();
+                    }
+                }
+            }
+        }
         function menuOnMouseMove(e) {
             var helperParam = {
                 target: null,
@@ -272,6 +358,20 @@ var EPAM =
                     break;
                 }
             }
+            utils.prevent(e);
+        }
+        function menuOnMouseOut(e) {
+            switch (e.target) {
+                case header.bNav.menu.self:
+                {
+                    dropMenu.className = 'dropmenu';
+                    break;
+                }
+            }
+            utils.prevent(e);
+            document.querySelectorAll('.menu_choose')[0].style.display = 'none';
+            document.querySelectorAll('.menu_choose')[1].style.display = 'none';
+            document.querySelectorAll('.menu_choose')[0].style.margin = '0';
         }
         function onMouseMoveHelper(o) {
             o.targetImg.style.top = o.target.offsetTop + o.target.offsetHeight - 6 + 'px';
@@ -284,7 +384,7 @@ var EPAM =
             o.a.className = 'hover';
             // For All exept BLOG
             if (o.target !== header.bNav.menu.blog) {
-                    dropMenu.className = 'dropmenu show';
+                dropMenu.className = 'dropmenu show';
             }
             // Highlights only one category and else not.
             for (var i = 0; i < header.bNav.menu.links.length; i += 1) {
@@ -292,72 +392,13 @@ var EPAM =
                     header.bNav.menu.links[i].className = '';
                 }
             }
-            o.event.stopPropagation();
-            o.event.preventDefault();
         }
-        // Mouseout.
-        header.bNav.menu.self.addEventListener('mouseout', menuOnMouseOut, false);
-        function menuOnMouseOut(e) {
-            switch (e.target) {
-                case header.bNav.menu.self:
-                {
-                    dropMenu.className = 'dropmenu';
-                    break;
-                }
-            }
-            e.stopPropagation();
-            e.preventDefault();
-            document.querySelectorAll('.menu_choose')[0].style.display = 'none';
-            document.querySelectorAll('.menu_choose')[1].style.display = 'none';
-            document.querySelectorAll('.menu_choose')[0].style.margin = '0';
-        }
-        // Dropmenu fadeIn fadeOut
-        dropMenu.addEventListener('mouseout',dropMenuMouseOut,false);
         function dropMenuMouseOut(){
             dropMenu.className = 'dropmenu';
         }
-        dropMenu.addEventListener('mousemove',dropMenuMouseMove,false);
         function dropMenuMouseMove(){
             dropMenu.className = 'dropmenu show';
         }
-
-        /*When U move pointer to top show's abovemenu. When U move's poiner down it dissapear's.*/
-        document.body.addEventListener('mousemove', showLoginMenu, false);
-        function showLoginMenu(e) {
-            // Helper.
-            document.querySelector("[type='search']").placeholder = e.screenX + " " + e.screenY;
-            // Window top and not mobile version.
-            if (window.scrollY === 0 && window.innerWidth > 550) {
-                header.aNav.self.className = 'ABOVE_HEADER collapse show';
-                scrollShow();
-            } else {
-                if (e.screenY <= 150 && window.innerWidth > 550) {
-                    header.aNav.self.className = 'ABOVE_HEADER collapse show';
-                    scrollShow();
-                } else {
-                    if (window.innerWidth > 550) {
-                        header.aNav.self.className = 'ABOVE_HEADER collapse';
-                        scrollShow();
-                    }
-                }
-            }
-        }
-
-        /* When screenTop U see abovemenu. When scrollOver abovemenu disapear's. */
-        document.body.onscroll = function (e) {
-            console.log(window.scrollY);
-            if (window.scrollY === 0 && window.innerWidth > 550) {
-                header.aNav.self.className = 'ABOVE_HEADER collapse show';
-                scrollShow();
-            }
-            if (window.scrollY >= 50) {
-
-                if (e.screenY <= 200 && window.innerWidth > 550) {
-                    header.aNav.self.className = 'ABOVE_HEADER collapse show';
-                    scrollShow();
-                }
-            }
-        };
 
         return header;
     }());
