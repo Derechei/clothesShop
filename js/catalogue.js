@@ -1,4 +1,4 @@
-(function () {
+var tmp = (function () {
     var header = {
             self: document.querySelector('header'),
             aNav: {
@@ -80,10 +80,9 @@
             }
         },
         dropMenu = document.querySelector('.dropmenu'),
-        order =  document.querySelector('.ORDER_TRACKING'),
-        login =  document.querySelector('.POPIN_LOGIN'),
-        my_cart =  document.querySelector('.MY_CART'),
-        register =  document.querySelector('.CREATE_ACCAUNT'),
+        order = document.querySelector('.ORDER_TRACKING'),
+        my_cart = document.querySelector('.MY_CART'),
+        register = document.querySelector('.CREATE_ACCAUNT'),
         utils = {
             addListener: null,
             removeListener: null,
@@ -171,104 +170,190 @@
 
     // When screenTop U see abovemenu. When scrollOver abovemenu disapear's.
     utils.addListener(window, 'scroll', windowOnScroll, false);
-    // Menu adding events for animation.
-    utils.addListener(header.bNav.menu.self, 'mousemove', menuOnMouseMove, false);
-    utils.addListener(header.bNav.menu.self, 'mouseout', menuOnMouseOut, false);
+    // Menu transition.
+    utils.addListener(header.bNav.menu.self, 'mousemove', headerBnavMenuOnMouseMove, false);
+    utils.addListener(header.bNav.menu.self, 'mouseout', headerBnavMenuOnMouseOut, false);
     // Dropmenu fadeIn fadeOut
-    utils.addListener(document.querySelector('main'), 'mousemove', mainMouseMove, false);
-    utils.addListener(dropMenu, 'mousemove', dropMenuMouseMove, false);
-    // When U move pointer to top show's abovemenu. When U move's poiner down it dissapear's.
-    utils.addListener(document.body, 'mousemove', showLoginMenu, false);
-    // Resize header to show scroll onload and each time after resizing window.
-    utils.addListener(window, 'resize', scrollShow, false);
-    utils.addListener(window, 'load', initDoc, false);
+    utils.addListener(document.querySelector('main'), 'mousemove', mainMouseMoveHideDropmenu, false);
+    utils.addListener(document.querySelector('footer'), 'mousemove', footerMouseMoveHideDropmenu, false);
+    utils.addListener(header.aNav.self, 'mousemove', headerAnavMouseMoveHideDropmenu, false);
 
-    utils.addListener(header.bNav.logo, 'click', function(){
+    utils.addListener(dropMenu, 'mousemove', dropMenuMouseMove, false);
+    utils.addListener(document.body, 'mousemove', headerMouseMoveShowAnav, false);
+    utils.addListener(window, 'resize', windowResizeHeader, false);
+    utils.addListener(window, 'load', windowLoad, false);
+    utils.addListener(header.bNav.logo, 'click', function () {
         header.toggle();
-        scrollShow();
+        windowResizeHeader();
     }, false);
 
-    utils.addListener(document.querySelector('.TO_TRACK a'),'click',function(){
+    utils.addListener(document.querySelector('.TO_TRACK a'), 'click', function () {
         my_cart.className = 'MY_CART';
-        scrollShow();
-        if (order.className === 'ORDER_TRACKING show'){
+        windowResizeHeader();
+        if (order.className === 'ORDER_TRACKING show') {
             order.className = 'ORDER_TRACKING';
         } else {
             order.className = 'ORDER_TRACKING show';
         }
-    },false);
-
-    utils.addListener(document.querySelector('.SHOPING_CART a'),'click',function(){
+    }, false);
+    utils.addListener(document.querySelector('.SHOPING_CART a'), 'click', function () {
         order.className = 'ORDER_TRACKING';
-        scrollShow();
-        if (my_cart.className === 'MY_CART show'){
+        windowResizeHeader();
+        if (my_cart.className === 'MY_CART show') {
             my_cart.className = 'MY_CART';
         } else {
             my_cart.className = 'MY_CART show';
         }
-    },false);
+    }, false);
 
-    utils.addListener(document.querySelector('.LOGIN a'),'click',function(){
-        login.className = 'POPIN_LOGIN show';
+    utils.addListener(document.querySelector('.LOGIN a'), 'click', headerAboveMenuLogicCkick, false);
+    function headerAboveMenuLogicCkick() {
+        login.self.className = 'POPIN_LOGIN show';
         document.querySelector('main').className = 'modal';
         document.querySelector('header').className = 'modal';
         document.querySelector('footer').className = 'modal';
-    },false);
+    }
 
-    utils.addListener(login,'click',function(){
-        login.className = 'POPIN_LOGIN';
-        document.querySelector('main').className = '';
-        document.querySelector('header').className = '';
-        document.querySelector('footer').className = '';
-    },false);
+    var login = {
+        self: document.querySelector('.POPIN_LOGIN'),
+        have_account: {
+            self: document.querySelector('.HAVE_ACCOUNT'),
+            email: document.querySelector('.POPIN_LOGIN .HAVE_ACCOUNT [type="email"]'),
+            password: document.querySelector('.POPIN_LOGIN .HAVE_ACCOUNT [type="password"]'),
+            submit: document.querySelector('.POPIN_LOGIN .HAVE_ACCOUNT [type="submit"]'),
+            forgot_pass: null,
+            error_msg: document.querySelector('.POPIN_LOGIN .HAVE_ACCOUNT .error_msg')
+        },
+        not_have_account: {
+            self: document.querySelector('.DONT_HAVE_ACCOUNT'),
+            submit: document.querySelector('.POPIN_LOGIN .DONT_HAVE_ACCOUNT [type="submit"]')
+        }
+    };
+    var helper = {
+        passwordErrors: [],
+        mailError: '',
+        passwordValidation: function( password ){
+            helper.passwordErrors = [];
+            if (password.value.length === 0) {
+                return 'Password required.'
+            }
+            if (password.value.length < 8){
+                helper.passwordErrors.push('Your password must be at list 8 characters');
+            }
+            if (password.value.search(/[0-9]/) < 0){
+                helper.passwordErrors.push('Your password must contain at list one digit');
+            }
+            if (password.value.search(/[a-z]/) < 0){
+                helper.passwordErrors.push('Your password must contain at list one lowercase');
+            }
+            if (password.value.search(/[A-Z]/) < 0){
+                helper.passwordErrors.push('Your password must contain at list one uppercase');
+            }
+            if (password.value.search(/[!#$%&?_"]/) < 0){
+                helper.passwordErrors.push('Your password must contain at list one special symbol');
+                return helper.passwordErrors.concat('. ');
+            }
+            return false;
+        }
+    };
 
-    utils.addListener(document.querySelector('#register'),'click',function(e){
-        register.className = 'CREATE_ACCAUNT show';
-        login.className = 'POPIN_LOGIN';
-        document.querySelector('main').className = 'modal';
-        document.querySelector('header').className = 'modal';
-        document.querySelector('footer').className = 'modal';
+    utils.addListener( login.self, 'click', loginClick, false);
+    function loginClick(e) {
+        switch(e.target){
+            case login.self : {
+                login.self.className = 'POPIN_LOGIN';
+                document.querySelector('main').className = '';
+                document.querySelector('header').className = '';
+                document.querySelector('footer').className = '';
+                break;
+            }
+            case login.not_have_account.submit: {
+                register.className = 'CREATE_ACCAUNT show';
+                login.self.className = 'POPIN_LOGIN';
+                document.querySelector('main').className = 'modal';
+                document.querySelector('header').className = 'modal';
+                document.querySelector('footer').className = 'modal';
+                break;
+            }
+        }
         utils.preventStop(e);
-    },false);
+    }
 
-    utils.addListener(register,'click',function(e){
+    utils.addListener( login.have_account.submit, 'click', loginHaveAccountSubmit, false);
+    function loginHaveAccountSubmit(e){
+        loginEmailValidate();
+        loginPasswordValidate();
+        if (helper.mailError !== '') {
+            login.have_account.email.focus();
+        }
+        else {
+            if (helper.passwordErrors.length > 0) {
+                login.have_account.password.focus();
+            }
+        }
+    }
+
+    utils.addListener( login.have_account.password, 'blur', loginPasswordValidate, false);
+    utils.addListener( login.have_account.email, 'blur', loginEmailValidate, false);
+    function loginPasswordValidate() {
+        var msg = helper.passwordValidation(login.have_account.password);
+        if (msg) {
+            login.have_account.error_msg.innerHTML = msg;
+            login.have_account.password.className  = 'incorrect';
+        } else {
+            login.have_account.error_msg.innerHTML = '';
+            login.have_account.password.className  = 'correct';
+        }
+    }
+    function loginEmailValidate() {
+        if (login.have_account.email.value.length === 0){
+            helper.mailError = 'Email required.';
+            login.have_account.error_msg.innerHTML = helper.mailError;
+            login.have_account.email.className  = 'incorrect';
+        } else {
+            helper.mailError = '';
+            login.have_account.email.className  = 'correct';
+        }
+    }
+
+    utils.addListener(register, 'click', function (e) {
         register.className = 'CREATE_ACCAUNT';
         document.querySelector('main').className = '';
         document.querySelector('header').className = '';
         document.querySelector('footer').className = '';
         utils.preventStop(e);
-    },false);
+    }, false);
 
     function windowOnScroll() {
         if (window.scrollY === 0 && window.innerWidth > 550) {
             header.aNav.self.className = 'ABOVE_HEADER collapse show';
-            scrollShow();
+            windowResizeHeader();
         } else {
             if (window.innerWidth > 550) {
                 header.aNav.self.className = 'ABOVE_HEADER collapse';
-                scrollShow();
+                windowResizeHeader();
             }
         }
     }
 
-    function initDoc() {
+    function windowLoad() {
         if (window.innerWidth > 550) {
             header.aNav.self.className = 'ABOVE_HEADER collapse show';
         }
-        scrollShow();
+        windowResizeHeader();
     }
 
-    function showLoginMenu(e) {
+    function headerMouseMoveShowAnav(e) {
         // Helper.
         document.querySelector("[type='search']").placeholder = e.screenX + " " + e.screenY + " " + window.scrollY;
         // Window top and not mobile version.
         if (e.screenY <= 160 && window.innerWidth > 550) {
             header.aNav.self.className = 'ABOVE_HEADER collapse show';
-            scrollShow();
+            windowResizeHeader();
         }
     }
 
-    function menuOnMouseMove(e) {
+    function headerBnavMenuOnMouseMove(e) {
         var helperParam = {
             target: null,
             targetImg: null,
@@ -287,7 +372,7 @@
                     a: document.querySelector('.MEN>a'),
                     event: e
                 };
-                onMouseMoveHelper(helperParam);
+                headerOnMouseMoveHelper(helperParam);
                 break;
             }
             case header.bNav.menu.womanLink:
@@ -299,7 +384,7 @@
                     a: document.querySelector('.WOMAN>a'),
                     event: e
                 };
-                onMouseMoveHelper(helperParam);
+                headerOnMouseMoveHelper(helperParam);
                 break;
             }
             case header.bNav.menu.kidsLink:
@@ -311,7 +396,7 @@
                     a: document.querySelector('.KIDS>a'),
                     event: e
                 };
-                onMouseMoveHelper(helperParam);
+                headerOnMouseMoveHelper(helperParam);
                 break;
             }
             case header.bNav.menu.sportsLink:
@@ -323,7 +408,7 @@
                     a: document.querySelector('.SPORTS>a'),
                     event: e
                 };
-                onMouseMoveHelper(helperParam);
+                headerOnMouseMoveHelper(helperParam);
                 break;
             }
             case header.bNav.menu.catalogLink:
@@ -335,7 +420,7 @@
                     a: header.bNav.menu.catalogLink,
                     event: e
                 };
-                onMouseMoveHelper(helperParam);
+                headerOnMouseMoveHelper(helperParam);
                 break;
             }
             // Span.
@@ -348,7 +433,7 @@
                     a: document.querySelector('.MEN>a'),
                     event: e
                 };
-                onMouseMoveHelper(helperParam);
+                headerOnMouseMoveHelper(helperParam);
                 break;
             }
             case header.bNav.menu.womanSpan:
@@ -360,7 +445,7 @@
                     a: document.querySelector('.WOMAN>a'),
                     event: e
                 };
-                onMouseMoveHelper(helperParam);
+                headerOnMouseMoveHelper(helperParam);
                 break;
             }
             case header.bNav.menu.kidsSpan:
@@ -372,7 +457,7 @@
                     a: document.querySelector('.KIDS>a'),
                     event: e
                 };
-                onMouseMoveHelper(helperParam);
+                headerOnMouseMoveHelper(helperParam);
                 break;
             }
             case header.bNav.menu.sportsSpan:
@@ -384,7 +469,7 @@
                     a: document.querySelector('.SPORTS>a'),
                     event: e
                 };
-                onMouseMoveHelper(helperParam);
+                headerOnMouseMoveHelper(helperParam);
                 break;
             }
             case header.bNav.menu.catalogSpan:
@@ -396,7 +481,7 @@
                     a: header.bNav.menu.catalogLink,
                     event: e
                 };
-                onMouseMoveHelper(helperParam);
+                headerOnMouseMoveHelper(helperParam);
                 break;
             }
             // Blog.
@@ -409,7 +494,7 @@
                     a: document.querySelector('.BLOG>a'),
                     event: e
                 };
-                onMouseMoveHelper(helperParam);
+                headerOnMouseMoveHelper(helperParam);
                 break;
             }
             case header.bNav.menu.self:
@@ -429,7 +514,7 @@
         }
     }
 
-    function menuOnMouseOut(e) {
+    function headerBnavMenuOnMouseOut(e) {
         switch (e.target) {
             case header.bNav.menu.self:
             {
@@ -451,7 +536,7 @@
         document.querySelectorAll('.menu_choose')[0].style.margin = '0';
     }
 
-    function onMouseMoveHelper(o) {
+    function headerOnMouseMoveHelper(o) {
         o.targetImg.style.top = o.target.offsetTop + o.target.offsetHeight - 6 + 'px';
         o.targetImg.style.left = o.target.offsetLeft + 'px';
         o.targetImg.style.width = o.target.offsetWidth + 'px';
@@ -484,14 +569,27 @@
         }
     }
 
-    function mainMouseMove() {
+    function mainMouseMoveHideDropmenu() {
         dropMenu.className = 'dropmenu';
         for (var i = 0; i < header.bNav.menu.links.length; i += 1) {
             header.bNav.menu.links[i].className = '';
         }
     }
 
-    function scrollShow() {
+    function footerMouseMoveHideDropmenu() {
+        dropMenu.className = 'dropmenu';
+        for (var i = 0; i < header.bNav.menu.links.length; i += 1) {
+            header.bNav.menu.links[i].className = '';
+        }
+    }
+    function headerAnavMouseMoveHideDropmenu() {
+        dropMenu.className = 'dropmenu';
+        for (var i = 0; i < header.bNav.menu.links.length; i += 1) {
+            header.bNav.menu.links[i].className = '';
+        }
+    }
+
+    function windowResizeHeader() {
         document.querySelector('header').style.width = document.querySelector('#scroll').scrollWidth + 'px';
         document.querySelector('#scroll').style.marginTop = document.querySelector('header').offsetHeight + 'px';
     }
@@ -503,5 +601,4 @@
     });
 
 
-    return header;
 }());

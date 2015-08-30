@@ -611,6 +611,14 @@ header.modal {
       width: 330px;
       border-right: 1px solid #E0E0E0;
       padding-right: 30px; }
+      .POPIN_LOGIN > div .HAVE_ACCOUNT [type="email"].correct {
+        box-shadow: 0 0 2px 2px #52ff79; }
+      .POPIN_LOGIN > div .HAVE_ACCOUNT [type="email"].incorrect {
+        box-shadow: 0 0 2px 2px #d20023; }
+      .POPIN_LOGIN > div .HAVE_ACCOUNT [type="password"].correct {
+        box-shadow: 0 0 2px 2px #52ff79; }
+      .POPIN_LOGIN > div .HAVE_ACCOUNT [type="password"].incorrect {
+        box-shadow: 0 0 2px 2px #d20023; }
       .POPIN_LOGIN > div .HAVE_ACCOUNT .login_btn_container {
         margin-top: 67px; }
     .POPIN_LOGIN > div .DONT_HAVE_ACCOUNT {
@@ -630,13 +638,13 @@ header.modal {
       -webkit-box-pack: justify;
       -webkit-justify-content: space-between;
           -ms-flex-pack: justify;
-              justify-content: space-between; }
+              justify-content: space-between;
+      font-size: 10px; }
       .POPIN_LOGIN > div form .form_helper .error_msg {
         margin: 5px 0 0 0;
         color: red; }
       .POPIN_LOGIN > div form .form_helper .forgot_pass {
-        margin: 5px 0 0 0;
-        font-size: 10px; }
+        margin: 5px 0 0 0; }
     .POPIN_LOGIN > div form .login_btn_container {
       display: -webkit-box;
       display: -webkit-flex;

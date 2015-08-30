@@ -15,10 +15,14 @@ gulp.task('default', ['imagemin', 'scss', 'prefixer', 'watch']);
 // Gulp watcher.
 gulp.task('watch', function () {
     livereload.listen();
+    gulp.watch('js/*.js',function(){
+        livereload();
+    });
     gulp.watch('html/*.html',['html']);
     gulp.watch('scss_styles/*.scss', ['scss']);
     gulp.watch('css/styles/*.css', ['prefixer']);
 });
+
 
 // HTML Tasl live reload.
 gulp.task('html',function(){
