@@ -182,8 +182,26 @@ footer {
     footer > ul .CONTACT p {
       margin: 0;
       text-align: center; }
+    footer > ul .CONTACT #social-facebook {
+      background: url("../content/img/social/picto-facebook.png") no-repeat scroll left center;
+      padding-left: 20px; }
+    footer > ul .CONTACT #social-twitter {
+      background: url("../content/img/social/picto-twitter.png") no-repeat scroll left center;
+      padding-left: 20px; }
+    footer > ul .CONTACT #social-instagram {
+      background: url("../content/img/social/picto-instagram.png") no-repeat scroll left center;
+      padding-left: 20px; }
+    footer > ul .CONTACT #social-pinterest {
+      background: url("../content/img/social/picto-pinterest.png") no-repeat scroll left center;
+      padding-left: 20px; }
+    footer > ul .CONTACT #social-youtube {
+      background: url("../content/img/social/picto-youtube.png") no-repeat scroll left center;
+      padding-left: 20px; }
+    footer > ul .CONTACT #social-letter {
+      background: url("../content/img/social/picto-newsletter.png") no-repeat scroll left center;
+      padding-left: 20px; }
     footer > ul .CONTACT div {
-      width: 150px; }
+      width: 200px; }
       footer > ul .CONTACT div .intouch {
         height: 100px;
         margin-top: 1.2em;
@@ -201,6 +219,8 @@ footer {
         -webkit-align-content: flex-start;
             -ms-flex-line-pack: start;
                 align-content: flex-start; }
+        footer > ul .CONTACT div .intouch a {
+          margin-bottom: 0.5em; }
       footer > ul .CONTACT div .intouch a:nth-child(2n + 1) {
         -webkit-box-flex: 2;
         -webkit-flex-grow: 2;
@@ -313,6 +333,23 @@ header.modal {
     display: -webkit-flex;
     display: -ms-flexbox;
     display: flex; }
+  .CREATE_ACCAUNT #createEmail.incorrect,
+  .CREATE_ACCAUNT #createPassword.incorrect,
+  .CREATE_ACCAUNT #createMobile.incorrect,
+  .CREATE_ACCAUNT #confirmCreateEmail.incorrect,
+  .CREATE_ACCAUNT #confirmCreatePassword.incorrect,
+  .CREATE_ACCAUNT input.incorrect {
+    box-shadow: 0 0 1.5px 1px #F00; }
+  .CREATE_ACCAUNT #Subscribe {
+    width: 20px;
+    height: 20px;
+    margin: 10px 10px 10px 0; }
+  .CREATE_ACCAUNT #Language,
+  .CREATE_ACCAUNT #country {
+    width: 100%; }
+  .CREATE_ACCAUNT span.error_msg {
+    color: #d20023;
+    font-size: 10px; }
   .CREATE_ACCAUNT select {
     color: #7d7d7d;
     font-size: 20px;
@@ -322,15 +359,14 @@ header.modal {
     border: 1px solid #e2e2e2;
     height: 40px; }
   .CREATE_ACCAUNT p {
-    margin: 0 0 1em 0;
+    margin: 0.5em 0;
     font-size: 20px;
     font-family: "Oswald", sans-serif; }
   .CREATE_ACCAUNT .required {
     color: #7d7d7d;
     font-size: 16px;
     font-family: "Roboto", sans-serif;
-    font-weight: 200;
-    margin-top: 1em; }
+    font-weight: 200; }
   .CREATE_ACCAUNT form {
     display: -webkit-box;
     display: -webkit-flex;
@@ -341,7 +377,6 @@ header.modal {
             flex-flow: column;
     width: 700px;
     height: 550px;
-    background-color: #fff;
     padding: 40px; }
     .CREATE_ACCAUNT form > div {
       display: -webkit-box;
@@ -370,27 +405,12 @@ header.modal {
             -ms-flex-pack: start;
                 justify-content: flex-start; }
         .CREATE_ACCAUNT form > div section:first-child .TITLE label {
-          margin-right: 130px; }
+          margin-right: 60px; }
+        .CREATE_ACCAUNT form > div section:first-child .TITLE span {
+          margin-left: 40px; }
         .CREATE_ACCAUNT form > div section:first-child .TITLE input {
           width: 20px;
-          height: 20px;
-          margin-right: 20px; }
-      .CREATE_ACCAUNT form > div section:first-child .half {
-        display: -webkit-box;
-        display: -webkit-flex;
-        display: -ms-flexbox;
-        display: flex;
-        -webkit-flex-flow: row wrap;
-            -ms-flex-flow: row wrap;
-                flex-flow: row wrap;
-        -webkit-box-pack: justify;
-        -webkit-justify-content: space-between;
-            -ms-flex-pack: justify;
-                justify-content: space-between; }
-        .CREATE_ACCAUNT form > div section:first-child .half .postcode,
-        .CREATE_ACCAUNT form > div section:first-child .half .town {
-          width: 150px;
-          margin-top: 0.5em; }
+          height: 20px; }
       .CREATE_ACCAUNT form > div section:first-child select {
         width: 310px; }
       .CREATE_ACCAUNT form > div section:last-child .half {
@@ -432,20 +452,6 @@ header.modal {
             -webkit-justify-content: space-between;
                 -ms-flex-pack: justify;
                     justify-content: space-between; }
-        .CREATE_ACCAUNT form > div section:last-child .half.lang {
-          -webkit-box-pack: start;
-          -webkit-justify-content: flex-start;
-              -ms-flex-pack: start;
-                  justify-content: flex-start;
-          margin-bottom: 20px; }
-          .CREATE_ACCAUNT form > div section:last-child .half.lang label {
-            width: 105px; }
-          .CREATE_ACCAUNT form > div section:last-child .half.lang div {
-            width: 205px; }
-        .CREATE_ACCAUNT form > div section:last-child .half #createSubscribe {
-          width: 20px;
-          height: 20px;
-          margin: 10px 10px 10px 0; }
         .CREATE_ACCAUNT form > div section:last-child .half [for="createSubscribe"] {
           width: 260px;
           display: inline-block; }
@@ -460,6 +466,8 @@ header.modal {
       margin-left: 160px; }
       .CREATE_ACCAUNT form [type='submit']:hover {
         background-color: #0D5B9D; }
+    .CREATE_ACCAUNT form [for="Subscribe"] {
+      display: inline-block; }
     .CREATE_ACCAUNT form label {
       display: block;
       margin: 10px 0 5px 0; }
@@ -611,14 +619,10 @@ header.modal {
       width: 330px;
       border-right: 1px solid #E0E0E0;
       padding-right: 30px; }
-      .POPIN_LOGIN > div .HAVE_ACCOUNT [type="email"].correct {
-        box-shadow: 0 0 2px 2px #52ff79; }
       .POPIN_LOGIN > div .HAVE_ACCOUNT [type="email"].incorrect {
-        box-shadow: 0 0 2px 2px #d20023; }
-      .POPIN_LOGIN > div .HAVE_ACCOUNT [type="password"].correct {
-        box-shadow: 0 0 2px 2px #52ff79; }
+        box-shadow: 0 0 1.5px 1px #F00; }
       .POPIN_LOGIN > div .HAVE_ACCOUNT [type="password"].incorrect {
-        box-shadow: 0 0 2px 2px #d20023; }
+        box-shadow: 0 0 1.5px 1px #F00; }
       .POPIN_LOGIN > div .HAVE_ACCOUNT .login_btn_container {
         margin-top: 67px; }
     .POPIN_LOGIN > div .DONT_HAVE_ACCOUNT {
@@ -911,11 +915,14 @@ ul {
       display: -webkit-box;
       display: -webkit-flex;
       display: -ms-flexbox;
-      display: flex; }
+      display: flex;
+      -webkit-box-align: start;
+      -webkit-align-items: flex-start;
+          -ms-flex-align: start;
+              align-items: flex-start;
+      overflow: auto; }
     .CREATE_ACCAUNT form {
       width: 310px;
-      height: 1000px;
-      background-color: #fff;
       padding: 20px; }
       .CREATE_ACCAUNT form > div {
         display: -webkit-box;
