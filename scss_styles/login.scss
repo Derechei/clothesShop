@@ -44,20 +44,14 @@ header.modal {
       padding-right: 30px;
 
       [type="email"] {
-        &.correct {
-          box-shadow: 0 0 2px 2px #52ff79;
-        }
         &.incorrect {
-          box-shadow: 0 0 2px 2px $active_link
+          box-shadow: 0 0 1.5px 1px #F00;
         }
       }
 
       [type="password"] {
-        &.correct {
-          box-shadow: 0 0 2px 2px #52ff79;
-        }
         &.incorrect {
-          box-shadow: 0 0 2px 2px $active_link
+          box-shadow: 0 0 1.5px 1px #F00;
         }
       }
 

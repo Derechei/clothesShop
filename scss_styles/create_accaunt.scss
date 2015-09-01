@@ -3,9 +3,11 @@
 main.modal {
   filter: blur(15px);
 }
+
 footer.modal {
   filter: blur(15px);
 }
+
 header.modal {
   filter: blur(15px);
 }
@@ -23,8 +25,36 @@ header.modal {
   left: 0;
   background: rgba(0, 0, 0, 0.1);
   font-size: 0.9em;
+
   &.show {
     display: flex;
+  }
+
+  #createEmail,
+  #createPassword,
+  #createMobile,
+  #confirmCreateEmail,
+  #confirmCreatePassword,
+  input {
+    &.incorrect {
+      box-shadow: 0 0 1.5px 1px #F00;
+    }
+  }
+
+  #Subscribe {
+    width: 20px;
+    height: 20px;
+    margin: 10px 10px 10px 0;
+  }
+
+  #Language,
+  #country {
+    width: 100%;
+  }
+
+  span.error_msg {
+    color: $active_link;
+    font-size: 10px;
   }
 
   select {
@@ -38,7 +68,7 @@ header.modal {
   }
 
   p {
-    margin: 0 0 1em 0;
+    margin: 0.5em 0;
     font-size: 20px;
     font-family: "Oswald", sans-serif;
   }
@@ -48,7 +78,6 @@ header.modal {
     font-size: 16px;
     font-family: "Roboto", sans-serif;
     font-weight: 200;
-    margin-top: 1em;
   }
 
   form {
@@ -56,7 +85,6 @@ header.modal {
     flex-flow: column;
     width: 700px;
     height: 550px;
-    background-color: #fff;
     padding: 40px;
 
     > div {
@@ -76,27 +104,19 @@ header.modal {
           justify-content: flex-start;
 
           label {
-            margin-right: 130px;
+            margin-right: 60px;
+          }
+
+          span {
+            margin-left: 40px;
           }
 
           input {
             width: 20px;
             height: 20px;
-            margin-right: 20px;
           }
         }
 
-        .half {
-          display: flex;
-          flex-flow: row wrap;
-          justify-content: space-between;
-
-          .postcode,
-          .town {
-            width: 150px;
-            margin-top: 0.5em;
-          }
-        }
         select {
           width: 310px;
         }
@@ -135,25 +155,6 @@ header.modal {
             }
           }
 
-          &.lang {
-            justify-content: flex-start;
-            margin-bottom: 20px;
-
-            label {
-              width: 105px;
-            }
-
-            div {
-              width: 205px;
-            }
-          }
-
-          #createSubscribe {
-            width: 20px;
-            height: 20px;
-            margin: 10px 10px 10px 0;
-          }
-
           [for="createSubscribe"] {
             width: 260px;
             display: inline-block;
@@ -175,6 +176,10 @@ header.modal {
       &:hover {
         background-color: $active_btn;
       }
+    }
+
+    [for="Subscribe"] {
+      display: inline-block;
     }
 
     label {

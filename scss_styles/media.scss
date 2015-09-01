@@ -260,11 +260,11 @@
     display: none;
     &.show {
       display: flex;
+      align-items: flex-start;
+      overflow: auto;
     }
     form {
       width: 310px;
-      height: 1000px;
-      background-color: #fff;
       padding: 20px;
 
       > div {

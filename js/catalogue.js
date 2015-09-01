@@ -82,14 +82,108 @@ var tmp = (function () {
         dropMenu = document.querySelector('.dropmenu'),
         order = document.querySelector('.ORDER_TRACKING'),
         my_cart = document.querySelector('.MY_CART'),
-        register = document.querySelector('.CREATE_ACCAUNT'),
+        createAccount = {
+            self: document.querySelector('.CREATE_ACCAUNT'),
+            gender: document.querySelectorAll('[name="gender"]'),
+            lastName: document.querySelector('#lastName'),
+            firstName: document.querySelector('#firstname'),
+            address: document.querySelector('#address'),
+            company: document.querySelector('#company'),
+            postcode: document.querySelector('#postcode'),
+            town: document.querySelector('#towm'),
+            country: document.querySelector('#country'),
+            email: document.querySelector('#createEmail'),
+            confirmEmail: document.querySelector('#confirmCreateEmail'),
+            password: document.querySelector('#createPassword'),
+            confirmPassword: document.querySelector('#confirmCreatePassword'),
+            tel: document.querySelector('#Tel'),
+            birthDay: {
+                day: document.querySelector('#day'),
+                month: document.querySelector('#month'),
+                year: document.querySelector('#year')
+            },
+            language: document.querySelector('#language'),
+            subscribe: document.querySelector('#subscribe'),
+            submit: document.querySelector('.CREATE_ACCAUNT [type="submit"]')
+        },
+        login = {
+            self: document.querySelector('.POPIN_LOGIN'),
+            have_account: {
+                self: document.querySelector('.HAVE_ACCOUNT'),
+                email: document.querySelector('.POPIN_LOGIN .HAVE_ACCOUNT [type="email"]'),
+                password: document.querySelector('.POPIN_LOGIN .HAVE_ACCOUNT [type="password"]'),
+                submit: document.querySelector('.POPIN_LOGIN .HAVE_ACCOUNT [type="submit"]'),
+                forgot_pass: null,
+                error_msg: document.querySelector('.POPIN_LOGIN .HAVE_ACCOUNT .error_msg')
+            },
+            not_have_account: {
+                self: document.querySelector('.DONT_HAVE_ACCOUNT'),
+                submit: document.querySelector('.POPIN_LOGIN .DONT_HAVE_ACCOUNT [type="submit"]')
+            }
+        },
+        helper = {
+            passwordErrors: [],
+            error: {
+                generate: function (o) {
+                    return {
+                        target: o !== undefined ? o.target : null,
+                        message: o !== undefined ? o.message : '',
+                        toString: function () {
+                            console.log('Error appeard in ' + this.target + '.\nError staus: ' +
+                                this + '.\nError message: ' + this.message);
+                        }
+                    }
+                },
+                hesh: {
+                    login: {
+                        email: null,
+                        password: null
+                    },
+                    createAccount: {
+                        postcode: null,
+                        email: null,
+                        confirmEmail: null,
+                        password: null,
+                        confirmPassword: null
+                    }
+                }
+            },
+            passwordValidation: function (password) {
+                helper.passwordErrors = [];
+                if (password.value.length === 0) {
+                    return 'Password required.'
+                }
+                if (password.value.length < 8) {
+                    helper.passwordErrors.push('Your password must be at list 8 characters');
+                }
+                if (password.value.search(/[0-9]/) < 0) {
+                    helper.passwordErrors.push('Your password must contain at list one digit');
+                }
+                if (password.value.search(/[a-z]/) < 0) {
+                    helper.passwordErrors.push('Your password must contain at list one lowercase');
+                }
+                if (password.value.search(/[A-Z]/) < 0) {
+                    helper.passwordErrors.push('Your password must contain at list one uppercase');
+                }
+                if (password.value.search(/[!#$%&?_"]/) < 0) {
+                    helper.passwordErrors.push('Your password must contain at list one special symbol');
+                    return helper.passwordErrors.concat('. ');
+                }
+                return '';
+            }
+        },
         utils = {
             addListener: null,
             removeListener: null,
-            preventStop: null,
-            prevent: null,
+            preStop: null,
+            pre: null,
             stop: null
         };
+
+    utils = {
+        addListener: null,
+        removeListener: null
+    };
 
     // Initialise util properties.
     (function () {
@@ -118,32 +212,38 @@ var tmp = (function () {
             };
         }
 
-        // Normal browsers: utils.stop, utils.prevent, utils.preventStop.
+        // Normal browsers: utils.stop, utils.pre, utils.preStop.
         if (typeof Event.prototype.preventDefault === 'function') {
-            utils.prevent = function (e) {
+            utils.pre = function (e) {
+
                 e.preventDefault();
             };
             if (typeof Event.prototype.stopPropagation === 'function') {
                 utils.stop = function (e) {
+
                     e.stopPropagation();
                 };
-                utils.preventStop = function (e) {
+                utils.preStop = function (e) {
+
                     e.preventDefault();
                     e.stopPropagation();
                 }
             }
         } else {
 
-            // IE: utils.stop, utils.prevent, utils.preventStop.
+            // IE: utils.stop, utils.pre, utils.preStop.
             if (typeof Event.prototype.returnValue === 'boolean') {
-                utils.prevent = function (e) {
+                utils.pre = function (e) {
+
                     e.preventDefault();
                 };
                 if (typeof Event.prototype.cancelBubble === 'boolean') {
                     utils.stop = function (e) {
+
                         e.stopPropagation();
                     };
-                    utils.preventStop = function (e) {
+                    utils.preStop = function (e) {
+
                         e.preventDefault();
                         e.stopPropagation();
                     }
@@ -214,61 +314,21 @@ var tmp = (function () {
         document.querySelector('footer').className = 'modal';
     }
 
-    var login = {
-        self: document.querySelector('.POPIN_LOGIN'),
-        have_account: {
-            self: document.querySelector('.HAVE_ACCOUNT'),
-            email: document.querySelector('.POPIN_LOGIN .HAVE_ACCOUNT [type="email"]'),
-            password: document.querySelector('.POPIN_LOGIN .HAVE_ACCOUNT [type="password"]'),
-            submit: document.querySelector('.POPIN_LOGIN .HAVE_ACCOUNT [type="submit"]'),
-            forgot_pass: null,
-            error_msg: document.querySelector('.POPIN_LOGIN .HAVE_ACCOUNT .error_msg')
-        },
-        not_have_account: {
-            self: document.querySelector('.DONT_HAVE_ACCOUNT'),
-            submit: document.querySelector('.POPIN_LOGIN .DONT_HAVE_ACCOUNT [type="submit"]')
-        }
-    };
-    var helper = {
-        passwordErrors: [],
-        mailError: '',
-        passwordValidation: function( password ){
-            helper.passwordErrors = [];
-            if (password.value.length === 0) {
-                return 'Password required.'
-            }
-            if (password.value.length < 8){
-                helper.passwordErrors.push('Your password must be at list 8 characters');
-            }
-            if (password.value.search(/[0-9]/) < 0){
-                helper.passwordErrors.push('Your password must contain at list one digit');
-            }
-            if (password.value.search(/[a-z]/) < 0){
-                helper.passwordErrors.push('Your password must contain at list one lowercase');
-            }
-            if (password.value.search(/[A-Z]/) < 0){
-                helper.passwordErrors.push('Your password must contain at list one uppercase');
-            }
-            if (password.value.search(/[!#$%&?_"]/) < 0){
-                helper.passwordErrors.push('Your password must contain at list one special symbol');
-                return helper.passwordErrors.concat('. ');
-            }
-            return false;
-        }
-    };
-
-    utils.addListener( login.self, 'click', loginClick, false);
+    utils.addListener(login.self, 'click', loginClick, false);
     function loginClick(e) {
-        switch(e.target){
-            case login.self : {
+
+        switch (e.target) {
+            case login.self :
+            {
                 login.self.className = 'POPIN_LOGIN';
                 document.querySelector('main').className = '';
                 document.querySelector('header').className = '';
                 document.querySelector('footer').className = '';
                 break;
             }
-            case login.not_have_account.submit: {
-                register.className = 'CREATE_ACCAUNT show';
+            case login.not_have_account.submit:
+            {
+                createAccount.self.className = 'CREATE_ACCAUNT show';
                 login.self.className = 'POPIN_LOGIN';
                 document.querySelector('main').className = 'modal';
                 document.querySelector('header').className = 'modal';
@@ -276,53 +336,228 @@ var tmp = (function () {
                 break;
             }
         }
-        utils.preventStop(e);
+        utils.preStop(e);
     }
 
-    utils.addListener( login.have_account.submit, 'click', loginHaveAccountSubmit, false);
-    function loginHaveAccountSubmit(e){
-        loginEmailValidate();
-        loginPasswordValidate();
-        if (helper.mailError !== '') {
-            login.have_account.email.focus();
+    utils.addListener(login.have_account.submit, 'click', loginHaveAccountSubmit, true);
+    function loginHaveAccountSubmit() {
+        if (!helper.error.hesh.login.email) {
+            loginEmailValidate();
         }
-        else {
-            if (helper.passwordErrors.length > 0) {
+        if (!helper.error.hesh.login.password) {
+            loginPasswordValidate();
+        }
+        if (helper.error.hesh.login.email === true) {
+            login.have_account.email.focus();
+        } else {
+            if (helper.error.hesh.login.password === true) {
                 login.have_account.password.focus();
             }
         }
     }
 
-    utils.addListener( login.have_account.password, 'blur', loginPasswordValidate, false);
-    utils.addListener( login.have_account.email, 'blur', loginEmailValidate, false);
+    utils.addListener(login.have_account.password, 'blur', loginPasswordValidate, false);
+    utils.addListener(login.have_account.email, 'blur', loginEmailValidate, false);
     function loginPasswordValidate() {
-        var msg = helper.passwordValidation(login.have_account.password);
-        if (msg) {
-            login.have_account.error_msg.innerHTML = msg;
-            login.have_account.password.className  = 'incorrect';
+        helper.error.hesh.login.password = helper.error.generate({
+
+            target: login.have_account.password,
+            message: helper.passwordValidation(login.have_account.password)
+        });
+        if (helper.error.hesh.login.password.message !== '') {
+            login.have_account.error_msg.innerHTML = helper.error.hesh.login.password.message;
+            login.have_account.password.className = 'incorrect';
         } else {
+            helper.error.hesh.login.password = null;
             login.have_account.error_msg.innerHTML = '';
-            login.have_account.password.className  = 'correct';
-        }
-    }
-    function loginEmailValidate() {
-        if (login.have_account.email.value.length === 0){
-            helper.mailError = 'Email required.';
-            login.have_account.error_msg.innerHTML = helper.mailError;
-            login.have_account.email.className  = 'incorrect';
-        } else {
-            helper.mailError = '';
-            login.have_account.email.className  = 'correct';
+            login.have_account.password.className = '';
+            login.have_account.password.validity.patternMismatch = true;
         }
     }
 
-    utils.addListener(register, 'click', function (e) {
-        register.className = 'CREATE_ACCAUNT';
+    function loginEmailValidate() {
+        login.have_account.email.required = true;
+        if (login.have_account.email.validity.valueMissing) {
+            helper.error.hesh.login.email = helper.error.generate(
+                {
+                    target: login.have_account.email,
+                    message: 'Email required.'
+                });
+            login.have_account.error_msg.innerHTML = helper.error.hesh.login.email.message;
+            login.have_account.email.className = 'incorrect';
+        }
+        if (login.have_account.email.validity.typeMismatch) {
+            helper.error.hesh.login.email = helper.error.generate(
+                {
+                    target: login.have_account.email,
+                    message: 'Incorrect email.'
+                });
+            login.have_account.error_msg.innerHTML = helper.error.hesh.login.email.message;
+            login.have_account.email.className = 'incorrect';
+        }
+        if (login.have_account.email.validity.valid) {
+            helper.error.hesh.login.email = null;
+            login.have_account.error_msg.innerHTML = '';
+            login.have_account.email.className = '';
+            login.have_account.email.required = false;
+        }
+    }
+
+    var text = document.querySelectorAll('.CREATE_ACCAUNT [type="text"]'),
+        len = document.querySelectorAll('.CREATE_ACCAUNT [type="text"]').length;
+
+    utils.addListener(createAccount.postcode, 'blur', createAccountPostCodeValidate, false);
+    function createAccountPostCodeValidate() {
+        createAccount.postcode.required = true;
+        if (createAccount.postcode.validity.valueMissing) {
+            helper.error.hesh.createAccount.postcode = helper.error.generate({
+                target: createAccount.postcode,
+                message: 'Must not be empty.'
+            });
+            createAccount.postcode.className = 'incorrect';
+            document.querySelector('.postcode').innerHTML = helper.error.hesh.createAccount.postcode.message;
+        }
+        if (createAccount.postcode.value < 1001) {
+            helper.error.hesh.createAccount.postcode = helper.error.generate({
+                target: createAccount.postcode,
+                message: 'Minimum 1001.'
+            });
+            createAccount.postcode.className = 'incorrect';
+            document.querySelector('.postcode').innerHTML = helper.error.hesh.createAccount.postcode.message;
+        } else {
+            helper.error.hesh.createAccount.postcode = null;
+            createAccount.postcode.className = '';
+            createAccount.postcode.required = false;
+            document.querySelector('.postcode').innerHTML = '';
+        }
+    }
+
+    utils.addListener(createAccount.password, 'blur', createAccountPasswordValidate, false);
+    utils.addListener(createAccount.email, 'blur', createAccountEmailValidate, false);
+    function createAccountPasswordValidate() {
+        helper.error.hesh.createAccount.password = helper.error.generate({
+            target: createAccount.password,
+            message: helper.passwordValidation(createAccount.password)
+        });
+        if (helper.error.hesh.createAccount.password.message !== '') {
+            document.querySelector('.createPassword.error_msg').innerHTML = helper.error.hesh.createAccount.password.message;
+            createAccount.password.className = 'incorrect';
+        } else {
+            helper.error.hesh.createAccount.password = null;
+            document.querySelector('.createPassword.error_msg').innerHTML = '';
+            createAccount.password.className = '';
+        }
+    }
+
+    function createAccountEmailValidate() {
+        createAccount.email.required = true;
+        if (createAccount.email.validity.valueMissing) {
+            helper.error.hesh.createAccount.email = helper.error.generate(
+                {
+                    target: createAccount.email,
+                    message: 'Email required.'
+                });
+            document.querySelector('.createEmail.error_msg').innerHTML = helper.error.hesh.createAccount.email.message;
+            createAccount.email.className = 'incorrect';
+        }
+        if (createAccount.email.validity.typeMismatch) {
+            helper.error.hesh.createAccount.email = helper.error.generate(
+                {
+                    target: createAccount.email,
+                    message: 'Incorrect email.'
+                });
+            document.querySelector('.createEmail.error_msg').innerHTML = helper.error.hesh.createAccount.email.message;
+            createAccount.email.className = 'incorrect';
+        }
+        if (createAccount.email.validity.valid) {
+            helper.error.hesh.createAccount.email = null;
+            document.querySelector('.createEmail.error_msg').innerHTML = '';
+            createAccount.email.className = '';
+            createAccount.email.required = false;
+        }
+    }
+
+    utils.addListener(createAccount.confirmPassword, 'blur', createAccountConfirmPasswordValidate, false);
+    utils.addListener(createAccount.confirmEmail, 'blur', createAccountConfirmEmailValidate, false);
+    function createAccountConfirmPasswordValidate() {
+        if (createAccount.confirmPassword.value !== createAccount.password.value) {
+            helper.error.hesh.createAccount.confirmPassword = helper.error.generate({
+                target: createAccount.confirmPassword,
+                message: 'Duplicate password, please.'
+            });
+            document.querySelector('.confirmCreatePassword.error_msg').innerHTML = helper.error.hesh.createAccount.confirmPassword.message;
+            createAccount.confirmPassword.className = 'incorrect';
+        } else {
+            helper.error.hesh.createAccount.confirmPassword = null;
+            document.querySelector('.confirmCreatePassword.error_msg').innerHTML = '';
+            createAccount.confirmPassword.className = '';
+        }
+    }
+
+    function createAccountConfirmEmailValidate() {
+        if (createAccount.confirmEmail.value !== createAccount.email.value) {
+            helper.error.hesh.createAccount.confirmEmail = helper.error.generate({
+                target: createAccount.confirmEmail,
+                message: 'Duplicate email, please.'
+            });
+            document.querySelector('.confirmCreateEmail.error_msg').innerHTML = helper.error.hesh.createAccount.confirmEmail.message;
+            createAccount.confirmEmail.className = 'incorrect';
+        } else {
+            helper.error.hesh.createAccount.confirmEmail = null;
+            document.querySelector('.confirmCreateEmail.error_msg').innerHTML = '';
+            createAccount.confirmEmail.className = '';
+        }
+    }
+
+    utils.addListener(createAccount.tel, 'blur', createAccountTelValidate, false);
+    function createAccountTelValidate() {
+        createAccount.tel.required = true;
+        if (createAccount.tel.validity.valueMissing) {
+            helper.error.hesh.createAccount.tel = helper.error.generate({
+                target: createAccount.tel,
+                message: 'Must not be empty.'
+            });
+            document.querySelector('.tel.error_msg').innerHTML = helper.error.hesh.createAccount.tel.message;
+            createAccount.tel.className = 'incorrect';
+        }
+        if (createAccount.tel.validity.patternMismatch) {
+            helper.error.hesh.createAccount.tel = helper.error.generate({
+                target: createAccount.tel,
+                message: 'Must be 10 digits.'
+            });
+            document.querySelector('.tel.error_msg').innerHTML = helper.error.hesh.createAccount.tel.message;
+            createAccount.tel.className = 'incorrect';
+        } else {
+            helper.error.hesh.createAccount.tel = null;
+            document.querySelector('.tel.error_msg').innerHTML = '';
+            createAccount.tel.className = '';
+        }
+    }
+
+    utils.addListener(createAccount.self, 'click', function () {
+        createAccount.self.className = 'CREATE_ACCAUNT';
         document.querySelector('main').className = '';
         document.querySelector('header').className = '';
         document.querySelector('footer').className = '';
-        utils.preventStop(e);
     }, false);
+    utils.addListener(document.querySelector('.CREATE_ACCAUNT form'), 'click', function (e) {
+        utils.preStop(e);
+    }, true);
+    utils.addListener(createAccount.submit, 'click', createAccountSubmit, false);
+    function createAccountSubmit() {
+        Array.prototype.forEach.call(document.querySelectorAll('.CREATE_ACCAUNT [type="text"]'),function(el){
+            if(el.validity.valueMissing){
+                el.focus();
+            }
+        });
+        createAccountPostCodeValidate();
+        createAccountEmailValidate();
+        createAccountConfirmEmailValidate();
+        createAccountPasswordValidate();
+        createAccountConfirmPasswordValidate();
+        createAccountTelValidate();
+    }
+
 
     function windowOnScroll() {
         if (window.scrollY === 0 && window.innerWidth > 550) {
@@ -344,6 +579,7 @@ var tmp = (function () {
     }
 
     function headerMouseMoveShowAnav(e) {
+
         // Helper.
         document.querySelector("[type='search']").placeholder = e.screenX + " " + e.screenY + " " + window.scrollY;
         // Window top and not mobile version.
@@ -359,7 +595,7 @@ var tmp = (function () {
             targetImg: null,
             img: null,
             a: null,
-            event: e
+            e: e
         };
         switch (e.target) {
             // Links.
@@ -370,7 +606,7 @@ var tmp = (function () {
                     targetImg: document.querySelectorAll('.menu_choose')[1],
                     img: document.querySelectorAll('.menu_choose')[0],
                     a: document.querySelector('.MEN>a'),
-                    event: e
+                    e: e
                 };
                 headerOnMouseMoveHelper(helperParam);
                 break;
@@ -382,7 +618,7 @@ var tmp = (function () {
                     targetImg: document.querySelectorAll('.menu_choose')[0],
                     img: document.querySelectorAll('.menu_choose')[1],
                     a: document.querySelector('.WOMAN>a'),
-                    event: e
+                    e: e
                 };
                 headerOnMouseMoveHelper(helperParam);
                 break;
@@ -394,7 +630,7 @@ var tmp = (function () {
                     targetImg: document.querySelectorAll('.menu_choose')[1],
                     img: document.querySelectorAll('.menu_choose')[0],
                     a: document.querySelector('.KIDS>a'),
-                    event: e
+                    e: e
                 };
                 headerOnMouseMoveHelper(helperParam);
                 break;
@@ -406,7 +642,7 @@ var tmp = (function () {
                     targetImg: document.querySelectorAll('.menu_choose')[0],
                     img: document.querySelectorAll('.menu_choose')[1],
                     a: document.querySelector('.SPORTS>a'),
-                    event: e
+                    e: e
                 };
                 headerOnMouseMoveHelper(helperParam);
                 break;
@@ -418,7 +654,7 @@ var tmp = (function () {
                     targetImg: document.querySelectorAll('.menu_choose')[0],
                     img: document.querySelectorAll('.menu_choose')[1],
                     a: header.bNav.menu.catalogLink,
-                    event: e
+                    e: e
                 };
                 headerOnMouseMoveHelper(helperParam);
                 break;
@@ -431,7 +667,7 @@ var tmp = (function () {
                     targetImg: document.querySelectorAll('.menu_choose')[1],
                     img: document.querySelectorAll('.menu_choose')[0],
                     a: document.querySelector('.MEN>a'),
-                    event: e
+                    e: e
                 };
                 headerOnMouseMoveHelper(helperParam);
                 break;
@@ -443,7 +679,7 @@ var tmp = (function () {
                     targetImg: document.querySelectorAll('.menu_choose')[0],
                     img: document.querySelectorAll('.menu_choose')[1],
                     a: document.querySelector('.WOMAN>a'),
-                    event: e
+                    e: e
                 };
                 headerOnMouseMoveHelper(helperParam);
                 break;
@@ -455,7 +691,7 @@ var tmp = (function () {
                     targetImg: document.querySelectorAll('.menu_choose')[1],
                     img: document.querySelectorAll('.menu_choose')[0],
                     a: document.querySelector('.KIDS>a'),
-                    event: e
+                    e: e
                 };
                 headerOnMouseMoveHelper(helperParam);
                 break;
@@ -467,7 +703,7 @@ var tmp = (function () {
                     targetImg: document.querySelectorAll('.menu_choose')[0],
                     img: document.querySelectorAll('.menu_choose')[1],
                     a: document.querySelector('.SPORTS>a'),
-                    event: e
+                    e: e
                 };
                 headerOnMouseMoveHelper(helperParam);
                 break;
@@ -479,7 +715,7 @@ var tmp = (function () {
                     targetImg: document.querySelectorAll('.menu_choose')[0],
                     img: document.querySelectorAll('.menu_choose')[1],
                     a: header.bNav.menu.catalogLink,
-                    event: e
+                    e: e
                 };
                 headerOnMouseMoveHelper(helperParam);
                 break;
@@ -492,7 +728,7 @@ var tmp = (function () {
                     targetImg: document.querySelectorAll('.menu_choose')[1],
                     img: document.querySelectorAll('.menu_choose')[0],
                     a: document.querySelector('.BLOG>a'),
-                    event: e
+                    e: e
                 };
                 headerOnMouseMoveHelper(helperParam);
                 break;
@@ -515,6 +751,7 @@ var tmp = (function () {
     }
 
     function headerBnavMenuOnMouseOut(e) {
+
         switch (e.target) {
             case header.bNav.menu.self:
             {
@@ -582,6 +819,7 @@ var tmp = (function () {
             header.bNav.menu.links[i].className = '';
         }
     }
+
     function headerAnavMouseMoveHideDropmenu() {
         dropMenu.className = 'dropmenu';
         for (var i = 0; i < header.bNav.menu.links.length; i += 1) {
@@ -596,7 +834,8 @@ var tmp = (function () {
 
     Array.prototype.forEach.call(document.querySelectorAll('a'), function (el) {
         utils.addListener(el, 'click', function (e) {
-            utils.prevent(e)
+
+            utils.pre(e)
         }, false);
     });
 

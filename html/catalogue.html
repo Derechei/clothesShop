@@ -62,8 +62,6 @@
         </div>
     </nav>
 </header>
-
-
 <div id="scroll">
     <main>
         <!--my cart-->
@@ -108,6 +106,7 @@
                     <li class="NEED_HELP">
                         <div>
                             <p><strong>NEED HELP?</strong></p>
+
                             <p>Feel free to contact our team if you have any questions.</p>
                             <ul>
                                 <li><a href="">Contact our customer service</a></li>
@@ -138,16 +137,19 @@
                 <section class="HAVE_ACCOUNT">
                     <form action="#">
                         <p><strong>You have account</strong></p>
+
                         <p class="description">Please enter your login information to access your orders</p>
                         <label for="orderEmail1">Email*</label>
                         <input type="email" id="orderEmail1"/>
                         <label for="orderPassword1">Password*</label>
                         <input type="email" id="orderPassword1"/>
+
                         <div class="form_helper">
                             <p class="error_msg"><strong>ERROR MESSAGES</strong></p>
                             <a class="forgot_pass" href="#">Forgot your password?</a>
                         </div>
                         <p class="mandatory">*Mandatory fields</p>
+
                         <div class="order_btn_container">
                             <input type="submit" value="VIEW MY ORDERS"/>
                         </div>
@@ -156,17 +158,21 @@
                 <section class="DONT_HAVE_ACCOUNT">
                     <form action="#">
                         <p><strong>You don't have account</strong></p>
-                        <p class="description">Please enter the email address used during the checkout and the order number
+
+                        <p class="description">Please enter the email address used during the checkout and the order
+                            number
                             to track your order's progression</p>
                         <label for="orderEmail2">Email*</label>
                         <input type="email" id="orderEmail2"/>
                         <label for="orderPassword2">Password*</label>
                         <input type="email" id="orderPassword2"/>
+
                         <div class="form_helper">
                             <p class="error_msg"><strong>ERROR MESSAGES</strong></p>
                             <a class="forgot_pass" href="#">Forgot your password?</a>
                         </div>
                         <p class="mandatory">*Mandatory fields</p>
+
                         <div class="order_btn_container">
                             <input type="submit" value="VIEW MY ORDER"/>
                         </div>
@@ -191,7 +197,6 @@
         </article>
 
     </main>
-
     <div class="dropmenu">
         <ul>
             <li>
@@ -237,30 +242,38 @@
             </li>
         </ul>
     </div>
-
     <!--Create account-->
     <article class="CREATE_ACCAUNT">
-            <form action="#">
-                <p><strong>ACCOUNT CREATION</strong></p>
-                <div>
-                    <section>
-                        <div class="TITLE">
-                            <label >Title*</label>
-                            <div>
-                                <input type="radio" name="gender"/>
-                                <input type="radio" name="gender"/>
-                                <input type="radio" name="gender"/>
-                            </div>
+        <form action="#" method="post">
+            <p><strong>ACCOUNT CREATION</strong></p>
+
+            <div>
+                <section>
+                    <div class="TITLE">
+                        <label>Gender*</label>
+
+                        <div>
+                            <span>Mr.</span>
+                            <input type="radio" name="gender" checked/>
+                            <span>Mrs.</span>
+                            <input type="radio" name="gender"/>
                         </div>
-                        <label for="lastName">Last name*</label><input id="lastName" type="text"/>
-                        <label for="firstName">First name*</label><input id="firstName" type="text"/>
-                        <label for="address">Address (Naumber and street name)*</label><input id="address" type="text"/>
-                        <label for="company">Company/Address( Floor/ Flat no)</label><input id="company" type="text"/>
-                        <div class="half">
-                            <label class="postcode" for="postcode">Postcode*</label><input class="postcode" id="postcode" type="number"/>
-                            <label class="town" for="town">Town/City*</label><input class="town" id="town" type="text"/>
-                        </div>
-                        <label for="country">Country*</label><select id="country">
+                    </div>
+                    <label for="lastName">Last name*</label>
+                    <input required id="lastName" type="text"/>
+                    <label for="firstName">First name*</label>
+                    <input required id="firstName" type="text"/>
+                    <label for="address">Address (Naumber and street name)*</label>
+                    <input required id="address" type="text"/>
+                    <label for="company">Company/Address( Floor/ Flat no)</label>
+                    <input id="company" type="text"/>
+                    <label for="postcode">Postcode*</label>
+                    <span class="postcode error_msg"></span>
+                    <input id="postcode" type="number" min="1001" max="8000" maxlength="4"/>
+                    <label for="town">Town/City*</label>
+                    <input required id="town" type="text"/>
+                    <label for="country">Country*</label>
+                    <select id="country">
                         <option value="AF">Afghanistan</option>
                         <option value="AX">Åland Islands</option>
                         <option value="AL">Albania</option>
@@ -511,62 +524,143 @@
                         <option value="ZM">Zambia</option>
                         <option value="ZW">Zimbabwe</option>
                     </select>
-                        <p class="required">*Fields required</p>
-                    </section>
-                    <section>
-                        <div class="half">
-                            <label for="createEmail">Email address*</label>
-                            <input id="createEmail" type="email"/>
-                        </div>
-                        <div class="half">
-                            <label for="confirmCreateEmail">Confirm email address*</label>
-                            <input id="confirmCreateEmail" type="email"/>
-                        </div>
-                        <div class="half">
-                            <label for="createPassword">Password*</label>
-                            <input id="createPassword" type="password"/>
-                        </div>
-                        <div class="half">
-                            <label for="confirmCreatePassword">Confirm password*</label>
-                            <input id="confirmCreatePassword" type="password"/>
-                        </div>
-                        <div class="half">
-                            <label for="createModile">Mobile*</label>
-                            <input id="createModile" type="tel"/>
-                        </div>
-                        <div class="half date">
-                            <label >Birthday</label>
-                            <div>
-                                <select id="createDay"></select>
-                                <select id="createMonth"></select>
-                                <select id="createYear"></select>
-                            </div>
-                        </div>
-                        <div class="half lang">
-                            <label for="createLanguage">Language*</label>
-                            <select id="createLanguage"></select>
-                        </div>
-                        <div class="half">
-                            <input id="createSubscribe" type="checkbox"/>
-                            <label for="createSubscribe">I wish to subscribe to the newsletter</label>
-                        </div>
-                        <input type="submit" value="SUBMIT">
-                    </section>
-                </div>
-            </form>
-        </article>
+                </section>
+                <section>
+                    <label for="createEmail">Email address*</label>
+                    <span class="createEmail error_msg"></span>
+                    <input id="createEmail" type="email"/>
+                    <label for="confirmCreateEmail">Confirm email address*</label>
+                    <span class="confirmCreateEmail error_msg"></span>
+                    <input id="confirmCreateEmail" type="email"/>
+                    <label for="createPassword">Password*</label>
+                    <span class="createPassword error_msg"></span>
+                    <input id="createPassword" type="password"/>
+                    <label for="confirmCreatePassword">Confirm password*</label>
+                    <span class="confirmCreatePassword error_msg"></span>
+                    <input id="confirmCreatePassword" type="password"/>
+                    <div class="half">
+                        <label for="Tel">Mobile*</label>
+                        <span class="tel error_msg"></span>
+                        <input id="Tel" type="tel" pattern="\d{10}"/>
+                    </div>
+                    <div class="half date">
+                        <label>Birthday</label>
 
+                        <div>
+                            <select id="Day">
+                                <option value="01">01</option>
+                                <option value="02">02</option>
+                                <option value="03">03</option>
+                                <option value="04">04</option>
+                                <option value="05">05</option>
+                                <option value="06">06</option>
+                                <option value="07">07</option>
+                                <option value="08">08</option>
+                                <option value="09">09</option>
+                                <option value="10">10</option>
+                                <option value="11">11</option>
+                                <option value="12">12</option>
+                                <option value="13">13</option>
+                                <option value="14">14</option>
+                                <option value="15">15</option>
+                                <option value="16">16</option>
+                                <option value="17">17</option>
+                                <option value="18">18</option>
+                                <option value="19">19</option>
+                                <option value="20">20</option>
+                                <option value="21">21</option>
+                                <option value="22">22</option>
+                                <option value="23">23</option>
+                                <option value="24">24</option>
+                                <option value="25">25</option>
+                                <option value="26">26</option>
+                                <option value="27">27</option>
+                                <option value="28">28</option>
+                                <option value="29">29</option>
+                                <option value="30">30</option>
+                                <option value="31">31</option>
+                            </select>
+                            <select id="Month">
+                                <option value="01">01</option>
+                                <option value="02">02</option>
+                                <option value="03">03</option>
+                                <option value="04">04</option>
+                                <option value="05">05</option>
+                                <option value="06">06</option>
+                                <option value="07">07</option>
+                                <option value="08">08</option>
+                                <option value="09">09</option>
+                                <option value="10">10</option>
+                                <option value="11">11</option>
+                                <option value="12">12</option>
+                            </select>
+                            <select id="Year">
+                                <option value="1980">1980</option>
+                                <option value="1981">1981</option>
+                                <option value="1982">1982</option>
+                                <option value="1983">1983</option>
+                                <option value="1984">1984</option>
+                                <option value="1985">1985</option>
+                                <option value="1986">1986</option>
+                                <option value="1987">1987</option>
+                                <option value="1988">1988</option>
+                                <option value="1989">1989</option>
+                                <option value="1990">1990</option>
+                                <option value="1991">1991</option>
+                                <option value="1992">1992</option>
+                                <option value="1993">1993</option>
+                                <option value="1994">1994</option>
+                                <option value="1995">1995</option>
+                                <option value="1996">1996</option>
+                                <option value="1997">1997</option>
+                                <option value="1998">1998</option>
+                                <option value="1999">1999</option>
+                                <option value="2000">2000</option>
+                                <option value="2001">2001</option>
+                                <option value="2002">2002</option>
+                                <option value="2003">2003</option>
+                                <option value="2004">2004</option>
+                                <option value="2005">2005</option>
+                                <option value="2006">2006</option>
+                                <option value="2007">2007</option>
+                                <option value="2008">2008</option>
+                                <option value="2009">2009</option>
+                                <option value="2010">2010</option>
+                                <option value="2011">2011</option>
+                                <option value="2012">2012</option>
+                                <option value="2013">2013</option>
+                                <option value="2014">2014</option>
+                                <option value="2015">2015</option>
+                            </select>
+                        </div>
+                    </div>
+                    <label for="Language">Language*</label>
+                    <select id="Language">
+                        <option value="ENG">English</option>
+                        <option value="RU">Russian</option>
+                        <option value="FR">Franche</option>
+                        <option value="DUE">German</option>
+                    </select>
+                    <input id="Subscribe" type="checkbox"/>
+                    <label for="Subscribe">I wish to subscribe to the newsletter</label>
+                    <input type="submit" value="SUBMIT">
+                </section>
+            </div>
+        </form>
+    </article>
     <!--Login-->
     <article class="POPIN_LOGIN">
         <div>
             <section class="HAVE_ACCOUNT">
                 <form action="#" method="post">
                     <p class="amphasize">YOU ALREADY HAVE AN ACCAOUNT</p>
+
                     <p class="amphasize"><strong>LOG IN</strong></p>
                     <label for="loginMail">Email*</label>
-                    <input type="email" id="loginMail" pattern="(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|'(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*')@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])"/>
+                    <input invalid type="email" id="loginMail"/>
                     <label for="loginPassword">Password*</label>
                     <input type="password" id="loginPassword"/>
+
                     <div class="form_helper">
                         <p class="error_msg"></p>
                         <a class="forgot_pass" href="#">Forgot your password?</a>
@@ -578,19 +672,21 @@
                 </form>
             </section>
             <section class="DONT_HAVE_ACCOUNT">
-                <form action="#">
+                <form action="#" method="post">
                     <p class="amphasize">YOU DON'T HAVE AN ACCOUNT</p>
+
                     <p class="amphasize"><strong>CREATE AN ACCAUNT</strong></p>
+
                     <p class="description">Please enter the email address used during the checkout and the order number
                         to track your order's progression</p>
+
                     <div class="login_btn_container dont_have">
-                        <input id = "register" type="submit" value="CREATE AN ACCOUNT"/>
+                        <input id="register" type="submit" value="CREATE AN ACCOUNT"/>
                     </div>
                 </form>
             </section>
         </div>
     </article>
-
     <footer>
         <ul>
             <li class="PRODUCTS">
