@@ -1,0 +1,182 @@
+{
+  "id0001": {
+    "name": "Fatro Pull-over hood",
+    "price": 69,
+    "color": "#000",
+    "gender": "men",
+    "type": "hodies",
+    "description": "With its sober, classic cut, the Fatro hoodie is clearly inspired by retro sportswear. It is made of cotton-polyester brushed fleece and comes in three '90s-flashback colour schemes. [...]",
+    "url": "../content/img/clothes/hodies&sweat_tops/1.jpg"
+  },
+  "id0002": {
+    "name": "Besho Sweater",
+    "price": 79,
+    "color": "#C42C39",
+    "gender": "men",
+    "type": "hodies",
+    "description": "The classic, streamlined Besho sweater artfully combines elegance and sobriety. It is made of cotton jersey and comes in four bold, seasonal colours. [...]",
+    "url": "../content/img/clothes/hodies&sweat_tops/2.jpg"
+  },
+  "id0003": {
+    "name": "Huiton Pull-over hood",
+    "price": 79,
+    "color": "#02882C",
+    "gender": "men",
+    "type": "hodies",
+    "description": "A highlight of the Fall-Winter 2015 collection, the Huiton hoodie illustrates le coq sportif's latest partnership, with Saint-Etienne's prestigious football club. It is made of refined brushed fleece and comes in Saint-Etienne's Greens' signature colours, gorgeous black and green. [...]",
+    "url": "../content/img/clothes/hodies&sweat_tops/3.jpg"
+  },
+  "id0004": {
+    "name": "Bevinou Cardigan",
+    "price": 89,
+    "color": "#C42C39",
+    "gender": "men",
+    "type": "hodies",
+    "description": "The classic, streamlined Bevinou cardigan artfully combines elegance and sobriety. It is made of cotton jersey and comes in four bold, seasonal colours, including a heather version. [...]",
+    "url": "../content/img/clothes/hodies&sweat_tops/4.jpg"
+  },
+  "id0005": {
+    "name": "Molawa Full zip sweatsthirt",
+    "price": 65,
+    "color": "#fff",
+    "gender": "women",
+    "type": "hodies",
+    "description": "With a classic, decidedly sporty cut, the Molawa zipped hoodie is an original high-neck model. It is made of refined unbrushed fleece and comes in white or black for a retro effect that is accentuated by the contrast stripes at the cuffs and hem. [...]",
+    "url": "../content/img/clothes/hodies&sweat_tops/5.jpg"
+  },
+  "id0006": {
+    "name": "Fancy Maric Full zip hood",
+    "price": 69,
+    "color": "#F9E7B6",
+    "gender": "all",
+    "type": "hodies",
+    "description": "In refined brushed fleece, the Fancy Maric zipped hoodie has a gorgeous black and white print with sophisticated details – polka dots and wide and thin stripes - that pay homage to le coq sportif's three partner sports: tennis, cycling, and football. Its zipper features blue-white-red trim. [...]",
+    "url": "../content/img/clothes/hodies&sweat_tops/6.jpg"
+  },
+  "id0007": {
+    "name": "Chene Full zip hood",
+    "price": 89,
+    "color": "#C42C39",
+    "gender": "all",
+    "type": "hodies",
+    "description": "With its classic, athletic-inspired cut, the Chene zipped hoodie is a must-have. It is made of refined brushed fleece and has a jersey-lined hood. [...]   ",
+    "url": "../content/img/clothes/hodies&sweat_tops/7.jpg"
+  },
+  "id0008": {
+    "name": "Caritu Pull-over hood",
+    "price": 69,
+    "color": "#003D71",
+    "gender": "all",
+    "type": "hodies",
+    "description": "With its classic, athletic-inspired cut, the Caritu hoodie is a trendy essential. It is made of refined cotton-polyester brushed fleece and comes in two elegant colour schemes, with the main colour on the lower body and sleeves, and the contrast colour on the chest, shoulders, and hood. [...]",
+    "url": "../content/img/clothes/hodies&sweat_tops/8.jpg"
+  },
+  "id0009": {
+    "name": "Mapo Pull-over hood",
+    "price": 55,
+    "color": "#000",
+    "gender": "woman",
+    "type": "hodies",
+    "description": "The Mapo hoodie comes in two stylish, feminine colours, making it perfect for any casual occasion. In cotton-polyester brushed fleece, it features refined details that make all the difference: a drawstring with metallic tips and a wide high-neck hood. [...]",
+    "url": "../content/img/clothes/hodies&sweat_tops/9.jpg"
+  },
+  "id00010": {
+    "name": "Marilia Crew Sweat",
+    "price": 59,
+    "color": "#000",
+    "gender": "woman",
+    "type": "hodies",
+    "description": "For winter 2015, le coq sportif is taking \"Carte Blanche,\" as the gorgeous loopy embroidery on the Marilia sweatshirt shows. [...]",
+    "url": "../content/img/clothes/hodies&sweat_tops/10.jpg"
+  },
+  "id00011": {
+    "name": "Baldina Cardigan",
+    "price": 119,
+    "color": "#F9E7B6",
+    "gender": "men",
+    "type": "hodies",
+    "description": "The Baldina cardigan is an elegant trend piece, and a must-have this season. It is made of refined brushed fleece and comes in two colours: iconic navy or trendy heather grey. [...]",
+    "url": "../content/img/clothes/hodies&sweat_tops/11.jpg"
+  },
+  "id00012": {
+    "name": "Besho Sweater",
+    "price": 79,
+    "color": "#003D71",
+    "gender": "men",
+    "type": "hodies",
+    "description": "The classic, streamlined Besho sweater artfully combines elegance and sobriety. It is made of cotton jersey and comes in four bold, seasonal colours. [...]",
+    "url": "../content/img/clothes/hodies&sweat_tops/12.jpg"
+  },
+  "id00013": {
+    "name": "Baldina Cardigan",
+    "price": 119,
+    "color": "#003D71",
+    "gender": "men",
+    "type": "hodies",
+    "description": "The Baldina cardigan is an elegant trend piece, and a must-have this season. It is made of refined brushed fleece and comes in two colours: iconic navy or trendy heather grey. [...]",
+    "url": "../content/img/clothes/hodies&sweat_tops/13.jpg"
+  },
+  "id00014": {
+    "name": "Coliri Sweater",
+    "price": 89,
+    "color": "#003D71",
+    "gender": "men",
+    "type": "hodies",
+    "description": "The original, elegant Coliri sweater is a brilliant continuation of le coq sportif's tradition. It is made of refined cotton and comes in two colour schemes - grey and navy - that are perfect for the season.",
+    "url": "../content/img/clothes/hodies&sweat_tops/14.jpg"
+  },
+  "id00015": {
+    "name": "Doniou Pull-over hood",
+    "price": 119,
+    "color": "#000",
+    "gender": "men",
+    "type": "hodies",
+    "description": "Faithful to the Coq d’or line's standards of elegance, the Doniou hoodie is an essential part of the Fall-Winter collection. [...]",
+    "url": "../content/img/clothes/hodies&sweat_tops/15.jpg"
+  },
+  "id00016": {
+    "name": "Huiton Pull-over hood",
+    "price": 75,
+    "color": "#02882C",
+    "gender": "all",
+    "type": "hodies",
+    "description": "A highlight of the Fall-Winter 2015 collection, the Huiton kids' hoodie illustrates le coq sportif's latest partnership, with Saint-Etienne's prestigious football club. It is made of refined brushed fleece and comes in Saint-Etienne's Greens' signature colours, eclipse and green. [...]",
+    "url": "../content/img/clothes/hodies&sweat_tops/16.jpg"
+  },
+  "id00017": {
+    "name": "Anoba Pull-over hood",
+    "price": 59,
+    "color": "#000",
+    "gender": "all",
+    "type": "hodies",
+    "description": "With a classic cut inspired by le coq sportif's classics, the Anoba hoodie is sporty and appealing. It is made of refined brushed fleece and comes in a range of bold, '90s-inspired colours. [...]",
+    "url": "../content/img/clothes/hodies&sweat_tops/17.jpg"
+  },
+  "id00018": {
+    "name": "ASSE Training Sweat",
+    "price": 60,
+    "color": "#02882C",
+    "gender": "all",
+    "type": "hodies",
+    "description": "After its historic partnership with the AS Saint-Etienne until the 1980s, le coq sportif will once again be the club's equipment sponsor starting in the 2015 season. Both on and off the pitch, the tricolour brand will provide a series of Training equipment for players and supporters alike. [...]",
+    "url": "../content/img/clothes/hodies&sweat_tops/18.jpg"
+  },
+  "id00019": {
+    "name": "Chene Full zip hood",
+    "price": 89,
+    "color": "#003D71",
+    "gender": "men",
+    "type": "hodies",
+    "description": "With its classic, athletic-inspired cut, the Chene zipped hoodie is a must-have. It is made of refined brushed fleece and has a jersey-lined hood. [...]",
+    "url": "../content/img/clothes/hodies&sweat_tops/19.jpg"
+  },
+  "id00020": {
+    "name": "Besho Sweater",
+    "price": 79,
+    "color": "#000",
+    "gender": "men",
+    "type": "hodies",
+    "description": "The classic, streamlined Besho sweater artfully combines elegance and sobriety. It is made of cotton jersey and comes in four bold, seasonal colours. [...]",
+    "url": "../content/img/clothes/hodies&sweat_tops/20.jpg"
+  }
+}

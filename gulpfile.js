@@ -19,7 +19,7 @@ gulp.task('watch', function () {
         livereload();
     });
     gulp.watch('html/*.html',['html']);
-    gulp.watch('scss_styles/*.scss', ['scss']);
+    gulp.watch('scss/*.scss', ['scss']);
     gulp.watch('css/styles/*.css', ['prefixer']);
 });
 
@@ -31,14 +31,14 @@ gulp.task('html',function(){
 
 // SCSS Task compiler.
 gulp.task('scss', function () {
-    return scss('scss_styles/', {
+    return scss('scss/', {
         sourcemap: true,
-        cacheLocation: 'scss_styles/sass_cache',
+        cacheLocation: 'scss/cache',
         force: true
     })
         .pipe(sourcemaps.write('/', {
             includeContent: false,
-            sourceRoot: 'scss_styles/'
+            sourceRoot: 'scss/'
         }))
         .pipe(gulp.dest('css/styles'));
 });

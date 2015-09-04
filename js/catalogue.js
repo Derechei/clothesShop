@@ -1,4 +1,5 @@
 (function () {
+    "use strict";
     var header = {
             self: document.querySelector('header'),
             aNav: {
@@ -23,10 +24,10 @@
             },
             bNav: {
                 self: document.querySelector('.BELOW_HEADER'),
-                logo: document.querySelector('.LOGO'),
+                logo: document.querySelector('#LOGO'),
                 menu: {
-                    self: document.querySelector('.MENU'),
-                    links: document.querySelectorAll('.MENU a'),
+                    self: document.querySelector('#MENU'),
+                    links: document.querySelectorAll('#MENU a'),
                     catalogLink: document.querySelector('.CATALOG a'),
                     catalogSpan: document.querySelector('.CATALOG span'),
                     catalog: document.querySelector('.CATALOG'),
@@ -80,9 +81,7 @@
             }
         },
         dropMenu = document.querySelector('.dropmenu'),
-        order = document.querySelector('.ORDER_TRACKING'),
-        my_cart = document.querySelector('.MY_CART'),
-        text = document.querySelectorAll('.CREATE_ACCAUNT [type="text"]')
+        text = document.querySelectorAll('.CREATE_ACCAUNT [type="text"]'),
         createAccount = {
             self: document.querySelector('.CREATE_ACCAUNT'),
             gender: document.querySelectorAll('[name="gender"]'),
@@ -121,6 +120,28 @@
                 self: document.querySelector('.DONT_HAVE_ACCOUNT'),
                 submit: document.querySelector('.POPIN_LOGIN .DONT_HAVE_ACCOUNT [type="submit"]')
             }
+        },
+        main = {
+            self: document.querySelector('main'),
+            catalogue: {
+                self: document.querySelector('#catalogue'),
+                filter: {
+                    self: document.querySelector('#filters'),
+                    gender: document.querySelector('#gender'),
+                    categories: {
+                        filter: [0, 0, 0, 0, 0, 0, 0, 0],
+                        a: document.querySelectorAll('#categories a'),
+                        li: document.querySelectorAll('#categories li')
+                    },
+                    color: {
+                        filter: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                        self: document.querySelectorAll('#colors a'),
+                        colorArray: ['#003D71', '#C42C39', '#F4BC08', '#02882C', '#000', '#F9E7B6', '#EF8A07', '#5A433F', '#2C2C2C', '#8C56A9', '#AAE7FC', '#CACCCE', '#fff']
+                    }
+                }
+            },
+            myCart: document.querySelector('#MY_CART'),
+            order: document.querySelector('#ORDER_TRACKING')
         },
         helper = {
             passwordErrors: [],
@@ -179,7 +200,107 @@
             preStop: null,
             pre: null,
             stop: null
+        },
+        i,
+        db,
+        output,
+        cart,
+        Item = function (o) {
+            this.name = o.name;
+            this.price = o.price;
+            this.color = o.color;
+            this.gender = o.gender;
+            this.type = o.type;
+            this.description = o.description;
+            this.count = o.count;
+            this.url = o.url;
+            this.id = o.id;
+        },
+        addItemToTheCart = function (o) {
+            for (var i in cart) {
+                if (cart[i].name === o.name) {
+                    cart[i].count += o.count;
+                    saveCart();
+                    return;
+                }
+            }
+            if (cart) {
+                cart.push(new Item(o));
+            } else {
+                cart = [];
+                cart.push(new Item(o));
+            }
+            saveCart();
+        },
+        removeItemFromCart = function (id) {
+            for (var i in cart) {
+                if (Object.prototype.hasOwnProperty.call(cart, i)) {
+                    if (cart[i].id === id) {
+                        cart[i].count = cart[i].count - 1;
+                        if (cart[i].count === 0) {
+                            cart.splice(i, 1);
+                        }
+                        break;
+                    }
+                }
+            }
+            saveCart();
+        },
+        removeItemsFromCartAll = function (id) {
+            for (var i in cart) {
+                if (Object.prototype.hasOwnProperty.call(cart, i)) {
+                    if (cart[i].id === id) {
+                        cart.splice(i, 1);
+                        break;
+                    }
+                }
+            }
+            saveCart();
+        },
+        clearCart = function () {
+            localStorage.removeItem('shoppingCart');
+        },
+        countCart = function () {
+            var count = 0;
+            for (var i in cart) {
+                if (Object.prototype.hasOwnProperty.call(cart, i)) {
+                    count += cart[i].count;
+                }
+            }
+            return count;
+        },
+        totalCost = function () {
+            var cost = 0;
+            for (var i in cart) {
+                if (Object.prototype.hasOwnProperty.call(cart, i)) {
+                    cost += cart[i].price * cart[i].count;
+                }
+            }
+            return cost.toFixed(2);
+        },
+        listCart = function () {
+            if (cart) {
+                return cart.slice();
+            } else return null;
+        },
+        saveCart = function () {
+            localStorage.setItem('shoppingCart', JSON.stringify(cart));
+        },
+        loadCart = function () {
+            cart = JSON.parse(localStorage.getItem('shoppingCart'));
+        },
+        setCountForItem = function (name, count) {
+            for (var i in cart) {
+                if (Object.prototype.hasOwnProperty.call(cart, i)) {
+                    if (cart[i].name === name) {
+                        cart[i].count = count;
+                        break;
+                    }
+                }
+            }
+            saveCart();
         };
+    loadCart();
 
     utils = {
         addListener: null,
@@ -253,7 +374,6 @@
         }
 
     }());
-
     // Create in body to <img> for menu animation.
     (function longMenuAnimation() {
         var imgLong = document.createElement('img'),
@@ -269,19 +389,28 @@
             document.body.appendChild(imgShort);
         }
     })();
-
     // Window events
-    (function(){
+    (function () {
         // When screenTop U see abovemenu. When scrollOver abovemenu disapear's.
         utils.addListener(window, 'scroll', windowOnScroll, false);
         utils.addListener(window, 'resize', windowResizeHeader, false);
         utils.addListener(window, 'load', windowLoad, false);
+
+        $(window).mousemove(function (event) {
+            // Helper.
+            if (event.clientY <= 20 && window.innerWidth > 550) {
+                header.aNav.self.className = 'ABOVE_HEADER collapse show';
+                windowResizeHeader();
+            }
+        });
+
         function windowLoad() {
             if (window.innerWidth > 550) {
                 header.aNav.self.className = 'ABOVE_HEADER collapse show';
             }
             windowResizeHeader();
         }
+
         function windowOnScroll() {
             if (window.scrollY === 0 && window.innerWidth > 550) {
                 header.aNav.self.className = 'ABOVE_HEADER collapse show';
@@ -294,9 +423,15 @@
             }
         }
     }());
+    function windowResizeHeader() {
+        document.querySelector('header').style.width = document.querySelector('main').scrollWidth + 'px';
+        document.querySelector('main').style.marginTop = document.querySelector('header').offsetHeight + 'px';
+        document.querySelector('footer').style.top = document.querySelector('header').offsetHeight + 'px';
+        $('#grid').find('.selected').css('left', $('#filters').offset().left + $('#filters').outerWidth(true));
+    }
 
     // Navigation
-    (function(){
+    (function () {
         utils.addListener(header.bNav.logo, 'click', function () {
             header.toggle();
             windowResizeHeader();
@@ -464,6 +599,7 @@
                 }
             }
         }
+
         function headerBnavMenuOnMouseOut(e) {
 
             switch (e.target) {
@@ -486,6 +622,7 @@
             document.querySelectorAll('.menu_choose')[1].style.display = 'none';
             document.querySelectorAll('.menu_choose')[0].style.margin = '0';
         }
+
         function headerOnMouseMoveHelper(o) {
             o.targetImg.style.top = o.target.offsetTop + o.target.offsetHeight - 6 + 'px';
             o.targetImg.style.left = o.target.offsetLeft + 'px';
@@ -511,9 +648,8 @@
             }
         }
     }());
-
     // Dropmenu fadeIn fadeOut
-    (function(){
+    (function () {
         utils.addListener(document.querySelector('main'), 'mousemove', mainMouseMoveHideDropmenu, false);
         utils.addListener(document.querySelector('footer'), 'mousemove', footerMouseMoveHideDropmenu, false);
         utils.addListener(header.aNav.self, 'mousemove', headerAnavMouseMoveHideDropmenu, false);
@@ -525,18 +661,21 @@
                 header.bNav.menu.links[i].className = '';
             }
         }
+
         function footerMouseMoveHideDropmenu() {
             dropMenu.className = 'dropmenu';
             for (var i = 0; i < header.bNav.menu.links.length; i += 1) {
                 header.bNav.menu.links[i].className = '';
             }
         }
+
         function headerAnavMouseMoveHideDropmenu() {
             dropMenu.className = 'dropmenu';
             for (var i = 0; i < header.bNav.menu.links.length; i += 1) {
                 header.bNav.menu.links[i].className = '';
             }
         }
+
         function dropMenuMouseMove() {
             if (header.aNav.self.className === 'ABOVE_HEADER collapse') {
                 dropMenu.className = 'dropmenu show upper';
@@ -544,10 +683,9 @@
                 dropMenu.className = 'dropmenu show';
             }
         }
+
         function headerMouseMoveShowAnav(e) {
 
-            // Helper.
-            document.querySelector("[type='search']").placeholder = e.screenX + " " + e.screenY + " " + window.scrollY;
             // Window top and not mobile version.
             if (e.screenY <= 120 && window.innerWidth > 550) {
                 header.aNav.self.className = 'ABOVE_HEADER collapse show';
@@ -555,30 +693,281 @@
             }
         }
     }());
-
-    // Show to track menu.
-    utils.addListener(document.querySelector('.TO_TRACK a'), 'click', function () {
-        my_cart.className = 'MY_CART';
-        windowResizeHeader();
-        if (order.className === 'ORDER_TRACKING show') {
-            order.className = 'ORDER_TRACKING';
-        } else {
-            order.className = 'ORDER_TRACKING show';
+    // Filter generate color.
+    for (output = '', i = 0; i < 13; i += 1) {
+        var color = main.catalogue.filter.color.colorArray[i];
+        output += '<li><a href="#" style="'
+            + 'background-color:' + color + '; '
+            + 'box-shadow: 0 0 0 1px ' + color + ', 0 0 0 3px ' + color + ';" ' +
+            'data-type = "' + color + '"></a></li>';
+    }
+    // Filter Colors events.
+    $('#colors').html(output)
+        .on('click', 'a', function (event) {
+            var tmp = $('#colors').find('a'),
+                color = $(this).attr('data-type');
+            $('#grid').find('.selected').removeClass('selected');
+            for (i in tmp) {
+                if (Object.prototype.hasOwnProperty.call(tmp, i)) {
+                    if ($(this)[0] === tmp[i]) {
+                        break;
+                    }
+                }
+            }
+            if (!$(this).hasClass('selected')) {
+                if (color === 'rgb(255, 255, 255)') {
+                    $(this).css('box-shadow', '0 0 0 1px #fff, 0 0 0 3px rgb(42, 56, 55)');
+                } else {
+                    $(this).css('box-shadow', '0 0 0 1px #fff, 0 0 0 3px rgb(42, 56, 55)');
+                }
+                $(this).addClass('selected');
+                main.catalogue.filter.color.filter[i] = $(this).attr('data-type');
+            } else {
+                if (color === 'rgb(255, 255, 255)') {
+                    $(this).css('box-shadow', '0 0 0 2px #fff, 0 0 0 3px #CACCCE');
+                } else {
+                    $(this).css('box-shadow', '0 0 0 1px ' + color + ', 0 0 0 3px ' + color);
+                }
+                $(this).removeClass('selected');
+                main.catalogue.filter.color.filter[i] = 0;
+            }
+            firstShow(main.catalogue.filter.color.filter);
+            utils.preStop(event);
+        })
+        .find('li:last-child a').css('box-shadow', '0 0 0 2px #fff, 0 0 0 3px #CACCCE');
+    $('#categories')
+        .find('li').css('border', '2px solid rgb(229, 235, 241)')
+        .on('click', 'a', function () {
+            var tmp = $('#categories').find('a');
+            $('#grid').find('.selected').removeClass('selected');
+            for (i in tmp) {
+                if (Object.prototype.hasOwnProperty.call(tmp, i)) {
+                    if ($(this)[0] === tmp[i]) {
+                        break;
+                    }
+                }
+            }
+            if (!$(this).hasClass('selected')) {
+                $(this).parent().css('border', '2px solid rgb(42, 56, 55)');
+                $(this).addClass('selected');
+                main.catalogue.filter.categories.filter[i] = $(this).attr('data-type');
+            } else {
+                $(this).parent().css('border', '2px solid rgb(229, 235, 241)');
+                $(this).removeClass('selected');
+                main.catalogue.filter.categories.filter[i] = 0;
+            }
+            firstShow(main.catalogue.filter.categories.filter);
+        });
+    // Filtering items.
+    function firstShow(arr) {
+        for (var tmp = 0, i = 0; i < arr.length - 1; i += 1) {
+            tmp += arr[i];
         }
-    }, false);
-    // Show shoping cart.
-    utils.addListener(document.querySelector('.SHOPING_CART a'), 'click', function () {
-        order.className = 'ORDER_TRACKING';
-        windowResizeHeader();
-        if (my_cart.className === 'MY_CART show') {
-            my_cart.className = 'MY_CART';
+        if (tmp === 0) {
+            $('#grid').find('li').css('display', 'flex');
         } else {
-            my_cart.className = 'MY_CART show';
+            $('#grid').find('li').css('display', 'none');
+            for (i = 0; i < arr.length - 1; i += 1) {
+                $('#grid').find('[data-type=' + arr[i] + ']').css('display', 'flex');
+                $('#grid').find('[data-color=' + arr[i] + ']').css('display', 'flex');
+            }
         }
-    }, false);
+    }
 
-    // login.
-    (function(){
+    // Get data from JSON.
+    $.ajax({
+        url: '../js/goods.json',
+        type: 'GET',
+        dataType: 'json',
+        success: function (data) {
+            localStorage.setItem('db', JSON.stringify(data));
+        }
+    });
+    db = JSON.parse(localStorage.getItem('db'));
+    output = '';
+    // Grid generate Items.
+    for (i in db) {
+        if (Object.prototype.hasOwnProperty.call(db, i)) {
+            output += '<li'
+                + ' data-color = ' + db[i].color
+                + ' data-type = ' + db[i].type + '>' +
+                '<a href="#"'
+                + ' data-id = ' + i + ' >' +
+                '<img src = ' + db[i].url + '>' +
+                '</a><div class="container">' +
+                '<p class="name">' + db[i].name + '</p>' +
+                '<div><span class="price">' + db[i].price + '€</span>' +
+                '<input  class="item-count" type="number" value="1" min="1">' +
+                '<a href="#" class="add-item" data-id="' + i + '">' +
+                '<i class="fa fa-cart-plus"></i>' +
+                '</a></div>' +
+                '<p class="description">' + db[i].description + '</p>' +
+                '</li>';
+        }
+    }
+    $('#grid').find('>ul').html(output);
+    $('#grid').on('click', 'a', function () {
+        var i;
+        for (i in db) {
+            if (Object.prototype.hasOwnProperty.call(db, i)
+                && i === $(this).attr('data-id')) {
+                if (!$(this).parent().hasClass('selected')) {
+                    $('#grid').find('.selected').removeClass('selected');
+                    var offset = $(this).offset();
+                    $(this).parent().addClass('selected');
+                    $(this).parent()
+                        .css('top', offset.top)
+                        .css('left', offset.left);
+                    window.scrollTo(0, offset.top - 100);
+                } else {
+                    $('#grid').find('.selected').removeClass('selected');
+                }
+            }
+        }
+    });
+
+    // Cart mathods.
+    $('main')
+        .on('click', '.delete-item', function () {
+            var id = $(this).attr('data-id');
+            removeItemsFromCartAll(id);
+            displayCart();
+        })
+        .on('click', '.substract-item', function () {
+            var id = $(this).attr('data-id');
+            removeItemFromCart(id);
+            displayCart();
+        })
+        .on('click', '.clear-cart',function (event) {
+            clearCart();
+            displayCart();
+            utils.preStop(event);
+        })
+        .on('click', '.confirm-cart',function(){});
+    $('#grid').on('click', '.add-item', function () {
+        var name,
+            price,
+            gender,
+            type,
+            description,
+            count,
+            url,
+            color,
+            id;
+        for (i in db) {
+            if (Object.prototype.hasOwnProperty.call(db, i)) {
+                if ($(this).attr('data-id') === i) {
+                    name = db[i].name;
+                    price = db[i].price;
+                    gender = db[i].gender;
+                    type = db[i].type;
+                    description = db[i].description;
+                    count = +$(this).parent().find('.item-count').val();
+                    url = db[i].url;
+                    id = i;
+                    color = db[i].color;
+                }
+            }
+        }
+        addItemToTheCart(new Item({
+            name: name,
+            price: price,
+            gender: gender,
+            type: type,
+            description: description,
+            count: count,
+            url: url,
+            id: id,
+            color: color
+        }));
+        $('.fa-cart-arrow-down').addClass('show');
+        $('.fa-shopping-cart').removeClass('show');
+    });
+
+// Show to track menu.
+    $('#TO_TRACK').on('click', 'a', function () {
+        windowResizeHeader();
+        $('#MY_CART').removeClass('show');
+        $('#CATALOGUE').removeClass('show');
+        $('#ORDER_TRACKING').addClass('show');
+    });
+// Show shoping cart.
+    $('#SHOPING_CART').on('click', 'a', function () {
+        windowResizeHeader();
+        $('#MY_CART').addClass('show');
+        $('#CATALOGUE').removeClass('show');
+        $('#ORDER_TRACKING').removeClass('show');
+        displayCart();
+    });
+// Show catalog.
+    $('#MENU').on('click', '.catalog', showCatalog);
+    $('#LOGO').on('click', function () {
+        if (window.innerWidth > 550) {
+            showCatalog();
+        }
+    });
+    $('footer').find('.PRODUCTS').on('click', 'a', showCatalog);
+    function showCatalog() {
+        windowResizeHeader();
+        $('#MY_CART').removeClass('show');
+        $('#CATALOGUE').addClass('show');
+        $('#ORDER_TRACKING').removeClass('show');
+    }
+
+    function displayCart() {
+        var myCart,
+            output,
+            totalCount,
+            totalPrice;
+        loadCart();
+        totalCount = countCart();
+        totalPrice = totalCost();
+        myCart = listCart();
+        if (myCart === null) {
+            output = '<p><strong>Your cart is empty.</strong></p>';
+        } else {
+            output = '<p><strong>Your cart.</strong></p><ul>';
+            for (var i in myCart) {
+                output += '<li>' +
+                    '<div>' +
+                    '<p><strong>ID:</strong> ' + myCart[i].id + '</p>' +
+                    '<p><strong>Count:</strong> ' + myCart[i].count + '</p>' +
+                    '<p><strong>Price:</strong> ' + myCart[i].price + '</p>' +
+                    '</div>' +
+                    '<figure>' +
+                    '<img src="' + myCart[i].url + '"/>' +
+                    '<figurecaption><strong>Name:</strong> ' + myCart[i].name + '</figurecaption>' +
+                    '</figure>' +
+                    '<div>' +
+                    '<div class="cartColor" style="background-color: ' + myCart[i].color + ';"></div>' +
+                    '<p><strong>Gender:</strong> ' + myCart[i].gender + '</p>' +
+                    '</div>' +
+                    '<div>' +
+                    '<a class="substract-item" data-id="' + myCart[i].id + '" href="#"><i class="fa fa-minus"></i></a>' +
+                    '<a class="delete-item" data-id="' + myCart[i].id + '" href="#"><i class="fa fa-trash-o"></i></a>' +
+                    '</div>' +
+                    '</li>';
+            }
+
+            output += '</ul>' +
+                '<hr/>' +
+                '<div class="total">' +
+                    '<div>' +
+                        '<p><strong>Total price: </strong>' + totalPrice + '</p>' +
+                        '<p><strong>Total count: </strong>' + totalCount + '</p>' +
+                    '</div>' +
+                    '<div class="confButtons">' +
+                        '<a class = "clear-cart" href="#"><i class="fa fa-times"></i></a>' +
+                        '<a class = "confirm-cart" href="#"><i class="fa fa-check"></i></a>' +
+                    '</div>' +
+                '</div>';
+        }
+        $('#CART_CONTAINER').html(output);
+        window.scrollTo(0, 0);
+    }
+
+// login.
+    (function () {
         utils.addListener(document.querySelector('.LOGIN a'), 'click', headerAboveMenuLogicCkick, false);
         utils.addListener(login.self, 'click', loginClick, false);
         utils.addListener(login.have_account.submit, 'click', loginHaveAccountSubmit, true);
@@ -600,6 +989,7 @@
                 login.have_account.password.validity.patternMismatch = true;
             }
         }
+
         function loginEmailValidate() {
             login.have_account.email.required = true;
             if (login.have_account.email.validity.valueMissing) {
@@ -627,6 +1017,7 @@
                 login.have_account.email.required = false;
             }
         }
+
         function loginHaveAccountSubmit() {
             if (!helper.error.hesh.login.email) {
                 loginEmailValidate();
@@ -642,6 +1033,7 @@
                 }
             }
         }
+
         function loginClick(e) {
 
             switch (e.target) {
@@ -665,6 +1057,7 @@
             }
             utils.preStop(e);
         }
+
         function headerAboveMenuLogicCkick() {
             login.self.className = 'POPIN_LOGIN show';
             document.querySelector('main').className = 'modal';
@@ -672,9 +1065,8 @@
             document.querySelector('footer').className = 'modal';
         }
     }());
-
-    // createAccount.
-    (function(){
+// createAccount.
+    (function () {
         utils.addListener(createAccount.postcode, 'blur', createAccountPostCodeValidate, false);
         utils.addListener(createAccount.password, 'blur', createAccountPasswordValidate, false);
         utils.addListener(createAccount.email, 'blur', createAccountEmailValidate, false);
@@ -692,8 +1084,8 @@
         }, true);
         utils.addListener(createAccount.submit, 'click', createAccountSubmit, false);
         function createAccountSubmit() {
-            Array.prototype.forEach.call(document.querySelectorAll('.CREATE_ACCAUNT [type="text"]'),function(el){
-                if(el.validity.valueMissing){
+            Array.prototype.forEach.call(document.querySelectorAll('.CREATE_ACCAUNT [type="text"]'), function (el) {
+                if (el.validity.valueMissing) {
                     el.focus();
                 }
             });
@@ -704,6 +1096,7 @@
             createAccountConfirmPasswordValidate();
             createAccountTelValidate();
         }
+
         function createAccountTelValidate() {
             createAccount.tel.required = true;
             if (createAccount.tel.validity.valueMissing) {
@@ -727,6 +1120,7 @@
                 createAccount.tel.className = '';
             }
         }
+
         function createAccountConfirmPasswordValidate() {
             if (createAccount.confirmPassword.value !== createAccount.password.value) {
                 helper.error.hesh.createAccount.confirmPassword = helper.error.generate({
@@ -741,6 +1135,7 @@
                 createAccount.confirmPassword.className = '';
             }
         }
+
         function createAccountConfirmEmailValidate() {
             if (createAccount.confirmEmail.value !== createAccount.email.value) {
                 helper.error.hesh.createAccount.confirmEmail = helper.error.generate({
@@ -755,6 +1150,7 @@
                 createAccount.confirmEmail.className = '';
             }
         }
+
         function createAccountPasswordValidate() {
             helper.error.hesh.createAccount.password = helper.error.generate({
                 target: createAccount.password,
@@ -769,6 +1165,7 @@
                 createAccount.password.className = '';
             }
         }
+
         function createAccountEmailValidate() {
             createAccount.email.required = true;
             if (createAccount.email.validity.valueMissing) {
@@ -796,6 +1193,7 @@
                 createAccount.email.required = false;
             }
         }
+
         function createAccountPostCodeValidate() {
             createAccount.postcode.required = true;
             if (createAccount.postcode.validity.valueMissing) {
@@ -821,17 +1219,11 @@
             }
         }
     }());
-
-    // blocking links.
+// blocking links.
     Array.prototype.forEach.call(document.querySelectorAll('a'), function (el) {
         utils.addListener(el, 'click', function (e) {
 
             utils.pre(e)
         }, false);
     });
-
-    function windowResizeHeader() {
-        document.querySelector('header').style.width = document.querySelector('main').scrollWidth + 'px';
-        document.querySelector('main').style.marginTop = document.querySelector('header').offsetHeight + 'px';
-    }
 }());
