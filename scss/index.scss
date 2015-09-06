@@ -1,23 +1,11 @@
 $def_font_color: #003E71;
 $active_link: #d20023;
 $active_btn: #0d89d5;
-$default_grey: #7d7d7d;
-$awsome_blue: #add2e8;
-$awsome_purpure: #9280d6;
+$default_grey: #bababa;
 $dark_grey: #2a2e37;
-$jusy_purpure: #BE5AF2;
 $styliesh_green: #69b132;
 $categories_bg: #e5ebf1;
 $nice_yellow: #E7F982;
-
-@keyframes dropdown {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
 
 @keyframes button_animate_white {
   0% {
@@ -38,6 +26,29 @@ $nice_yellow: #E7F982;
   100% {
     background-color: #eaebeb;
     color: $def_font_color;
+  }
+}
+
+@keyframes pulse {
+  0% {
+    font-size: 1em;
+    margin: 0;
+  }
+  20% {
+    font-size: 1.2em;
+    margin: 0 0 -0.2em -0.2em;
+  }
+  40% {
+    font-size: 1em;
+    margin: 0;
+  }
+  70% {
+    font-size: 1.2em;
+    margin: 0 0 -0.2em -0.2em;
+  }
+  100% {
+    font-size: 1em;
+    margin: 0;
   }
 }
 
@@ -68,6 +79,11 @@ body {
     color: $styliesh_green !important;
   }
 
+  input:hover {
+    background-color: $active_btn !important;
+    color: #fff !important;
+  }
+
   input,
   select {
     border: 1px solid $def_font_color;
@@ -81,140 +97,6 @@ body {
   }
 }
 
-#CART_CONTAINER {
-
-  .confButtons {
-    display: flex;
-    flex-flow: row;
-    padding: 0 50px;
-  }
-
-  .confirm-cart {
-    display: flex;
-    font-size: 3em;
-    width: 80px;
-    height: 80px;
-    background-color: $styliesh_green;
-    color: #FFF;
-    border-radius: 5px;
-    justify-content: center;
-    margin-left: 0.5em;
-
-    &:active {
-      background: radial-gradient(circle, $styliesh_green, #99F140);
-    }
-
-    &:hover {
-      background-color: #99F140;
-    }
-  }
-
-  .clear-cart {
-    display: flex;
-    font-size: 3em;
-    width: 80px;
-    height: 80px;
-    background-color: $active_link;
-    color: #FFF;
-    border-radius: 5px;
-    justify-content: center;
-
-    &:active {
-      background: radial-gradient(circle, $active_link, #FF4538);
-    }
-
-    &:hover {
-      background-color: #FF4538;
-    }
-  }
-
-  .total {
-    display: flex;
-    justify-content: space-between;
-  }
-
-  ul {
-    font-size: 13px;
-    color: #000;
-
-    li {
-      flex-flow: row nowrap;
-      display: flex;
-      padding: 0.5em;
-      margin-bottom: 10px;
-      justify-content: flex-start;
-      border: 1px dotted rgba(0, 0, 0, 0.5);
-
-      & > div:first-child {
-        display: flex;
-        flex-flow: column nowrap;
-        justify-content: space-between;
-        width: 15%;
-        margin-left: 2.5%;
-        height: 100px;
-      }
-      & > div:nth-child(3) {
-        display: flex;
-        flex-flow: column nowrap;
-        justify-content: space-around;
-        width: 17%;
-        align-items: center;
-        height: 100px;
-      }
-      & > div:last-child {
-        display: flex;
-        justify-content: space-around;
-        width: 11%;
-        height: 100px;
-        flex-flow: column;
-      }
-      div.cartColor {
-        width: 40px;
-        height: 40px;
-        border-radius: 100%;
-        border: 1px solid black;
-      }
-      figure {
-        margin: 0 auto;
-        width: 45%;
-        display: flex;
-        img {
-          width: 100px;
-          height: 100px;
-        }
-      }
-    }
-    div {
-      width: 20px;
-      height: 20px;
-      border-radius: 100%;
-      margin: 5px;
-    }
-    strong {
-      margin: 0 5px;
-      color: $def_font_color;
-    }
-    a {
-      display: block;
-      width: 80px;
-      height: 32px;
-      font-size: 20px;
-      background-color: #003E71;
-      color: #FFF;
-      text-align: center;
-      border-radius: 5px;
-
-      &:active {
-        background: radial-gradient(circle, $def_font_color, $active_btn);
-      }
-
-      &:hover {
-        background-color: $active_btn;
-      }
-    }
-  }
-}
-
 header {
   top: 0;
   position: fixed;
@@ -225,16 +107,10 @@ header {
 
   .fa-shopping-cart {
     display: none;
-    &.show {
-      display: inline-block;
-    }
   }
 
   .fa-cart-arrow-down {
     display: none;
-    &.show {
-      display: inline-block;
-    }
   }
 
   &.modal {
@@ -253,9 +129,6 @@ header {
     background-color: #eaebeb;
     transition: height 1s ease;
 
-    &.show {
-      display: flex;
-    }
     a {
       padding: 0 20px;
       border-left: 1px solid rgba(17, 33, 61, 0.25);
@@ -361,16 +234,13 @@ main {
     padding: 1em 0 2em 2em;
     display: none;
 
-    &.show {
-      display: flex;
-    }
-
     #filters {
       position: fixed;
-      z-index: 100;
       background-color: rgba(255, 255, 255, 0.75);
+      z-index: 1;
 
       & > ul {
+        margin: 0;
         width: 180px;
         padding: 10px;
 
@@ -441,7 +311,7 @@ main {
           0 0 0 5px rgba(0, 0, 0, 0.25);
 
           &:hover {
-            box-shadow: 0 0 0 5px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 0 0 5px $def_font_color;
           }
 
           &.selected {
@@ -454,7 +324,7 @@ main {
             box-shadow: 0 0 0 10px rgba(0, 0, 0, 0.5);
 
             &:hover {
-              box-shadow: 0 0 0 10px rgba(0, 0, 0, 0.75);
+              box-shadow: 0 0 0 10px $def_font_color;
             }
 
             .container {
@@ -482,10 +352,6 @@ main {
                   text-align: center;
                   flex-grow: 2;
                   border-radius: 5px;
-
-                  &:active {
-                    background: radial-gradient(circle, $def_font_color, $active_btn);
-                  }
 
                   &:hover {
                     background-color: $active_btn;
@@ -561,6 +427,12 @@ footer {
   font-size: 14px;
   font-weight: 300;
   font-family: "Oswald", sans-serif;
+  background-color: $dark_grey;
+  color: $default_grey;
+
+  a {
+    color: $default_grey;
+  }
 
   &.modal {
     filter: blur(15px);
@@ -651,26 +523,23 @@ footer {
   top: 83px;
   margin: 0 23%;
   padding: 40px 20px 0 10px;
-  background-color: rgba(255, 255, 255, 0.85);
+  background-color: rgba(42, 46, 55, 0.9);
   font-size: 0.7em;
   border: 1px solid rgba(17, 33, 61, 0.25);
-  transition: width 0.5s ease;
-  animation: dropdown 0.5s ease;
-
-  .fa-caret-right {
-    color: $active_link;
-  }
+  box-shadow: 0 0 50px 1px rgba(0, 0, 0, 0.5);
 
   a {
-    text-shadow: 0 0 3px #fff;
+    text-shadow: none;
+    color: $active_btn;
   }
 
-  &.show.upper {
+  .fa-caret-right,
+  strong {
+    color: $default_grey;
+  }
+
+  &.upper {
     top: 43px;
-    display: flex;
-  }
-
-  &.show {
     display: flex;
   }
 
@@ -687,7 +556,7 @@ footer {
       }
 
       ul {
-        margin-top: 0.5em;
+        margin: 0.5em 0;
         list-style: none;
 
         li {
@@ -700,16 +569,12 @@ footer {
 }
 
 #ORDER_TRACKING {
-  display: none;
+  display: flex;
   flex-flow: row;
   margin: 0 15% 0 15%;
   justify-content: space-between;
   font-size: 0.8em;
   color: $def_font_color;
-
-  &.show {
-    display: flex;
-  }
 
   .order_container {
     display: flex;
@@ -791,10 +656,6 @@ footer {
             border-radius: 5px;
             width: 200px;
 
-            &:active {
-              background: radial-gradient(circle, $def_font_color, $active_btn);
-            }
-
             &:hover {
               background-color: $active_btn;
             }
@@ -814,14 +675,6 @@ footer {
           font-family: "Roboto", sans-serif;
           font-weight: 300;
           color: #1d389b;
-
-          &:active {
-            background: radial-gradient(circle, $def_font_color, $active_btn);
-          }
-
-          &:hover {
-            background-color: $active_btn;
-          }
         }
       }
     }
@@ -847,13 +700,10 @@ footer {
 }
 
 #MY_CART {
-  display: none;
+  display: flex;
   flex-flow: row;
   margin: 0 15% 0 15%;
   justify-content: space-between;
-  &.show {
-    display: flex;
-  }
 
   section {
     margin: 1em 2% 0 0;
@@ -1081,10 +931,6 @@ footer {
       width: 150px;
       margin-left: 160px;
 
-      &:active {
-        background: radial-gradient(circle, $def_font_color, $active_btn);
-      }
-
       &:hover {
         background-color: $active_btn;
       }
@@ -1106,10 +952,6 @@ footer {
       font-family: "Roboto", sans-serif;
       font-weight: 300;
       color: #1d389b;
-
-      &:active {
-        background: radial-gradient(circle, $def_font_color, $active_btn);
-      }
 
       &:hover {
         background-color: $active_btn;
@@ -1134,10 +976,6 @@ footer {
     margin: 0.5em 0;
     font-size: 20px;
     font-family: "Oswald", sans-serif;
-  }
-
-  &.show {
-    display: flex;
   }
 
   #createEmail,
@@ -1182,10 +1020,6 @@ footer {
   left: 0;
   background: rgba(0, 0, 0, 0.1);
   font-size: 0.9em;
-
-  &.show {
-    display: flex;
-  }
 
   p {
     margin: 0.5em 0;
@@ -1286,10 +1120,6 @@ footer {
           height: 40px;
           border-radius: 5px;
 
-          &:active {
-            background: radial-gradient(circle, $def_font_color, $active_btn);
-          }
-
           &:hover {
             background-color: $active_btn;
           }
@@ -1314,6 +1144,180 @@ footer {
   }
 }
 
+#CONFIRM_CART {
+  background-color: $dark_grey;
+
+  article {
+    background-color: #fff;
+    width: 60%;
+    height: 500px;
+    margin: 10% 20% auto 20%;
+    box-shadow: -5px 5px 10px 1px rgba(0, 0, 0, 0.5);
+    text-align: center;
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: space-between;
+
+    div {
+      margin: 2em;
+    }
+
+    h1 {
+      margin: 1em auto 2em auto;
+    }
+  }
+
+  .fa-heart {
+    left: 1em;
+    top: 0.1em;
+    animation: pulse 1.2s ease infinite;
+    position: absolute;
+  }
+
+  a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 40px;
+    font-size: 20px;
+    font-weight: 300;
+    background-color: #003E71;
+    color: #FFF;
+    border-radius: 5px;
+    margin: 2em;
+
+    &:hover {
+      background-color: $active_btn;
+    }
+  }
+}
+
+#CART_CONTAINER {
+
+  .confButtons {
+    display: flex;
+    flex-flow: row;
+    padding: 0 50px;
+  }
+
+  .confirm-cart {
+    display: flex;
+    font-size: 2em;
+    width: 50px;
+    height: 50px;
+    background-color: $styliesh_green;
+    color: #FFF;
+    border-radius: 5px;
+    justify-content: center;
+    margin-left: 0.5em;
+
+    &:active {
+      background: radial-gradient(circle, $styliesh_green, #99F140);
+    }
+
+    &:hover {
+      background-color: #99F140;
+    }
+  }
+
+  .clear-cart {
+    display: flex;
+    font-size: 2em;
+    width: 50px;
+    height: 50px;
+    background-color: $active_link;
+    color: #FFF;
+    border-radius: 5px;
+    justify-content: center;
+
+    &:hover {
+      background-color: #FF4538;
+    }
+  }
+
+  .total {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  ul {
+    font-size: 13px;
+    color: #000;
+
+    li {
+      flex-flow: row nowrap;
+      display: flex;
+      padding: 0.5em;
+      margin-bottom: 10px;
+      justify-content: flex-start;
+      border: 1px dotted rgba(0, 0, 0, 0.5);
+
+      & > div:first-child {
+        display: flex;
+        flex-flow: column nowrap;
+        justify-content: space-between;
+        width: 15%;
+        margin-left: 2.5%;
+        height: 100px;
+      }
+      & > div:nth-child(3) {
+        display: flex;
+        flex-flow: column nowrap;
+        justify-content: space-around;
+        width: 17%;
+        align-items: center;
+        height: 100px;
+      }
+      & > div:last-child {
+        display: flex;
+        justify-content: space-around;
+        width: 11%;
+        height: 100px;
+        flex-flow: column;
+      }
+      div.cartColor {
+        width: 40px;
+        height: 40px;
+        border-radius: 100%;
+        border: 1px solid black;
+      }
+      figure {
+        margin: 0 auto;
+        width: 45%;
+        display: flex;
+        img {
+          width: 100px;
+          height: 100px;
+        }
+      }
+    }
+    div {
+      width: 20px;
+      height: 20px;
+      border-radius: 100%;
+      margin: 5px;
+    }
+    strong {
+      margin: 0 5px;
+      color: $def_font_color;
+    }
+    a {
+      display: block;
+      width: 50px;
+      height: 32px;
+      font-size: 20px;
+      background-color: #003E71;
+      color: #FFF;
+      text-align: center;
+      border-radius: 5px;
+
+      &:hover {
+        background-color: $active_btn;
+      }
+    }
+  }
+}
+
 @media all and (max-width: 1450px) {
   .dropmenu .toggle-long {
     display: none;
@@ -1323,11 +1327,8 @@ footer {
 @media all and (max-width: 1300px) {
   main {
     #ORDER_TRACKING {
-      display: none;
+      display: flex;
       flex-flow: column wrap;
-      &.show {
-        display: flex;
-      }
 
       .order_container {
         width: 100%;
@@ -1362,12 +1363,8 @@ footer {
     }
 
     #MY_CART {
-      display: none;
+      display: flex;
       flex-flow: column;
-
-      &.show {
-        display: flex;
-      }
 
       section {
         width: 100%;
@@ -1422,9 +1419,6 @@ footer {
 
 @media all and (min-width: 1000px) {
   header {
-    .ABOVE_HEADER.show {
-      display: flex;
-    }
 
     .BELOW_HEADER {
       margin: 0 15%;
@@ -1465,9 +1459,6 @@ footer {
 @media all and (max-width: 1000px) {
   header {
     .ABOVE_HEADER {
-      &.show {
-        display: flex;
-      }
 
       .toggle-long {
         display: none;
@@ -1515,9 +1506,6 @@ footer {
 @media all and (max-width: 900px) {
   header {
     .ABOVE_HEADER {
-      &.show {
-        display: flex;
-      }
 
       .toggle-long {
         display: none;
@@ -1550,11 +1538,8 @@ footer {
 
   main {
     #ORDER_TRACKING {
-      display: none;
+      display: flex;
       flex-flow: column;
-      &.show {
-        display: flex;
-      }
 
       .order_container {
         justify-content: center;
@@ -1588,6 +1573,7 @@ footer {
     }
   }
   #filters {
+    margin-left: -20px;
     span {
       display: none;
     }
@@ -1761,6 +1747,8 @@ footer {
       }
 
       &.collapse {
+        display: flex;
+
         li {
           border: none;
         }

@@ -66,66 +66,6 @@
 </header>
 
 <main>
-    <article id="CATALOGUE" class="show">
-        <nav id="filters">
-            <ul>
-                <li>
-                    <span>CATEGORIES</span>
-                    <ul id="categories">
-                        <li>
-                            <a data-type="shoes" href="#">
-                                <img src="../content/img/categories/icon_cat_shoes.png" alt=""/>
-                            </a>
-                        </li>
-                        <li>
-                            <a data-type="tee-shirts" href="#">
-                                <img src="../content/img/categories/icon_cat_tshirt.png" alt=""/>
-                            </a>
-                        </li>
-                        <li>
-                            <a data-type="polos" href="#">
-                                <img src="../content/img/categories/icon_cat_shirt.png" alt=""/>
-                            </a>
-                        </li>
-                        <li>
-                            <a data-type="hodies" href="#">
-                                <img src="../content/img/categories/icon_cat_sweat.png" alt=""/>
-                            </a>
-                        </li>
-                        <li>
-                            <a data-type="jackets" href="#">
-                                <img src="../content/img/categories/icon_cat_jacket.png" alt=""/>
-                            </a>
-                        </li>
-                        <li>
-                            <a data-type="pants" href="#">
-                                <img src="../content/img/categories/icon_cat_pant.png" alt=""/>
-                            </a>
-                        </li>
-                        <li>
-                            <a data-type="dresses" href="#">
-                                <img src="../content/img/categories/icon_cat_skirt.png" alt=""/>
-                            </a>
-                        </li>
-                        <li>
-                            <a data-type="bags" href="#">
-                                <img src="../content/img/categories/icon_cat_bag.png" alt=""/>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-                <li>
-                    <span>COLOR</span>
-                    <ul id="colors">
-                    </ul>
-                </li>
-            </ul>
-        </nav>
-        <section id="grid">
-            <ul>
-            </ul>
-        </section>
-    </article>
     <article id="MY_CART">
         <section>
             <div id="CART_CONTAINER">
@@ -181,66 +121,6 @@
                     <div class="payment ogone"></div>
                     <div class="payment secure_mastercard"></div>
                     <div class="payment verified_visa"></div>
-                </li>
-            </ul>
-        </aside>
-    </article>
-    <article id="ORDER_TRACKING">
-        <div class="order_container">
-            <section class="TITLE">
-                <span><strong>Order tracking</strong></span>
-            </section>
-            <section class="HAVE_ACCOUNT">
-                <form action="#">
-                    <p><strong>You have account</strong></p>
-
-                    <p class="description">Please enter your login information to access your orders</p>
-                    <label for="orderEmail1">Email*</label>
-                    <input type="email" id="orderEmail1"/>
-                    <label for="orderPassword1">Password*</label>
-                    <input type="password" id="orderPassword1" pattern="^(?:(?=.*[a-z])(?:(?=.*[A-Z])(?=.*[\d\W])|(?=.*\W)(?=.*\d))|(?=.*\W)(?=.*[A-Z])(?=.*\d)).{8,}$"/>
-                    <div class="form_helper">
-                        <p class="have error_msg"></p>
-                        <a class="forgot_pass" href="#">Forgot your password?</a>
-                    </div>
-                    <div class="order_btn_container">
-                        <input type="submit" value="VIEW MY ORDERS"/>
-                    </div>
-                </form>
-            </section>
-            <section class="DONT_HAVE_ACCOUNT">
-                <form action="#">
-                    <p><strong>You don't have account</strong></p>
-
-                    <p class="description">Please enter the email address used during the checkout and the order
-                        number
-                        to track your order's progression</p>
-                    <label for="orderEmail2">Email*</label>
-                    <input type="email" id="orderEmail2"/>
-                    <label for="orderPassword2">Password*</label>
-                    <input type="password" id="orderPassword2" pattern="^(?:(?=.*[a-z])(?:(?=.*[A-Z])(?=.*[\d\W])|(?=.*\W)(?=.*\d))|(?=.*\W)(?=.*[A-Z])(?=.*\d)).{8,}$"/>
-                    <div class="form_helper">
-                        <p class="dont_have error_msg"></p>
-                        <a class="forgot_pass" href="#">Forgot your password?</a>
-                    </div>
-                    <div class="order_btn_container">
-                        <input type="submit" value="VIEW MY ORDER"/>
-                    </div>
-                </form>
-            </section>
-        </div>
-        <aside>
-            <ul>
-                <li class="NEED_HELP">
-                    <div>
-                        <p><strong>NEED HELP?</strong></p>
-
-                        <p>Feel free to contact our team if you have any questions.</p>
-                        <ul>
-                            <li><a href="">Contact our customer service</a></li>
-                            <li><a href="">Check the FAQ</a></li>
-                        </ul>
-                    </div>
                 </li>
             </ul>
         </aside>
@@ -807,4 +687,5 @@
 </footer>
 </body>
 <script src="../js/index.js"></script>
+<script src="../js/cart.js"></script>
 </html>
