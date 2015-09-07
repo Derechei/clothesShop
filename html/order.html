@@ -10,11 +10,11 @@
     <meta name="viewport" content="width=device-width, maximum-scale=1.0, minimum-scale=1.0">
     <meta name="google" content="notranslate">
     <meta http-equiv="Cache-Control" content="no-cache"/>
-    <link rel="stylesheet" href="../css/all.css"/>
     <link href='http://fonts.googleapis.com/css?family=Roboto:400,100,700|Oswald:400,300,700' rel='stylesheet'
           type='text/css'>
+    <link rel="stylesheet" href="../css/all.css"/>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-    <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="../lib/jquery-1.11.3.min.js"></script>
 </head>
 <body>
 <header>
@@ -77,9 +77,9 @@
 
                     <p class="description">Please enter your login information to access your orders</p>
                     <label for="orderEmail1">Email*</label>
-                    <input type="email" id="orderEmail1"/>
+                    <input required type="email" id="orderEmail1"/>
                     <label for="orderPassword1">Password*</label>
-                    <input type="password" id="orderPassword1" pattern="^(?:(?=.*[a-z])(?:(?=.*[A-Z])(?=.*[\d\W])|(?=.*\W)(?=.*\d))|(?=.*\W)(?=.*[A-Z])(?=.*\d)).{8,}$"/>
+                    <input required type="password" id="orderPassword1" pattern="^(?:(?=.*[a-z])(?:(?=.*[A-Z])(?=.*[\d\W])|(?=.*\W)(?=.*\d))|(?=.*\W)(?=.*[A-Z])(?=.*\d)).{8,}$"/>
                     <div class="form_helper">
                         <p class="have error_msg"></p>
                         <a class="forgot_pass" href="#">Forgot your password?</a>
@@ -97,9 +97,9 @@
                         number
                         to track your order's progression</p>
                     <label for="orderEmail2">Email*</label>
-                    <input type="email" id="orderEmail2"/>
+                    <input required type="email" id="orderEmail2"/>
                     <label for="orderPassword2">Password*</label>
-                    <input type="password" id="orderPassword2" pattern="^(?:(?=.*[a-z])(?:(?=.*[A-Z])(?=.*[\d\W])|(?=.*\W)(?=.*\d))|(?=.*\W)(?=.*[A-Z])(?=.*\d)).{8,}$"/>
+                    <input required type="password" id="orderPassword2" pattern="^(?:(?=.*[a-z])(?:(?=.*[A-Z])(?=.*[\d\W])|(?=.*\W)(?=.*\d))|(?=.*\W)(?=.*[A-Z])(?=.*\d)).{8,}$"/>
                     <div class="form_helper">
                         <p class="dont_have error_msg"></p>
                         <a class="forgot_pass" href="#">Forgot your password?</a>
@@ -232,11 +232,11 @@
                 <label for="company">Company/Address( Floor/ Flat no)</label>
                 <input id="company" type="text"/>
                 <label for="postcode">Postcode*</label>
-                <input id="postcode" type="number" min="1001" max="8000" maxlength="4"/>
+                <input required id="postcode" type="number" min="1001" max="8000" maxlength="4"/>
                 <label for="town">Town/City*</label>
                 <input required id="town" type="text"/>
                 <label for="country">Country*</label>
-                <select id="country">
+                <select required id="country">
                     <option value="AF">Afghanistan</option>
                     <option value="AX">Åland Islands</option>
                     <option value="AL">Albania</option>
@@ -490,13 +490,13 @@
             </section>
             <section>
                 <label for="createEmail">Email address*</label>
-                <input id="createEmail" type="email"/>
+                <input required id="createEmail" type="email"/>
                 <label for="confirmCreateEmail">Confirm email address*</label>
-                <input id="confirmCreateEmail" type="email"/>
+                <input required id="confirmCreateEmail" type="email"/>
                 <label for="createPassword">Password*</label>
-                <input id="createPassword" type="password"/>
+                <input required id="createPassword" type="password" pattern="^(?:(?=.*[a-z])(?:(?=.*[A-Z])(?=.*[\d\W])|(?=.*\W)(?=.*\d))|(?=.*\W)(?=.*[A-Z])(?=.*\d)).{8,}$"/>
                 <label for="confirmCreatePassword">Confirm password*</label>
-                <input id="confirmCreatePassword" type="password"/>
+                <input required id="confirmCreatePassword" type="password" pattern="^(?:(?=.*[a-z])(?:(?=.*[A-Z])(?=.*[\d\W])|(?=.*\W)(?=.*\d))|(?=.*\W)(?=.*[A-Z])(?=.*\d)).{8,}$"/>
                 <div class="half">
                     <label for="Tel">Mobile*</label>
                     <span class="tel error_msg"></span>
@@ -594,7 +594,7 @@
                     </div>
                 </div>
                 <label for="Language">Language*</label>
-                <select id="Language">
+                <select required id="Language">
                     <option value="ENG">English</option>
                     <option value="RU">Russian</option>
                     <option value="FR">Franche</option>
@@ -616,9 +616,9 @@
 
                 <p class="amphasize"><strong>LOG IN</strong></p>
                 <label for="loginMail">Email*</label>
-                <input type="email" id="loginMail"/>
+                <input required type="email" id="loginMail"/>
                 <label for="loginPassword">Password*</label>
-                <input type="password" id="loginPassword"/>
+                <input required type="password" id="loginPassword" pattern="^(?:(?=.*[a-z])(?:(?=.*[A-Z])(?=.*[\d\W])|(?=.*\W)(?=.*\d))|(?=.*\W)(?=.*[A-Z])(?=.*\d)).{8,}$"/>
 
                 <div class="form_helper">
                     <p class="error_msg"></p>
@@ -687,5 +687,6 @@
     </ul>
 </footer>
 </body>
-<script src="../js/index.js"></script>
+<script src="../js/main.js"></script>
+<script src="../js/order.js"></script>
 </html>

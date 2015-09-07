@@ -2096,7 +2096,7 @@ main {
             -webkit-justify-content: flex-start;
                 -ms-flex-pack: start;
                     justify-content: flex-start;
-            z-index: 1000;
+            z-index: 2;
             background-color: #fff;
             box-shadow: 0 0 0 10px rgba(0, 0, 0, 0.5); }
             main #CATALOGUE #grid ul li.selected:hover {
@@ -2198,6 +2198,9 @@ footer {
   font-family: "Oswald", sans-serif;
   background-color: #2a2e37;
   color: #bababa; }
+  footer > div {
+    width: 100%;
+    height: 214px; }
   footer a {
     color: #bababa; }
   footer.modal {
@@ -2274,7 +2277,7 @@ footer {
 .dropmenu {
   display: none;
   position: fixed;
-  z-index: 10;
+  z-index: 3;
   width: 42%;
   -webkit-flex-flow: column wrap;
       -ms-flex-flow: column wrap;
@@ -2545,7 +2548,7 @@ footer {
 .CREATE_ACCAUNT {
   overflow: auto;
   position: fixed;
-  z-index: 2000;
+  z-index: 1000;
   display: none;
   -webkit-box-pack: center;
   -webkit-justify-content: center;
@@ -2711,7 +2714,7 @@ footer {
 
 .POPIN_LOGIN {
   position: fixed;
-  z-index: 2000;
+  z-index: 1000;
   display: none;
   -webkit-box-pack: center;
   -webkit-justify-content: center;
@@ -2754,7 +2757,7 @@ footer {
       width: 280px;
       padding-left: 40px; }
       .POPIN_LOGIN > div .DONT_HAVE_ACCOUNT .login_btn_container {
-        margin-top: 134px; }
+        margin-top: 130px; }
     .POPIN_LOGIN > div form .amphasize {
       font-size: 20px; }
       .POPIN_LOGIN > div form .amphasize p:last-child {
@@ -2871,159 +2874,161 @@ footer {
     #CONFIRM_CART a:hover {
       background-color: #0d89d5; }
 
-#CART_CONTAINER .confButtons {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-flow: row;
-      -ms-flex-flow: row;
-          flex-flow: row;
-  padding: 0 50px; }
-#CART_CONTAINER .confirm-cart {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  font-size: 2em;
-  width: 50px;
-  height: 50px;
-  background-color: #69b132;
-  color: #FFF;
-  border-radius: 5px;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  margin-left: 0.5em; }
-  #CART_CONTAINER .confirm-cart:active {
-    background: -webkit-radial-gradient(circle, #69b132, #99F140);
-    background: radial-gradient(circle, #69b132, #99F140); }
-  #CART_CONTAINER .confirm-cart:hover {
-    background-color: #99F140; }
-#CART_CONTAINER .clear-cart {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  font-size: 2em;
-  width: 50px;
-  height: 50px;
-  background-color: #d20023;
-  color: #FFF;
-  border-radius: 5px;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-      -ms-flex-pack: center;
-          justify-content: center; }
-  #CART_CONTAINER .clear-cart:hover {
-    background-color: #FF4538; }
-#CART_CONTAINER .total {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: justify;
-  -webkit-justify-content: space-between;
-      -ms-flex-pack: justify;
-          justify-content: space-between; }
-#CART_CONTAINER ul {
-  font-size: 13px;
-  color: #000; }
-  #CART_CONTAINER ul li {
-    -webkit-flex-flow: row nowrap;
-        -ms-flex-flow: row nowrap;
-            flex-flow: row nowrap;
+#CART_CONTAINER {
+  overflow: hidden !important; }
+  #CART_CONTAINER .confButtons {
     display: -webkit-box;
     display: -webkit-flex;
     display: -ms-flexbox;
     display: flex;
-    padding: 0.5em;
-    margin-bottom: 10px;
-    -webkit-box-pack: start;
-    -webkit-justify-content: flex-start;
-        -ms-flex-pack: start;
-            justify-content: flex-start;
-    border: 1px dotted rgba(0, 0, 0, 0.5); }
-    #CART_CONTAINER ul li > div:first-child {
-      display: -webkit-box;
-      display: -webkit-flex;
-      display: -ms-flexbox;
-      display: flex;
-      -webkit-flex-flow: column nowrap;
-          -ms-flex-flow: column nowrap;
-              flex-flow: column nowrap;
-      -webkit-box-pack: justify;
-      -webkit-justify-content: space-between;
-          -ms-flex-pack: justify;
-              justify-content: space-between;
-      width: 15%;
-      margin-left: 2.5%;
-      height: 100px; }
-    #CART_CONTAINER ul li > div:nth-child(3) {
-      display: -webkit-box;
-      display: -webkit-flex;
-      display: -ms-flexbox;
-      display: flex;
-      -webkit-flex-flow: column nowrap;
-          -ms-flex-flow: column nowrap;
-              flex-flow: column nowrap;
-      -webkit-justify-content: space-around;
-          -ms-flex-pack: distribute;
-              justify-content: space-around;
-      width: 17%;
-      -webkit-box-align: center;
-      -webkit-align-items: center;
-          -ms-flex-align: center;
-              align-items: center;
-      height: 100px; }
-    #CART_CONTAINER ul li > div:last-child {
-      display: -webkit-box;
-      display: -webkit-flex;
-      display: -ms-flexbox;
-      display: flex;
-      -webkit-justify-content: space-around;
-          -ms-flex-pack: distribute;
-              justify-content: space-around;
-      width: 11%;
-      height: 100px;
-      -webkit-flex-flow: column;
-          -ms-flex-flow: column;
-              flex-flow: column; }
-    #CART_CONTAINER ul li div.cartColor {
-      width: 40px;
-      height: 40px;
-      border-radius: 100%;
-      border: 1px solid black; }
-    #CART_CONTAINER ul li figure {
-      margin: 0 auto;
-      width: 45%;
-      display: -webkit-box;
-      display: -webkit-flex;
-      display: -ms-flexbox;
-      display: flex; }
-      #CART_CONTAINER ul li figure img {
-        width: 100px;
-        height: 100px; }
-  #CART_CONTAINER ul div {
-    width: 20px;
-    height: 20px;
-    border-radius: 100%;
-    margin: 5px; }
-  #CART_CONTAINER ul strong {
-    margin: 0 5px;
-    color: #003E71; }
-  #CART_CONTAINER ul a {
-    display: block;
+    -webkit-flex-flow: row;
+        -ms-flex-flow: row;
+            flex-flow: row;
+    padding: 0 50px; }
+  #CART_CONTAINER .confirm-cart {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    font-size: 2em;
     width: 50px;
-    height: 32px;
-    font-size: 20px;
-    background-color: #003E71;
+    height: 50px;
+    background-color: #69b132;
     color: #FFF;
-    text-align: center;
-    border-radius: 5px; }
-    #CART_CONTAINER ul a:hover {
-      background-color: #0d89d5; }
+    border-radius: 5px;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    margin-left: 0.5em; }
+    #CART_CONTAINER .confirm-cart:active {
+      background: -webkit-radial-gradient(circle, #69b132, #99F140);
+      background: radial-gradient(circle, #69b132, #99F140); }
+    #CART_CONTAINER .confirm-cart:hover {
+      background-color: #99F140; }
+  #CART_CONTAINER .clear-cart {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    font-size: 2em;
+    width: 50px;
+    height: 50px;
+    background-color: #d20023;
+    color: #FFF;
+    border-radius: 5px;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+        -ms-flex-pack: center;
+            justify-content: center; }
+    #CART_CONTAINER .clear-cart:hover {
+      background-color: #FF4538; }
+  #CART_CONTAINER .total {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+    -webkit-justify-content: space-between;
+        -ms-flex-pack: justify;
+            justify-content: space-between; }
+  #CART_CONTAINER ul {
+    font-size: 13px;
+    color: #000; }
+    #CART_CONTAINER ul li {
+      -webkit-flex-flow: row nowrap;
+          -ms-flex-flow: row nowrap;
+              flex-flow: row nowrap;
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: -ms-flexbox;
+      display: flex;
+      padding: 0.5em;
+      margin-bottom: 10px;
+      -webkit-box-pack: start;
+      -webkit-justify-content: flex-start;
+          -ms-flex-pack: start;
+              justify-content: flex-start;
+      border: 1px dotted rgba(0, 0, 0, 0.5); }
+      #CART_CONTAINER ul li > div:first-child {
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-flex-flow: column nowrap;
+            -ms-flex-flow: column nowrap;
+                flex-flow: column nowrap;
+        -webkit-box-pack: justify;
+        -webkit-justify-content: space-between;
+            -ms-flex-pack: justify;
+                justify-content: space-between;
+        width: 15%;
+        margin-left: 2.5%;
+        height: 100px; }
+      #CART_CONTAINER ul li > div:nth-child(3) {
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-flex-flow: column nowrap;
+            -ms-flex-flow: column nowrap;
+                flex-flow: column nowrap;
+        -webkit-justify-content: space-around;
+            -ms-flex-pack: distribute;
+                justify-content: space-around;
+        width: 17%;
+        -webkit-box-align: center;
+        -webkit-align-items: center;
+            -ms-flex-align: center;
+                align-items: center;
+        height: 100px; }
+      #CART_CONTAINER ul li > div:last-child {
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-justify-content: space-around;
+            -ms-flex-pack: distribute;
+                justify-content: space-around;
+        width: 11%;
+        height: 100px;
+        -webkit-flex-flow: column;
+            -ms-flex-flow: column;
+                flex-flow: column; }
+      #CART_CONTAINER ul li div.cartColor {
+        width: 40px;
+        height: 40px;
+        border-radius: 100%;
+        border: 1px solid black; }
+      #CART_CONTAINER ul li figure {
+        margin: 0 auto;
+        width: 45%;
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        display: flex; }
+        #CART_CONTAINER ul li figure img {
+          width: 100px;
+          height: 100px; }
+    #CART_CONTAINER ul div {
+      width: 20px;
+      height: 20px;
+      border-radius: 100%;
+      margin: 5px; }
+    #CART_CONTAINER ul strong {
+      margin: 0 5px;
+      color: #003E71; }
+    #CART_CONTAINER ul a {
+      display: block;
+      width: 50px;
+      height: 32px;
+      font-size: 20px;
+      background-color: #003E71;
+      color: #FFF;
+      text-align: center;
+      border-radius: 5px; }
+      #CART_CONTAINER ul a:hover {
+        background-color: #0d89d5; }
 
 @media all and (max-width: 1450px) {
   .dropmenu .toggle-long {
